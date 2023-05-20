@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Overpass:wght@100&display=swap");
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.login-paper {
+  padding: 5rem;
+}
+
+.form-text {
+  margin: 0 0 2rem 0;
+  h5 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 31px;
+    letter-spacing: 0em;
+  }
+}
+.MuiFormLabel-root {
+  color: #4d4d4d !important;
+  font-family: "Kumbh Sans", sans-serif !important;
+  font-size: 18px;
+  font-weight: 800 !important;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+.loginform-button {
+  margin: 1rem 0 !important;
+  width: 350px;
+  height: 56px;
+  background-color: #57aefd !important;
+}
+
+.input-label {
+  margin-top: 10px;
+  color: #4d4d4d;
+  font-family: "Kumbh Sans", sans-serif !important;
+}
+.forget-password {
+  text-align: right;
+  color: #57aefd;
+  font-size: 15px;
+  font-weight: 650;
+}
+.switch-signup {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+}
+.loginform-input{
+    width: 350px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+  font-family: "Kumbh Sans", sans-serif ;
+}

@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Grid from "@mui/material/Grid";
-import "./TopMenuBar.css";
+import "./TopMenuBar.scss";
 import {  styled,Box }  from '@mui/material'
 
 const Icons = styled(Box)(({ theme }) => ({

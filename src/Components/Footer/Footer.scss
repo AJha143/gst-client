@@ -1,0 +1,19 @@
+.footer-info {
+    display: flex;
+    justify-content: center;
+    text-align: flex-start;
+      background-color: #fffdfd;
+      color: #4d4d4d;
+      padding: 1rem 0;
+    font-size: 14px;
+    border-top: 1px solid #4d4d4d;
+  
+  }
+  
+  .footer-info > span{
+      display: flex;
+      justify-content: center;
+      text-align: flex-start;
+     margin-right: 6rem;
+   
+  }
