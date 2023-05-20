@@ -1,0 +1,87 @@
+$text_primary_color: black;
+$text_secondary_color: white;
+$icon-colors: (
+  rgb(13, 13, 248),
+  rgb(158, 158, 243),
+  rgb(247, 197, 106),
+  rgb(204, 236, 62),
+  yellow,
+  rgb(232, 163, 241),
+  rgb(250, 247, 97)
+);
+
+.root {
+  display: flex;
+
+  .drawer {
+    width: 240px;
+  }
+
+  .drawerPaper {
+    width: 240px;
+    background-color: #2e3345;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    /* Hide the scrollbar */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .headerContainer {
+      background-color: #315bc2;
+      height: 75px;
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+
+      .headerText {
+        display: flex;
+        justify-content: center;
+        color: $text_secondary_color;
+        font-size: 25px;
+        font-family: cursive;
+        font-weight: bold;
+      }
+    }
+    .dividerComponent {
+      background-color: #d4d3d3;
+      height: 1px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .headerContainer2 {
+      height: 38px;
+    }
+
+    .listItemContainer {
+      height: 40px;
+    }
+
+    .subIcon {
+      color: rgb(41, 247, 144);
+      margin-left: 25px;
+    }
+
+    .icon {
+      margin-top: -5px;
+      color: $text_secondary_color;
+
+      @each $color in $icon-colors {
+        &#{index($icon-colors, $color)} {
+          color: $color;
+        }
+      }
+    }
+
+    .text {
+      color: $text_secondary_color;
+    }
+    .subtext {
+      color: $text_secondary_color;
+      margin-left: -10px;
+      font-size: 15px;
+    }
+  }
+}
