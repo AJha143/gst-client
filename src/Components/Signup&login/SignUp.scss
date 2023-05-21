@@ -1,5 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Overpass:wght@100&display=swap");
 
+
+.signup-page {
+  width: 100%;
+  height: 100vh;
+}
+.signup-img-container {
+  background-color: #c0dffd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  height: 100vh;
+}
+.signup-img {
+  width: 100%;
+  border-radius: 50%;
+}
 .signup-form {
   display: flex;
   justify-content: center;
@@ -10,7 +28,7 @@
   padding: 0 0 20px 0;
 }
 .paper-box{
-  padding: 2rem 0.5rem 3rem 3rem;
+  padding: 2rem 0.5rem 2.8rem 3rem;
   margin-top: 2rem;
 }
 
@@ -60,11 +78,11 @@ letter-spacing: 0em;
   text-align: left;
 }
 .input-fields {
-  width: 30rem;
+  width: 100%;
 }
 
 .signup-button {
-  width: 489px;
+  width: 100%;
   height: 56px;
   background-color: #57aefd !important;
   border-radius: 9px !important ;

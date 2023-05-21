@@ -8,7 +8,8 @@ import {
   RadioGroup,
   Radio,
   FormControlLabel,
-  Checkbox
+  Checkbox,
+  Grid
 } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
@@ -18,10 +19,11 @@ import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import TextField from "../TextFieldComponent";
 import FormLabel from "../FormLabelComponent";
 import Button from "../ButtonComponent";
+import SignUpImg from "../../Images/signup_new.jpg";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -112,10 +114,15 @@ const validateFormValue = ()=>{
   };
 
   return (
-    <>
-      <div className="signup-form">
+    <Grid  container className="signup-page">
+      <Grid item xs={6}  className="signup-img-container">
+        <Grid >
+        <img src={SignUpImg} alt="signup" className="signup-img" />
+       </Grid>
+      </Grid>
+      <Grid  item xs={6}  className="signup-form">
         <div className="form-container">
-          <Paper elevation={3} className="paper-box">
+          <div  className="paper-box">
             <div className="form-text">
               <Typography variant="h5">Get Started</Typography>
               <Typography variant="p">
@@ -289,10 +296,10 @@ const validateFormValue = ()=>{
                 </FormControl>
               </form>
             </div>
-          </Paper>
+          </div>
         </div>
-      </div>
-    </>
+      </Grid>
+    </Grid>
   );
 };
 

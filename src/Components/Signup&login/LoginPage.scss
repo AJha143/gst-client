@@ -1,15 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Overpass:wght@100&display=swap");
 
+.login-page {
+  width: 100%;
+  height: 100vh;
+}
+.login-img {
+  width: 100%;
+  border-radius: 50%;
+  margin: 5rem 0 1rem 0;
+}
+.login-img-container {
+  background-color: #c0dffd;
+  padding: 3rem;
+  height: 100vh;
+}
+.check{
+  width: 1.5rem;
+}
+.discription{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 1rem;
+}
 .login-form {
   display: flex;
+
   justify-content: center;
   align-items: center;
   margin-top: 5%;
 }
 
-.login-paper {
-  padding: 5rem;
-}
+// .login-paper {
+//   padding: 5rem;
+//   width: 100%;
+// }
 
 .form-text {
   margin: 0 0 2rem 0;
@@ -30,7 +55,7 @@
 }
 .loginform-button {
   margin: 1rem 0 !important;
-  width: 350px;
+  width: 100%;
   height: 56px;
   background-color: #57aefd !important;
 }
@@ -53,12 +78,14 @@
   line-height: 16px;
   letter-spacing: 0em;
 }
-.loginform-input{
-    width: 350px;
+.loginform-input {
+  width: 500px;
 }
 
 .error {
   color: red;
   margin-top: 5px;
-  font-family: "Kumbh Sans", sans-serif ;
+  font-family: "Kumbh Sans", sans-serif;
 }
+
+
