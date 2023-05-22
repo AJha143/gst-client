@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans&family=Overpass:wght@100&display=swap");
+
+
+.signup-page {
+  width: 100%;
+  height: 100vh;
+}
+.signup-img-container {
+  background-color: #c0dffd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  height: 100vh;
+}
+.signup-img {
+  width: 100%;
+  border-radius: 50%;
+}
+.signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #4d4d4d ;
+  font-family: "Kumbh Sans", sans-serif !important;
+  padding: 0 0 20px 0;
+}
+.paper-box{
+  padding: 2rem 0.5rem 2.8rem 3rem;
+  margin-top: 2rem;
+}
+
+.my-radio-label {
+  color: #4d4d4d; // Example style: red color
+
+ 
+}
+.form-text {
+  text-align: start;
+}
+.form-text > h5 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 31px;
+  letter-spacing: 0em;
+}
+.form-inputs{
+  margin: 0.8rem 0;
+}
+.MuiFormLabel-root{
+  color: #4d4d4d !important;
+  font-family: "Kumbh Sans", sans-serif !important;
+    font-size: 18px ;
+    font-weight: 800 ;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.input-label{
+  margin-top: 5px ;
+  color: #4d4d4d ;
+  font-family: "Kumbh Sans", sans-serif !important;
+font-size: 16px;
+font-weight: 600;
+line-height: 18px;
+letter-spacing: 0em;
+
+}
+
+.form-text > p,
+.check-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.input-fields {
+  width: 100%;
+}
+
+.signup-button {
+  width: 100%;
+  height: 56px;
+  background-color: #57aefd !important;
+  border-radius: 9px !important ;
+}
+
+
+.error {
+  color: rgb(214, 4, 4);
+  margin-top: 5px;
+  font-family: "Kumbh Sans", sans-serif ;
+}
