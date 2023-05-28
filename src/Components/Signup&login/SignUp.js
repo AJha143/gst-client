@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import {
   FormControl,
-  // FormLabel,
-  // TextField,
-  // Button,
   Typography,
   RadioGroup,
   Radio,
   FormControlLabel,
   Checkbox,
-  Grid
+  Grid,
 } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
@@ -19,12 +16,15 @@ import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
-// import Paper from "@mui/material/Paper";
-import TextField from "../TextFieldComponent";
-import FormLabel from "../FormLabelComponent";
-import Button from "../ButtonComponent";
+import TextField from "../../ReuseComponent/TextFieldComponent";
+import FormLabel from "../../ReuseComponent/FormLabelComponent";
+import Button from "../../ReuseComponent/ButtonComponent";
 import SignUpImg from "../../Images/signup_new.jpg";
 import "./SignUp.scss";
+import {formInputFieldErrMsg, formValidationRegex} from "../ConstantData"
+
+import SnackbarComponent from "../../ReuseComponent/SnackbarComponent";
+
 
 const SignUp = () => {
   const [formInputValues, setFormInputValues] = useState({
@@ -32,53 +32,44 @@ const SignUp = () => {
     phoneNumber: "",
     email: "",
     password: "",
-    profession: "Individual User"
+    profession: "Individual User",
   });
   const [formInputErr, setFormInputErr] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [agreement, setAgreement] = useState(false);
 
-  const formInputFieldErrMsg = {
-    name: "Please Enter Valid Name.",
-    phoneNumber: "Please Enter Valid Phone Number.",
-    email: "Please Enter Valid Email.",
-    password:"Password should be minimum 6 digits & contain one lower, upper, numeric & special Characters."
-  };
-
-  const formValidationRegex = {
-    name: /^[a-zA-Z\s]+$/,
-    phoneNumber: /^\d{10}$/,
-    email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-    password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
-  };
+  function checkChangeHandler(e) {
+    setAgreement(e.target.checked);
+  }
 
   const handleOnChange = (event) => {
     const { value, name } = event.target || {};
     setFormInputErr((prev) => ({
       ...prev,
-      [name]: {}
+      [name]: {},
     }));
     setFormInputValues((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
-const validateFormValue = ()=>{
-  const submitFormValidation = {
-  }
+  const validateFormValue = () => {
+    const submitFormValidation = {};
 
-  for (let key in formInputValues) {
-    const errMsg = formInputValues[key]
-    ? formInputFieldErrMsg[key]
-    : `${key.toUpperCase()} is Mandatory!!!`;
-  const isError = formValidationRegex[key] && !formValidationRegex[key].test(formInputValues[key]);
-  submitFormValidation[key] = {errMsg , isError}
-  }
-  console.log(submitFormValidation)
-  setFormInputErr(submitFormValidation)
-}
+    for (let key in formInputValues) {
+      const errMsg = formInputValues[key]     
+        ? formInputFieldErrMsg[key]
+        : `${key.toUpperCase()} is Mandatory!!!`;
+      const isError =
+        formValidationRegex[key] &&
+        !formValidationRegex[key].test(formInputValues[key]);
+      submitFormValidation[key] = { errMsg, isError };
+    }
+    console.log(submitFormValidation);
+    setFormInputErr(submitFormValidation);
+  };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  // console.log(formInputValues);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -92,37 +83,46 @@ const validateFormValue = ()=>{
       ...prev,
       [name]: {
         isError,
-        errMsg
-      }
+        errMsg,
+      },
     }));
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("hello");
+   setOpenSnack(!agreement)
     validateFormValue();
-     
+
     if (!Object.keys(formInputValues).length) return;
-   
+
     for (let key in formInputValues) {
-      // console.log(key, formInputFieldErrMsg[key]);
       if (!formInputValues || formInputErr[key]?.isError) {
-        // console.log("Validation Failed !!!!");
         return;
       }
     }
-    // console.log("M HERE");
+  };
+
+  const [openSnack, setOpenSnack] = React.useState(false);
+
+ 
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnack(false);
   };
 
   return (
-    <Grid  container className="signup-page">
-      <Grid item xs={6}  className="signup-img-container">
-        <Grid >
-        <img src={SignUpImg} alt="signup" className="signup-img" />
-       </Grid>
+    <Grid container className="signup-page">
+      <Grid item xs={6} className="signup-img-container">
+        <Grid>
+          <img src={SignUpImg} alt="signup" className="signup-img" />
+        </Grid>
       </Grid>
-      <Grid  item xs={6}  className="signup-form">
+      <Grid item xs={6} className="signup-form">
         <div className="form-container">
-          <div  className="paper-box">
+          <div className="paper-box">
             <div className="form-text">
               <Typography variant="h5">Get Started</Typography>
               <Typography variant="p">
@@ -160,8 +160,11 @@ const validateFormValue = ()=>{
                       className="my-radio-label"
                     />
                   </RadioGroup>
-
-                  <FormLabel required labeltext="Full Name" className="input-label" />
+                  <FormLabel
+                    required
+                    labeltext="Full Name"
+                    className="input-label"
+                  />
                   <TextField
                     name="name"
                     InputProps={{
@@ -169,9 +172,8 @@ const validateFormValue = ()=>{
                         <InputAdornment position="start">
                           <PersonOutlineIcon />
                         </InputAdornment>
-                      )
+                      ),
                     }}
-                 
                     type="text"
                     className="input-fields"
                     placeholder="Full Name"
@@ -185,8 +187,11 @@ const validateFormValue = ()=>{
                         : ""
                     }
                   />
-
-                  <FormLabel className="input-label"    required  labeltext="Mobile Number"/>
+                  <FormLabel
+                    className="input-label"
+                    required
+                    labeltext="Mobile Number"
+                  />
                   <TextField
                     name="phoneNumber"
                     inputProps={{ maxLength: 10 }}
@@ -195,16 +200,12 @@ const validateFormValue = ()=>{
                         <InputAdornment position="start">
                           <PhoneOutlinedIcon />
                         </InputAdornment>
-                      )
+                      ),
                     }}
                     type="tel"
-                 
                     placeholder="Phone Number"
                     className="input-fields"
                     error={formInputErr["phoneNumber"]?.isError}
-                    // className={`input-fields ${
-                    //   !numberValid && formSubmitted ? "invalid" : ""
-                    // }`}
                     value={formInputValues.phoneNumber || ""}
                     onChange={handleOnChange}
                     onBlur={handleOnBlur}
@@ -214,7 +215,11 @@ const validateFormValue = ()=>{
                         : ""
                     }
                   />
-                  <FormLabel required className="input-label" labeltext="Email Address"/>
+                  <FormLabel
+                    required
+                    className="input-label"
+                    labeltext="Email Address"
+                  />
                   <TextField
                     name="email"
                     InputProps={{
@@ -222,9 +227,8 @@ const validateFormValue = ()=>{
                         <InputAdornment position="start">
                           <MailOutlineOutlinedIcon />
                         </InputAdornment>
-                      )
+                      ),
                     }}
-                
                     type="email"
                     className="input-fields"
                     placeholder="Email Address"
@@ -238,10 +242,13 @@ const validateFormValue = ()=>{
                         : ""
                     }
                   />
-                  <FormLabel required className="input-label" labeltext="Password"/>
+                  <FormLabel
+                    required
+                    className="input-label"
+                    labeltext="Password"
+                  />
                   <TextField
                     name="password"
-                   
                     className="input-fields"
                     InputProps={{
                       startAdornment: (
@@ -259,7 +266,7 @@ const validateFormValue = ()=>{
                             {showPassword ? <VisibilityOff /> : <Visibility />}
                           </IconButton>
                         </InputAdornment>
-                      )
+                      ),
                     }}
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
@@ -275,7 +282,7 @@ const validateFormValue = ()=>{
                   />
                   <div className="checkbox-container">
                     <FormControlLabel
-                      control={<Checkbox />}
+                      control={<Checkbox onChange={checkChangeHandler} />}
                       label={
                         <Typography variant="p">
                           I accept the terms of service and privacy policy.
@@ -285,14 +292,28 @@ const validateFormValue = ()=>{
                     />
                   </div>
 
+                  <SnackbarComponent
+                    open={openSnack}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                       vertical: 'top',
+                        horizontal: 'left' 
+                    }}
+                    severity="error"
+                      sx={{ width: "100%" }}
+                      alertText=" Kindly accept the terms of service and privacy policy !"
+                  />
+                  
+                     
+               
+
                   <Button
                     type="submit"
                     variant="contained"
                     className="signup-button"
                     buttontext="Sign up"
-                 />
-                    
-                  
+                  />
                 </FormControl>
               </form>
             </div>
