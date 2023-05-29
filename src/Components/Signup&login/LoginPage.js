@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import {
   FormControl,
-  FormLabel,
   Grid,
   IconButton,
   InputAdornment,
-  // Paper,
-  // TextField,
   Typography,
 } from "@mui/material";
 import "./LoginPage.scss";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
-import Button from "../ButtonComponent";
-import TextField from "../TextFieldComponent";
+import Button from "../../ReuseComponent/ButtonComponent";
+import TextField from "../../ReuseComponent/TextFieldComponent";
 import SignUpImg from "../../Images/signup_new.jpg";
 import check from "../../Images/check.png";
+import ForgetPassword from "./ForgetPassword";
+import FormLabel from "../../ReuseComponent/FormLabelComponent";
+import { formInputFieldErrMsg, formValidationRegex } from "../ConstantData";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,12 +27,14 @@ const LoginPage = () => {
   });
   const [formInputErr, setFormInputErr] = useState({});
 
-  const formInputFieldErrMsg = {
-    email: "Please Enter Valid Email.",
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
-  const formValidationRegex = {
-    email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+  const handleClose = (value) => {
+    setOpen(false);
   };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -89,60 +91,33 @@ const LoginPage = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("hello");
+
     validateFormValue();
     if (!Object.keys(formInputValues).length) return;
 
     for (let key in formInputValues) {
-      // console.log(key, formInputFieldErrMsg[key]);
       if (!formInputValues || formInputErr[key]?.isError) {
-        // console.log("Validation Failed !!!!");
         return;
       }
     }
-    // console.log("M HERE");
   };
-  // const handleEmailChange = (event) => {
-  //   const { value } = event.target;
-  //   setEmail(value);
-  // };
-
-  // const handlePasswordChange = (event) => {
-  //   const { value } = event.target;
-  //   setPassword(value);
-  // };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const isEmailValid = validateEmail(email);
-  //   const isPasswordValid = validatePassword(password);
-  //   setEmailValid(isEmailValid);
-  //   setPasswordValid(isPasswordValid);
-  //   setFormSubmitted(true);
-
-  //   if (isEmailValid && isPasswordValid) {
-  //     // Additional logic for successful form submission
-  //     setEmail("");
-  //     setPassword("");
-  //   }
-  // };
 
   return (
     <Grid container className="login-page">
-      <Grid item xs={6}  direction="column"  className="login-img-container">
+      <Grid item xs={6} direction="column" className="login-img-container">
         <Grid>
-        <img src={SignUpImg} alt="" className="login-img" />
-       </Grid>
-       
-        <Grid  direction="column"  className="discription-container"> 
-          <div  className="discription">
+          <img src={SignUpImg} alt="" className="login-img" />
+        </Grid>
+
+        <Grid direction="column" className="discription-container">
+          <div className="discription">
             <img src={check} alt="check icon" className="check" />
             <Typography varient="p">
               Most Economical and accurate gst software in the market to file
               return.
             </Typography>
           </div>
-          <div  className="discription">
+          <div className="discription">
             <img src={check} alt="check icon" className="check" />
             <Typography varient="p">
               Multiple subscription plan to fullfill your requirement.
@@ -157,9 +132,11 @@ const LoginPage = () => {
           </div>
           <form onSubmit={handleSubmit}>
             <FormControl>
-              <FormLabel className="input-label" required>
-                Email Address
-              </FormLabel>
+              <FormLabel
+                className="input-label"
+                required
+                labeltext="Email Address"
+              />
 
               <TextField
                 InputProps={{
@@ -184,9 +161,9 @@ const LoginPage = () => {
                 }
               />
 
-              <FormLabel className="input-label" required>
-                Password
-              </FormLabel>
+              <FormLabel className="input-label" required labeltext="Password" />
+ 
+
               <TextField
                 InputProps={{
                   startAdornment: (
@@ -221,10 +198,17 @@ const LoginPage = () => {
                     : ""
                 }
               />
+              <div>
+                <Typography
+                  variant="p"
+                  className="forget-password"
+                  onClick={handleClickOpen}
+                >
+                  Forgot password?
+                </Typography>
+                <ForgetPassword open={open} onClose={handleClose} />
+              </div>
 
-              <Typography variant="p" className="forget-password">
-                Forgot password?
-              </Typography>
               <Button
                 className="loginform-button"
                 variant="contained"

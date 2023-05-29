@@ -1,8 +1,11 @@
 import React from 'react'
+import AddClient from "./AddClientButton"
 
 const Clients = () => {
   return (
-    <div style={{fontSize:'200px'}}>Clients</div>
+    <div>
+    <AddClient/>
+    </div>
   )
 }
 

@@ -1,0 +1,31 @@
+
+
+.customAddClientPaper {
+  overflow-x: hidden;
+  height: 100%;
+ 
+  .customTextField {
+    width: 100%;
+  }
+  .containerClass {
+    padding: 20px;
+    height: 100%;
+    overflow-y:scroll;
+    .clientTitle{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .actionBtngrid {
+    display: flex;
+    margin-left: auto;
+    .actionBtn {
+      margin-left: auto;
+    }
+    .customBtn {
+      margin: 5px;
+    }
+  }
+
+}

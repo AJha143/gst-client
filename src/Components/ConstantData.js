@@ -66,3 +66,97 @@ export const drawerItems = [
   },
 
 ];
+
+
+
+
+
+
+
+
+
+export const formInputFieldErrMsg = {
+  name: "Please Enter Valid Name.",
+  phoneNumber: "Please Enter Valid Phone Number.",
+  email: "Please Enter Valid Email.",
+  password:
+    "Password should be minimum 6 digits & contain one lower, upper, numeric & special Characters.",
+};
+
+export const formValidationRegex = {
+  name: /^[a-zA-Z\s]+$/,
+  firstName: /^[a-zA-Z\s]+$/,
+  lastName: /^[a-zA-Z\s]+$/,
+  phoneNumber: /^\d{10}$/,
+  email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+  password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
+  // address: "",
+  gstn: /^[0-9]{2}[A-Z]{5}""[0-9]{4}[A-Z]{1}[""1-9A-Z]{1}Z[0-9A-Z]{1}$/,
+  gstnUsername : /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/,
+};
+
+export const inputFieldDetails = [
+  {
+    type: "text",
+    fieldName: "firstName",
+    col: 6,
+    label: "First Name",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "text",
+    fieldName: "lastName",
+    col: 6,
+    label: "Last Name",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "text",
+    fieldName: "gstn",
+    col: 12,
+    label: "GSTN",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "email",
+    fieldName: "email",
+    col: 12,
+    label: "Email",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "address",
+    fieldName: "address",
+    col: 12,
+    label: "Address",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "tel",
+    fieldName: "mobile",
+    col: 12,
+    label: "Mobile",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+  {
+    type: "text",
+    fieldName: "GSTNUsername",
+    col: 12,
+    label: "GSTN Username",
+    variant: "outlined",
+    required: true,
+    classes: { root: "customTextField" },
+  },
+];
