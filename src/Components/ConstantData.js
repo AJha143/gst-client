@@ -5,9 +5,9 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Clients from "../Pages/Clients/Clients";
 import Home from "../Pages/Home/Home";
-import TagIcon from '@mui/icons-material/Tag';
 import HelpIcon from '@mui/icons-material/Help';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import Crop169Icon from '@mui/icons-material/Crop169';
 
 export const drawerItems = [
   {
@@ -35,7 +35,7 @@ export const drawerItems = [
     label: "GSTR",
     icon: <InsertDriveFileIcon />,
     path: "/gstr",
-    subIcon: <TagIcon fontSize="small"/>,
+    subIcon: <Crop169Icon fontSize="small"/>,
     subGSTR: [
       { name: "GSTR-1", location: "/gstr/gstr1" },
       { name: "GSTR-3B", location: "/gstr/gstr3b" },
