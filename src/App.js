@@ -8,10 +8,13 @@ import { Grid } from "@material-ui/core";
 // import LoginPage from "./Components/Signup&login/LoginPage";
 // import SignUp from "./Components/Signup&login/SignUp";
 function App() {
+
   return (
     <BrowserRouter>
-      <TopMenuBar />
-      <Grid style={{ display: "flex" }}>
+      <Grid container direction="row">
+        <Grid item xs={12}>
+          <TopMenuBar />
+        </Grid>
         <DrawerComp />
         <Routing />
       </Grid>

@@ -11,15 +11,25 @@ $icon-colors: (
 );
 
 .root {
-  display: flex;
+  // display: flex;
 
   .drawer {
     width: 240px;
+    transition: width 0.5s ease-in-out;
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+  }
+
+  .drawer2 {
+    width: 60px;
+    transition: width 0.5s ease-in;
   }
 
   .drawerPaper {
     width: 240px;
     background-color: #2e3345;
+    transition: width 0.5s ease-in-out;
     overflow: hidden;
     overflow-y: scroll;
 
@@ -30,6 +40,87 @@ $icon-colors: (
 
     .headerContainer {
       background-color: #315bc2;
+      height: 75px;
+      margin-top: 5px;
+      display: flex;
+      justify-content: space-between;
+
+      .headerText {
+        display: flex;
+        justify-content: center;
+        color: $text_secondary_color;
+        font-size: 25px;
+        font-family: cursive;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menuIcon {
+        color: white;
+      }
+    }
+    .dividerComponent {
+      background-color: #d4d3d3;
+      height: 1px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .headerContainer2 {
+      height: 38px;
+    }
+
+    .listItemContainer {
+      height: 40px;
+    }
+
+    .subIcon {
+      color: rgb(41, 247, 144);
+      margin-left: 25px;
+    }
+
+    .icon {
+      margin-top: -5px;
+      color: $text_secondary_color;
+
+      @each $color in $icon-colors {
+        &#{index($icon-colors, $color)} {
+          color: $color;
+        }
+      }
+    }
+
+    .text {
+      color: $text_secondary_color;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .subtext {
+      color: $text_secondary_color;
+      margin-left: -10px;
+      font-size: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .drawerPaper2 {
+    width: 60px;
+    background-color: #2e3345;
+    transition: width 0.5s ease-in;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    /* Hide the scrollbar */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .headerContainer {
+      // background-color: #315bc2;
       height: 75px;
       margin-top: 5px;
       display: flex;
@@ -84,4 +175,28 @@ $icon-colors: (
       font-size: 15px;
     }
   }
+
+  .logoutExp{
+   margin-top: 27vh;
+  }
+  .logoutCol{
+    margin-top: 0vh;
+   }
+
+  .btnExp{
+    margin-left: 8vh;
+  
+  }
+  .btnCol{
+    margin-left: 0vh;
+  }
+
+  .logoutText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+ 
+  
 }
