@@ -2,6 +2,7 @@
 import { Snackbar } from '@mui/material';
 import React from 'react'
 import AlertComponent from './AlertComponent';
+import PropTypes from 'prop-types';
 
 const SnackbarComponent = (props) => {
     const {open,autoHideDuration,onClose,anchorOrigin, alertText,severity,sx} = props;
@@ -27,4 +28,15 @@ const SnackbarComponent = (props) => {
   )
 }
 
+SnackbarComponent.propTypes = {
+  open:PropTypes.func,
+  onClose:PropTypes.func,
+  className:PropTypes.string,
+  color:PropTypes.string,
+  autoHideDuration:PropTypes.number,
+  anchorOrigin:PropTypes.object,
+  sx:PropTypes.number,
+  severity:PropTypes.string,
+  alertText:PropTypes.string,
+}
 export default SnackbarComponent
