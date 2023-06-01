@@ -14,7 +14,7 @@ import GSTR9 from "../Pages/GSTR/GSTR9/GSTR9";
 import GSTR9C from "../Pages/GSTR/GSTR9C/GSTR9C";
 import GSTR4 from "../Pages/GSTR/GSTR4/GSTR4";
 import Cmp from "../Pages/GSTR/CMP/Cmp";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 
 
 

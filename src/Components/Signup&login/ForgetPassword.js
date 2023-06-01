@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DialogComponent from "../../ReuseComponent/DialogComponent";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 import FormLabelComponent from "../../ReuseComponent/FormLabelComponent";
 import TextFieldComponent from "../../ReuseComponent/TextFieldComponent";
 import ButtonComponent from "../../ReuseComponent/ButtonComponent";

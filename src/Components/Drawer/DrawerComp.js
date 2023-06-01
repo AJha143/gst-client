@@ -7,7 +7,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@material-ui/core";
+} from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
