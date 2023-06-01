@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, TextField, Grid } from "@material-ui/core";
+import { Dialog, TextField, Grid } from "@mui/material";
 import ButtonComponent from "../../ReuseComponent/ButtonComponent";
 import FormLabelComponent from "../../ReuseComponent/FormLabelComponent";
 import CloseIcon from "@mui/icons-material/Close";

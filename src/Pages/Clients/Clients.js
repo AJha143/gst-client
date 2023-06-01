@@ -1,7 +1,7 @@
 import React from 'react'
 import AddClient from "./AddClientButton"
 import "./Clients.scss";
-import {  Paper, Typography } from "@material-ui/core";
+import {  Paper, Typography } from "@mui/material";
 
 
 const Clients = () => {

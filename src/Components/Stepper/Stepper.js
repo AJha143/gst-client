@@ -14,9 +14,9 @@ import StepContent from "@mui/material";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
-import { Person, PersonPinCircle } from "@material-ui/icons";
+import { Person, PersonPinCircle } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
