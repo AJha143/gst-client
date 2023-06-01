@@ -1,5 +1,5 @@
-
 import React from 'react'
+import PropTypes from 'prop-types';
  import {Button} from "@mui/material";
 
 
@@ -18,5 +18,13 @@ const ButtonComponent = (props) => {
     </>
   )
 }
+
+ButtonComponent.propTypes = {
+  type: PropTypes.string,
+  variant:PropTypes.string,
+  onClick:PropTypes.func,
+  className:PropTypes.string,
+  color:PropTypes.string
+};
 
 export default ButtonComponent

@@ -1,0 +1,98 @@
+
+.clientBtnContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem ;
+}
+
+.clientContainer {
+  font-family: sans-serif;
+  width: 100%;
+}
+.clientPaper{
+    width: max-content;
+ 
+}
+
+.clientCard {
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+  width: 100%;
+  .clientDetailsContainer {
+    display: flex;
+    align-items: center;
+  }
+  .clientSeqContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    border-radius: 380px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+  }
+  .clientProfile {
+    margin: "10px";
+    align-items: "left";
+    white-space: nowrap;
+    P {
+      margin: 2px;
+      align-items: left;
+      display: flex;
+      color: lightgray;
+    }
+  }
+
+  .addClientActionContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    // margin-left: auto;
+    padding: 20px;
+    white-space: nowrap;
+    .actionBtn {
+      display: flex;
+      color: blue;
+      margin: 20px;
+      border: 1px solid lightgrey;
+      padding: 10px;
+      border-radius: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    .actionBtn-regular {
+      display: flex;
+      color: green;
+      margin: 20px;
+      border: 1px solid green;
+      padding: 10px;
+      border-radius: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.filingStatusContainer {
+  display: flex;
+  margin-top: -26px;
+  margin-right: 4rem;
+  white-space: nowrap;
+  // overflow: scroll;
+  justify-content: end;
+  width: 100%;
+  P {
+    margin-left: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+    span {
+      padding: 4px;
+    }
+    h4 {
+      color: lightgray;
+    }
+  }
+}

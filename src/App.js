@@ -11,7 +11,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Grid container direction="row">
+      <Grid container classes={{container:"appGridContainer"}} direction="row">
         <Grid item xs={12}>
           <TopMenuBar />
         </Grid>
