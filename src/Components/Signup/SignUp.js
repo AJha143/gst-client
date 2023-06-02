@@ -16,14 +16,15 @@ import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
-import TextField from "../../ReuseComponent/TextFieldComponent";
-import FormLabel from "../../ReuseComponent/FormLabelComponent";
-import Button from "../../ReuseComponent/ButtonComponent";
+import TextField from "../../customComponent/TextFieldComponent";
+import FormLabel from "../../customComponent/FormLabelComponent";
+import Button from "../../customComponent/ButtonComponent";
 import SignUpImg from "../../Images/signup_new.jpg";
 import "./SignUp.scss";
 import {formInputFieldErrMsg, formValidationRegex} from "../ConstantData"
 
-import SnackbarComponent from "../../ReuseComponent/SnackbarComponent";
+import SnackbarComponent from "../../customComponent/SnackbarComponent";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 
 const SignUp = () => {
@@ -114,6 +115,7 @@ const SignUp = () => {
   };
 
   return (
+    <ErrorBoundary>
     <Grid container className="signup-page">
       <Grid item xs={6} className="signup-img-container">
         <Grid>
@@ -321,6 +323,7 @@ const SignUp = () => {
         </div>
       </Grid>
     </Grid>
+    </ErrorBoundary>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import Button from "../../ReuseComponent/ButtonComponent";
-import './AddClintButton.scss'
+import Button from "../../customComponent/ButtonComponent";
 import SimpleDialog from "./ClientForm";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 
 export default function AddClientButton() {
@@ -16,9 +16,9 @@ export default function AddClientButton() {
   };
 
   return (
-    <div>
+    <ErrorBoundary>
       <Button variant="contained" color="primary" onClick={handleClickOpen} buttontext=" Add Clients" className="addClientBtn"/>
       <SimpleDialog open={open} onClose={handleClose} />
-    </div>
+      </ErrorBoundary>
   );
 }

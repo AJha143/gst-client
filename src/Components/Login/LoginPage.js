@@ -10,13 +10,16 @@ import "./LoginPage.scss";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import MailOutlineOutlinedIcon from "@mui/icons-material/MailOutlineOutlined";
 import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
-import Button from "../../ReuseComponent/ButtonComponent";
-import TextField from "../../ReuseComponent/TextFieldComponent";
+import Button from "../../customComponent/ButtonComponent";
+import TextField from "../../customComponent/TextFieldComponent";
 import SignUpImg from "../../Images/signup_new.jpg";
 import check from "../../Images/check.png";
-import ForgetPassword from "./ForgetPassword";
-import FormLabel from "../../ReuseComponent/FormLabelComponent";
+import ForgetPassword from "../ForgetPassword/ForgetPassword";
+import FormLabel from "../../customComponent/FormLabelComponent";
 import { formInputFieldErrMsg, formValidationRegex } from "../ConstantData";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
+
+
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,6 +31,9 @@ const LoginPage = () => {
   const [formInputErr, setFormInputErr] = useState({});
 
   const [open, setOpen] = useState(false);
+
+
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -92,6 +98,7 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+
     validateFormValue();
     if (!Object.keys(formInputValues).length) return;
 
@@ -103,6 +110,7 @@ const LoginPage = () => {
   };
 
   return (
+    <ErrorBoundary>
     <Grid container className="login-page">
       <Grid item xs={6} direction="column" className="login-img-container">
         <Grid>
@@ -223,6 +231,7 @@ const LoginPage = () => {
         </div>
       </Grid>
     </Grid>
+    </ErrorBoundary>
   );
 };
 
