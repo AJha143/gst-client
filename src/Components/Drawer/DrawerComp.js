@@ -17,6 +17,7 @@ import { drawerItems } from "../ConstantData";
 import "./DrawerComp.scss";
 import { Typography } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 function DrawerComp() {
   const [show, setShow] = useState(false);
@@ -54,6 +55,7 @@ function DrawerComp() {
   };
 
   return (
+    <ErrorBoundary>
     <Grid className="root" direction="row">
       <Drawer
         className={contentStyle} // for left margin from drawer
@@ -160,6 +162,7 @@ function DrawerComp() {
         </Grid>
       </Drawer>
     </Grid>
+    </ErrorBoundary>
   );
 }
 

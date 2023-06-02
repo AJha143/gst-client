@@ -1,15 +1,16 @@
 import React from "react";
 import { Dialog, TextField, Grid } from "@mui/material";
-import ButtonComponent from "../../ReuseComponent/ButtonComponent";
-import FormLabelComponent from "../../ReuseComponent/FormLabelComponent";
+import ButtonComponent from "../../customComponent/ButtonComponent";
+import FormLabelComponent from "../../customComponent/FormLabelComponent";
 import CloseIcon from "@mui/icons-material/Close";
 import {
   formValidationRegex,
   formInputFieldErrMsg,
   inputFieldDetails,
-} from "../../Components/ConstantData";
+} from "../ConstantData";
 
 import "./ClientForm.scss";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 export default function SimpleDialog(props) {
   const { onClose, open } = props;
@@ -49,6 +50,7 @@ export default function SimpleDialog(props) {
   };
 
   return (
+    <ErrorBoundary>
     <Dialog
       onClose={handleClose}
       aria-labelledby="Add Clients Form"
@@ -109,5 +111,6 @@ export default function SimpleDialog(props) {
         </Grid>
       </Grid>
     </Dialog>
+    </ErrorBoundary>
   );
 }

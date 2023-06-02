@@ -1,12 +1,12 @@
 import React from 'react'
-import AddClient from "./AddClientButton"
+import AddClient from "../../Components/Clients/AddClientButton"
 import "./Clients.scss";
 import {  Paper, Typography } from "@mui/material";
-
+import ErrorBoundary from '../../customComponent/ErrorBoundary'
 
 const Clients = () => {
   return (
-    <>
+    <ErrorBoundary>
     <div className='clientBtnContainer'>
     <Typography variant='h4'>All Clients</Typography>
     <AddClient />
@@ -52,7 +52,7 @@ const Clients = () => {
         </p>
       </div>
     </div>
-    </>
+    </ErrorBoundary>
   )
 }
 

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import DialogComponent from "../../ReuseComponent/DialogComponent";
+import DialogComponent from "../../customComponent/DialogComponent";
 import { Grid, Typography } from "@mui/material";
-import FormLabelComponent from "../../ReuseComponent/FormLabelComponent";
-import TextFieldComponent from "../../ReuseComponent/TextFieldComponent";
-import ButtonComponent from "../../ReuseComponent/ButtonComponent";
+import FormLabelComponent from "../../customComponent/FormLabelComponent";
+import TextFieldComponent from "../../customComponent/TextFieldComponent";
+import ButtonComponent from "../../customComponent/ButtonComponent";
 import Lock from "../../Images/lock.png";
 import CloseIcon from '@mui/icons-material/Close';
 import "./ForgetPassword.scss";
 import { formValidationRegex } from "../ConstantData";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 
 const ForgetPassword = (props) => {
@@ -41,6 +42,7 @@ const formValidationHandler = (value) =>{
 
 
   return (
+    <ErrorBoundary>
     <DialogComponent
       onClose={handleClose}
       aria-labelledby="Add Clients Form"
@@ -100,6 +102,7 @@ const formValidationHandler = (value) =>{
         </Grid>
       </Grid>
     </DialogComponent>
+    </ErrorBoundary>
   );
 };
 
