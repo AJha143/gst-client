@@ -18,7 +18,7 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import FormLabel from "../../customComponent/FormLabelComponent";
 import { formInputFieldErrMsg, formValidationRegex } from "../ConstantData";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
-
+import axios from "../../service/Service"
 
 
 const LoginPage = () => {
@@ -98,7 +98,19 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
+    axios({
+      url:"/auth/authenticate",
+      method : 'post',
+      data: {
+        "username":"sandeep09",
+        "password":"sandeep123"
+      },
+    }).then((res)=>{
+        console.log(res);
+    }).catch((err)=>{
+        console.log(err);
+    })
+    
     validateFormValue();
     if (!Object.keys(formInputValues).length) return;
 
@@ -209,7 +221,7 @@ const LoginPage = () => {
               <div>
                 <Typography
                   variant="p"
-                  className="forget-password"
+                  classes={{root:"forget-password"}}
                   onClick={handleClickOpen}
                 >
                   Forgot password?
