@@ -7,7 +7,6 @@
 .login-img {
   width: 100%;
   border-radius: 50%;
-
 }
 .login-img-container {
   background-color: #c0dffd;
@@ -17,10 +16,10 @@
   align-items: center;
   // height: 100vh;
 }
-.check{
+.check {
   width: 1rem;
 }
-.discription{
+.discription {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -69,7 +68,8 @@
   font-family: "Kumbh Sans", sans-serif !important;
 }
 .forget-password {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   color: #57aefd;
   font-size: 15px;
   font-weight: 650;
@@ -91,5 +91,3 @@
   margin-top: 5px;
   font-family: "Kumbh Sans", sans-serif;
 }
-
-
