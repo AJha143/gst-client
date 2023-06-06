@@ -11,6 +11,7 @@ import {
 
 import "./ClientForm.scss";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import axios from "../../service/Service"
 
 export default function SimpleDialog(props) {
   const { onClose, open } = props;
@@ -48,7 +49,24 @@ export default function SimpleDialog(props) {
       },
     }));
   };
+  const submitHandler = (event) => {
+    event.preventDefault();
 
+    axios({
+        url: "/user/createClient?userId=1",
+        method:"post",
+        data:{
+            "address":"Aashiana ranchi",
+            "businessName":"kreeda ranchi",
+            "gstIn":"33EJPPS8875D1AK",
+            "gstUserName":"TN_NT1.6456"
+        }
+    }).then((res)=>{
+      console.log(res);
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
   return (
     <ErrorBoundary>
     <Dialog
@@ -106,6 +124,7 @@ export default function SimpleDialog(props) {
               variant="contained"
               buttontext="SUBMIT"
               color="primary"
+              onClick={submitHandler}
             />
           </div>
         </Grid>
