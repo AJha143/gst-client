@@ -1,0 +1,23 @@
+
+.dialogPaper {
+    min-height: 300px;
+    min-width: 450px;
+    border-radius: 24px;
+    .spinnerDialogContent{
+      margin: 10px;
+    .customCircularSpinner {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 40px;
+    }
+    .spinnerText {
+      display: flex;
+      text-align: center
+    }
+  }
+  }
+  
+  
