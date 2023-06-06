@@ -14,7 +14,10 @@ import GSTR9 from "../Pages/GSTR/GSTR9/GSTR9";
 import GSTR9C from "../Pages/GSTR/GSTR9C/GSTR9C";
 import GSTR4 from "../Pages/GSTR/GSTR4/GSTR4";
 import Cmp from "../Pages/GSTR/CMP/Cmp";
+import LoginPage from "../Components/Login/LoginPage"
+import SignUp from "../Components/Signup/SignUp"
 import { Grid } from "@mui/material";
+
 
 
 
@@ -33,6 +36,8 @@ const routes = [
   { path: "/challan", element: <Challan /> },
   { path: "/helpandsupport", element: <HelpandSupport /> },
   { path: "/products", element: <Products /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/signup", element: <SignUp /> },
 ];
 
 const Routing = () => {
