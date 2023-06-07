@@ -2,44 +2,45 @@ import "./App.scss";
 import DrawerComp from "./Components/Drawer/DrawerComp";
 import TopMenuBar from "./Components/Navbar/TopMenuBar";
 import Routing from "./Routes/Routes";
-import { BrowserRouter, useNavigate} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Grid } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
-
-// import LoginPage from "./Components/Login/LoginPage";
-// import SignUp from "./Components/Signup/SignUp";
-
-const renderAuth = (Component,isLogedIn) => {
-  return (props)=>{
-    // const history = useHistory
-    const a = useNavigate()
-    if(isLogedIn) return <Component {...props}/>
-    // return <useNavigate to="/clients" replace />
-    // history.push("/login")
-   return a( "/login")
-    }
-}
-let token = null;
 function App() {
+  const { loginDetails } = useSelector((state) => state.login);
+  const [access_token, setAccessToken] = useState(
+    sessionStorage.getItem("accessToken")
+  );
 
+  useEffect(() => {
+    setAccessToken(
+      sessionStorage.getItem("accessToken") || loginDetails.accessToken
+    );
+  }, [loginDetails.accessToken]);
+
+  const Navigation = ({ token }) => {
+    console.log("token", token);
+    if (!token) return null;
+    return (
+      <Grid item xs={12}>
+        <TopMenuBar />
+        <DrawerComp />
+      </Grid>
+    );
+  };
   return (
     <BrowserRouter>
-      <Grid container classes={{container:"appGridContainer"}} direction="row">
-        <Grid item xs={12}>
-          <TopMenuBar />
-        </Grid>
-        <DrawerComp />
+      <Grid
+        container
+        classes={{ container: "appGridContainer" }}
+        direction="row"
+      >
+        <Navigation token={access_token} />
         <Routing />
       </Grid>
     </BrowserRouter>
- 
-
-    // <>
-    //   <LoginPage/> 
-    //     <SignUp/>
-    // </>
   );
 }
-  const Abcd = renderAuth(App,token)
-export default Abcd;
 
+export default App;

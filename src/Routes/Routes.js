@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Clients from "../Pages/Clients/Clients";
@@ -17,40 +18,62 @@ import Cmp from "../Pages/GSTR/CMP/Cmp";
 import LoginPage from "../Components/Login/LoginPage"
 import SignUp from "../Components/Signup/SignUp"
 import { Grid } from "@mui/material";
-
-
+import Login from "../../src/Components/Login/LoginPage";
+import Register from "../../src/Components/Signup/SignUp";
+import TopMenuBar from "../Components/Navbar/TopMenuBar";
+import DrawerComp from "../Components/Drawer/DrawerComp";
+import ProtectedRoute from "./ProtectedRoutes";
 
 
 const routes = [
-  { path: "/", element: <Home /> },
-  { path: "/clients", element: <Clients /> },
-  { path: "/reports", element: <Reports /> },
-  { path: "/gstr", element: <GSTR /> },
-  { path: "/gstr/gstr1", element: <GSTR1 /> },
-  { path: "/gstr/gstr3b", element: <GSTR3B /> },
-  { path: "/gstr/iff", element: <IFF /> },
-  { path: "/gstr/cmp", element: <Cmp/> },
-  { path: "/gstr/gstr4", element: <GSTR4 /> },
-  { path: "/gstr/gstr9", element: <GSTR9 /> },
-  { path: "/gstr/gstr9c", element: <GSTR9C /> },
-  { path: "/challan", element: <Challan /> },
-  { path: "/helpandsupport", element: <HelpandSupport /> },
-  { path: "/products", element: <Products /> },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signup", element: <SignUp /> },
+  { path: "/home", element: <Home />, isProtectedRoute: false },
+  { path: "/clients", element: <Clients />, isProtectedRoute: true },
+  { path: "/reports", element: <Reports />, isProtectedRoute: true },
+  { path: "/gstr", element: <GSTR />, isProtectedRoute: true },
+  { path: "/gstr/gstr1", element: <GSTR1 />, isProtectedRoute: true },
+  { path: "/gstr/gstr3b", element: <GSTR3B />, isProtectedRoute: true },
+  { path: "/gstr/iff", element: <IFF />, isProtectedRoute: true },
+  { path: "/gstr/cmp", element: <Cmp />, isProtectedRoute: true },
+  { path: "/gstr/gstr4", element: <GSTR4 />, isProtectedRoute: true },
+  { path: "/gstr/gstr9", element: <GSTR9 />, isProtectedRoute: true },
+  { path: "/gstr/gstr9c", element: <GSTR9C />, isProtectedRoute: true },
+  { path: "/challan", element: <Challan />, isProtectedRoute: true },
+  {
+    path: "/helpandsupport",
+    element: <HelpandSupport />,
+    isProtectedRoute: false,
+  },
+  { path: "/products", element: <Products />, isProtectedRoute: true },
+  { path: "/", element: <Login />, isProtectedRoute: false },
+  { path: "/register", element: <Register />, isProtectedRoute: false },
 ];
 
 const Routing = () => {
   return (
-    <Grid >
-      <Routes>
+    <Grid>
+      {/* <Routes>
         {routes.map((route) => (
           <Route {...route} />
         ))}
+      </Routes> */}
+
+      <Routes>
+        {routes.map(({ element, isProtectedRoute, ...otherProps }) => {
+          return (
+            <Route
+              {...otherProps}
+              element={
+                isProtectedRoute ? (
+                  <ProtectedRoute>{element}</ProtectedRoute>
+                ) : (
+                  element
+                )
+              }
+            />
+          );
+        })}
       </Routes>
     </Grid>
-      
-    
   );
 };
 

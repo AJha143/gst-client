@@ -7,6 +7,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Tooltip,
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
@@ -29,14 +30,12 @@ function DrawerComp() {
 
   const handleShow = () => {
     setShow(!show);
-    console.log("show", show);
     show ? setLogoutStyle("logoutExp") : setLogoutStyle("logoutCol");
   };
 
   const handleDwawerFunction = () => {
     setShow(!show);
     setHandleDrawer(!handleDrawer);
-    console.log("handleDrawer", handleDrawer);
     handleDrawer
       ? setDrawerStyle("drawerPaper")
       : setDrawerStyle("drawerPaper2");
@@ -56,112 +55,125 @@ function DrawerComp() {
 
   return (
     <ErrorBoundary>
-    <Grid className="root" direction="row">
-      <Drawer
-        className={contentStyle} // for left margin from drawer
-        variant="permanent"
-        classes={{
-          paper: drawerStyle, // width of the drawer
-        }}
-        transitionDuration={5000}
-      >
-        <List>
-          <ListItem className="headerContainer">
-            {!handleDrawer ? (
-              <>
-                <Typography className="headerText"> Robo GST</Typography>
+      <Grid className="root" direction="row">
+        <Drawer
+          className={contentStyle} // for left margin from drawer
+          variant="permanent"
+          classes={{
+            paper: drawerStyle, // width of the drawer
+          }}
+          transitionDuration={5000}
+        >
+          <List>
+            <ListItem className="headerContainer">
+              {!handleDrawer ? (
+                <>
+                  <Typography className="headerText"> Robo GST</Typography>
+                  <MenuIcon
+                    defaultChecked
+                    color="tertiary"
+                    onClick={handleDwawerFunction}
+                  />
+                </>
+              ) : (
                 <MenuIcon
                   defaultChecked
-                  color="tertiary"
+                  color="primary"
                   onClick={handleDwawerFunction}
                 />
-              </>
-            ) : (
-              <MenuIcon
-                defaultChecked
-                color="primary"
-                onClick={handleDwawerFunction}
-              />
-            )}
-          </ListItem>
-          <Divider className="dividerComponent" variant="middle" />
-          {drawerItems.map((item, index) => {
-            return (
-              <div key={index}>
-                <ListItem
-                  className="headerContainer2"
-                  component={Link}
-                  to={item.path}
-                >
-                  <ListItemIcon className={`icon${index + 1}`}>
-                    {item.icon}
-                  </ListItemIcon>
-                  {!handleDrawer ? (
-                    <ListItemText className="text" primary={item.label} />
-                  ) : (
-                    ""
-                  )}
-
-                  {!handleDrawer ? (
-                    <>
-                      {item.subGSTR ? (
-                        show ? (
-                          <ExpandMoreIcon
-                            className="icon"
-                            fontSize="medium"
-                            onClick={handleShow}
-                          />
-                        ) : (
-                          <ExpandLessIcon
-                            className="icon"
-                            fontSize="medium"
-                            onClick={handleShow}
-                          />
-                        )
-                      ) : (
-                        ""
-                      )}
-                    </>
-                  ) : (
-                    ""
-                  )}
-                </ListItem>
-                {item.subGSTR && show && !handleDrawer
-                  ? item.subGSTR.map((subItem, subIndex) => {
-                      return (
-                        <ListItem
-                          key={subIndex}
-                          component={Link}
-                          to={subItem.location}
-                          className="headerContainer2"
+              )}
+            </ListItem>
+            <Divider className="dividerComponent" variant="middle" />
+            {drawerItems.map((item, index) => {
+              return (
+                <div key={index}>
+                  <ListItem
+                    className="headerContainer2"
+                    component={Link}
+                    to={item.path}
+                  >
+                    {handleDrawer ? (
+                      <ListItemIcon className={`icon${index + 1}`}>
+                        <Tooltip
+                          title={item.label}
+                          placement="right-start"
+                          arrow
                         >
-                          <ListItemIcon className="subIcon">
-                            {item.subIcon}
-                          </ListItemIcon>
-                          <Typography className="subtext">
-                            {subItem.name}
-                          </Typography>
-                        </ListItem>
-                      );
-                    })
-                  : null}
-              </div>
-            );
-          })}
-        </List>
-        <Grid className={logoutStyle}>
-          <Divider className="dividerComponent" variant="middle" />
-          <Button variant="contained" color="primary" className={btnStyle}>
-            <LogoutIcon />
-            {!handleDrawer ? (
-              <Typography className="logoutText"> Logout</Typography>
-            ) : (
-              ""
-            )}
-          </Button>
-        </Grid>
-      </Drawer>
-    </Grid>
+                          {item.icon}
+                        </Tooltip>
+                      </ListItemIcon>
+                    ) : (
+                      <ListItemIcon className={`icon${index + 1}`}>
+                        {item.icon}
+                      </ListItemIcon>
+                    )}
+
+                    {!handleDrawer ? (
+                      <ListItemText className="text" primary={item.label} />
+                    ) : (
+                      ""
+                    )}
+
+                    {!handleDrawer ? (
+                      <>
+                        {item.subGSTR ? (
+                          show ? (
+                            <ExpandMoreIcon
+                              className="icon"
+                              fontSize="medium"
+                              onClick={handleShow}
+                            />
+                          ) : (
+                            <ExpandLessIcon
+                              className="icon"
+                              fontSize="medium"
+                              onClick={handleShow}
+                            />
+                          )
+                        ) : (
+                          ""
+                        )}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </ListItem>
+                  {item.subGSTR && show && !handleDrawer
+                    ? item.subGSTR.map((subItem, subIndex) => {
+                        return (
+                          <ListItem
+                            key={subIndex}
+                            component={Link}
+                            to={subItem.location}
+                            className="headerContainer2"
+                          >
+                            <ListItemIcon className="subIcon">
+                              {item.subIcon}
+                            </ListItemIcon>
+                            <Typography className="subtext">
+                              {subItem.name}
+                            </Typography>
+                          </ListItem>
+                        );
+                      })
+                    : null}
+                </div>
+              );
+            })}
+          </List>
+          <Grid className={logoutStyle}>
+            <Divider className="dividerComponent" variant="middle" />
+            <Button variant="contained" color="primary" className={btnStyle}>
+              <LogoutIcon />
+              {!handleDrawer ? (
+                <Typography className="logoutText"> Logout</Typography>
+              ) : (
+                ""
+              )}
+            </Button>
+          </Grid>
+        </Drawer>
+      </Grid>
     </ErrorBoundary>
   );
 }

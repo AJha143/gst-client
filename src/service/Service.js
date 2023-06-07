@@ -52,6 +52,7 @@ const apiRequest = (options) => {
         default:   
                 return axios(options)
     }
-}
+  }
+
 
 export default apiRequest;
