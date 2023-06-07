@@ -25,6 +25,7 @@ import {formInputFieldErrMsg, formValidationRegex} from "../ConstantData"
 
 import SnackbarComponent from "../../customComponent/SnackbarComponent";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import { Link } from "react-router-dom";
 
 
 const SignUp = () => {
@@ -66,7 +67,6 @@ const SignUp = () => {
         !formValidationRegex[key].test(formInputValues[key]);
       submitFormValidation[key] = { errMsg, isError };
     }
-    console.log(submitFormValidation);
     setFormInputErr(submitFormValidation);
   };
 
@@ -128,7 +128,7 @@ const SignUp = () => {
             <div className="form-text">
               <Typography variant="h5">Get Started</Typography>
               <Typography variant="p">
-                Already have an account? <a href="/">Log in</a>
+                Already have an account? <Link to="/">Log in</Link>
               </Typography>
             </div>
             <div className="form-inputs">
