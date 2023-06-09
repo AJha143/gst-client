@@ -29,7 +29,7 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const {isLoading} = useSelector((state)=> {
     console.log(state)
-   return state.Spinner
+   return state.spinner
   });
 
   const [showPassword, setShowPassword] = useState(false);

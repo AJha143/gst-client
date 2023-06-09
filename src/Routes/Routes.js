@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Clients from "../Pages/Clients/Clients";
@@ -15,18 +14,13 @@ import GSTR9 from "../Pages/GSTR/GSTR9/GSTR9";
 import GSTR9C from "../Pages/GSTR/GSTR9C/GSTR9C";
 import GSTR4 from "../Pages/GSTR/GSTR4/GSTR4";
 import Cmp from "../Pages/GSTR/CMP/Cmp";
-import LoginPage from "../Components/Login/LoginPage"
-import SignUp from "../Components/Signup/SignUp"
 import { Grid } from "@mui/material";
 import Login from "../../src/Components/Login/LoginPage";
 import Register from "../../src/Components/Signup/SignUp";
-import TopMenuBar from "../Components/Navbar/TopMenuBar";
-import DrawerComp from "../Components/Drawer/DrawerComp";
 import ProtectedRoute from "./ProtectedRoutes";
 
-
 const routes = [
-  { path: "/home", element: <Home />, isProtectedRoute: false },
+  { path: "/home", element: <Home />, isProtectedRoute: true },
   { path: "/clients", element: <Clients />, isProtectedRoute: true },
   { path: "/reports", element: <Reports />, isProtectedRoute: true },
   { path: "/gstr", element: <GSTR />, isProtectedRoute: true },
@@ -51,12 +45,6 @@ const routes = [
 const Routing = () => {
   return (
     <Grid>
-      {/* <Routes>
-        {routes.map((route) => (
-          <Route {...route} />
-        ))}
-      </Routes> */}
-
       <Routes>
         {routes.map(({ element, isProtectedRoute, ...otherProps }) => {
           return (

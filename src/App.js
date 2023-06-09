@@ -17,7 +17,8 @@ function App() {
     setAccessToken(
       sessionStorage.getItem("accessToken") || loginDetails.accessToken
     );
-  }, [loginDetails.accessToken]);
+    console.log("access_token", access_token);
+  }, [loginDetails.accessToken, access_token]);
 
   const Navigation = ({ token }) => {
     console.log("token", token);

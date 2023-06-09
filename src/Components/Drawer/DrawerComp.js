@@ -19,6 +19,9 @@ import "./DrawerComp.scss";
 import { Typography } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import { useNavigate } from "react-router-dom";
+import { handleLogout } from "../../reducers/loginSliceReducer";
+import { useDispatch } from "react-redux";
 
 function DrawerComp() {
   const [show, setShow] = useState(false);
@@ -27,6 +30,8 @@ function DrawerComp() {
   const [logoutStyle, setLogoutStyle] = useState("logoutExp");
   const [btnStyle, setBtnStyle] = useState("btnExp");
   const [handleDrawer, setHandleDrawer] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleShow = () => {
     setShow(!show);
@@ -51,6 +56,12 @@ function DrawerComp() {
       setShow(false);
       setLogoutStyle("logoutExp");
     }
+  };
+
+  const handleLogut = () => {
+    sessionStorage.removeItem("accessToken");
+    dispatch(handleLogout({}));
+    navigate("/");
   };
 
   return (
@@ -166,7 +177,10 @@ function DrawerComp() {
             <Button variant="contained" color="primary" className={btnStyle}>
               <LogoutIcon />
               {!handleDrawer ? (
-                <Typography className="logoutText"> Logout</Typography>
+                <Typography className="logoutText" onClick={handleLogut}>
+                  {" "}
+                  Logout
+                </Typography>
               ) : (
                 ""
               )}

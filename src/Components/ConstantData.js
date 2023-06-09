@@ -13,7 +13,7 @@ export const drawerItems = [
   {
     hasMultiple: false,
     label: "Home",
-    path: "/",
+    path: "/home",
     icon: <HomeIcon />,
     page: <Home />,
   },
