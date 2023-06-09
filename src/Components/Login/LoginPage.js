@@ -18,17 +18,20 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import FormLabel from "../../customComponent/FormLabelComponent";
 import { formInputFieldErrMsg, formValidationRegex } from "../ConstantData";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
-import axios from "../../service/Service";
+import axios from "../../service/Service"
+import Spinner from '../../customComponent/spinner/Spinner'
+import {toggleSpinner} from '../../reducers/spinnerReducer'
+import {handleLogin} from '../../reducers/loginSliceReducer'
+import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { handleLogin } from "../../reducers/loginSliceReducer";
-import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginDetails = useSelector((state) => state.login);
-  // console.log("loginDetails", loginDetails);
+  const {isLoading} = useSelector((state)=> {
+    console.log(state)
+   return state.Spinner
+  });
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [formInputValues, setFormInputValues] = useState({
@@ -100,7 +103,6 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    navigate("/home");
     validateFormValue();
     if (!Object.keys(formInputValues).length) return;
 
@@ -110,32 +112,34 @@ const LoginPage = () => {
       }
     }
 
+    dispatch(toggleSpinner(true))
     axios({
-      url: "/auth/authenticate",
-      method: "post",
+      url:"/auth/authenticate",
+      method : 'post',
       data: {
-        username: "sandeep09",
-        password: "sandeep123",
+        "username": formInputValues.email,
+        "password": formInputValues.password
       },
+    }).then((res)=>{
+        console.log(res);
+    dispatch(toggleSpinner(false));
+    dispatch(handleLogin(res.data));
+    }).catch((err)=>{
+        console.log(err);
+    dispatch(toggleSpinner(false));
+
     })
-      .then((res) => {
-        dispatch(handleLogin(res.data));
-        sessionStorage.setItem("accessToken", res.data.accessToken || null);
-        console.log("res.data", res.data);
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
   };
 
   return (
+
     <ErrorBoundary>
-      <Grid container className="login-page">
-        <Grid item xs={6} direction="column" className="login-img-container">
-          <Grid>
-            <img src={SignUpImg} alt="" className="login-img" /> // need to
-            change name : signup and login
-          </Grid>
+    <Spinner  open={isLoading} spinnerText="Please wait while we log you in !!"  />
+    <Grid container className="login-page">
+      <Grid item xs={6} direction="column" className="login-img-container">
+        <Grid>
+          <img src={SignUpImg} alt="" className="login-img" />
+        </Grid>
 
           <Grid direction="column" className="discription-container">
             <div className="discription">
