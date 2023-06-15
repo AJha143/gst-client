@@ -18,6 +18,8 @@ import { Grid } from "@mui/material";
 import Login from "../../src/Components/Login/LoginPage";
 import Register from "../../src/Components/Signup/SignUp";
 import ProtectedRoute from "./ProtectedRoutes";
+import NotFoundPage from "../Pages/NotFound/NotFoundPage";
+
 
 const routes = [
   { path: "/home", element: <Home />, isProtectedRoute: true },
@@ -42,24 +44,22 @@ const routes = [
   { path: "/register", element: <Register />, isProtectedRoute: false },
 ];
 
-const Routing = () => {
+const Routing = ({ handleNotFound }) => {
   return (
     <Grid>
       <Routes>
-        {routes.map(({ element, isProtectedRoute, ...otherProps }) => {
-          return (
-            <Route
-              {...otherProps}
-              element={
-                isProtectedRoute ? (
-                  <ProtectedRoute>{element}</ProtectedRoute>
-                ) : (
-                  element
-                )
-              }
-            />
-          );
-        })}
+        {routes.map(({ path, element, isProtectedRoute }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ProtectedRoute isProtectedRoute={isProtectedRoute}>
+                {element}
+              </ProtectedRoute>
+            }
+          />
+        ))}
+        <Route path="*" element={<NotFoundPage handleNotFound={handleNotFound} />} />
       </Routes>
     </Grid>
   );

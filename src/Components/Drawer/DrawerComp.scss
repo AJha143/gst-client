@@ -92,10 +92,19 @@ $icon-colors: (
     }
 
     .text {
-      color: $text_secondary_color;
+      color: #a1a1a1;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      // font-family: ;
+      // font-style: normal;
+      // font-weight: 1000;
+
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 24px;
     }
     .subtext {
       color: $text_secondary_color;
@@ -176,18 +185,17 @@ $icon-colors: (
     }
   }
 
-  .logoutExp{
-   margin-top: 27vh;
+  .logoutExp {
+    margin-top: 27vh;
   }
-  .logoutCol{
+  .logoutCol {
     margin-top: 0vh;
-   }
-
-  .btnExp{
-    margin-left: 8vh;
-  
   }
-  .btnCol{
+
+  .btnExp {
+    margin-left: 8vh;
+  }
+  .btnCol {
     margin-left: 0vh;
   }
 
@@ -196,7 +204,4 @@ $icon-colors: (
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
- 
-  
 }

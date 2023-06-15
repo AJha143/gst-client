@@ -1,10 +1,11 @@
 import React from "react";
 import Avatar from "@mui/material/Avatar";
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Grid from "@mui/material/Grid";
 import "./TopMenuBar.scss";
-import {  styled,Box }  from '@mui/material'
+import { styled, Box } from "@mui/material";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 const Icons = styled(Box)(({ theme }) => ({
   display: "none",
@@ -17,16 +18,24 @@ const Icons = styled(Box)(({ theme }) => ({
 
 const TopMenuBar = () => {
   return (
-    <Grid container xs={12}  direction="row"
-    justifyContent="flex-end"  alignItems="center" className="top-navbar">
-      <Grid item xs={1} >
-      <Icons>
-      <NotificationsIcon/>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <KeyboardArrowDownIcon/>
-      </Icons>
+    <ErrorBoundary>
+      <Grid
+        container
+        xs={12}
+        direction="row"
+        justifyContent="flex-end"
+        alignItems="center"
+        className="top-navbar"
+      >
+        <Grid item xs={1}>
+          <Icons>
+            <NotificationsIcon />
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <KeyboardArrowDownIcon />
+          </Icons>
+        </Grid>
       </Grid>
-    </Grid>
+    </ErrorBoundary>
   );
 };
 
