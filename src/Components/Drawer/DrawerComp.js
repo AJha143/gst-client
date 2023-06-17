@@ -66,7 +66,7 @@ function DrawerComp() {
 
   return (
     <ErrorBoundary>
-      <Grid className="root" direction="row">
+      <Grid item className="root" direction="row">
         <Drawer
           className={contentStyle} // for left margin from drawer
           variant="permanent"
