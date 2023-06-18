@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const FormLabelComponent = (props) => {
     const {required,labeltext,disabled,color,classes,className} = props
   return (
-    <div>
+    <>
         <FormLabel
         required={required}
         disabled={disabled}
@@ -14,7 +14,7 @@ const FormLabelComponent = (props) => {
         className={className}
         {...props}
         >{labeltext}</FormLabel>
-    </div>
+    </>
   )
 }
 

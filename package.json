@@ -44,5 +44,5 @@
     "styled-components": "^5.3.11",
     "web-vitals": "^3.3.2"
   },
-  "proxy": "http://ec2-3-6-60-238.ap-south-1.compute.amazonaws.com"
+  "proxy": "http://mintax.in"
 }

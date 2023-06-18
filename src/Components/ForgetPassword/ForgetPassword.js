@@ -18,6 +18,8 @@ const ForgetPassword = (props) => {
 
   const handleClose = () => {
     onClose(!open);
+    setFormInputValue("");
+    setFormErr("")
   };
 
   const handleInputChange = (value) => {

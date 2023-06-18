@@ -73,21 +73,6 @@ const LoginPage = () => {
     }));
   };
 
-  const validateFormValue = () => {
-    const submitFormValidation = {};
-
-    for (let key in formInputValues) {
-      const errMsg = formInputValues[key]
-        ? formInputFieldErrMsg[key]
-        : `${key.toUpperCase()} is Mandatory!!!`;
-      const isError = formInputValues[key]
-        ? formValidationRegex[key] &&
-          !formValidationRegex[key].test(formInputValues[key])
-        : !formInputValues[key];
-      submitFormValidation[key] = { errMsg, isError };
-    }
-    setFormInputErr(submitFormValidation);
-  };
 
   const handleOnChange = (event) => {
     const { value, name } = event.target || {};
@@ -103,14 +88,29 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    validateFormValue();
-    if (!Object.keys(formInputValues).length) return;
+
+    const submitFormValidation = {};
 
     for (let key in formInputValues) {
-      if (!formInputValues || formInputErr[key]?.isError) {
-        return;
-      }
+      const errMsg = formInputValues[key]
+        ? formInputFieldErrMsg[key]
+        : `${key.toUpperCase()} is Mandatory!!!`;
+      const isError = formInputValues[key]
+        ? formValidationRegex[key] &&
+          !formValidationRegex[key].test(formInputValues[key])
+        : !formInputValues[key];
+      submitFormValidation[key] = { errMsg, isError };
     }
+    setFormInputErr(submitFormValidation);
+
+
+    // if (!Object.keys(formInputValues).length) return;
+
+    // for (let key in formInputValues) {
+    //   if (!formInputValues || submitFormValidation[key]?.isError) {
+    //     return;
+    //   }
+    // }
 
     dispatch(toggleSpinner(true))
     axios({

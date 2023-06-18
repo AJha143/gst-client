@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const AlertComponent = (props) => {
     const {onClose,severity,sx,color,variant,alertText} = props;
   return (
-    <div>
+    <>
     <Alert
         onClose={onClose}
         severity={severity}
@@ -15,7 +15,7 @@ const AlertComponent = (props) => {
         {...props}
     >{alertText}
     </Alert>
-    </div>
+    </>
   )
 }
 AlertComponent.propTypes = {

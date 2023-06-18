@@ -3,6 +3,7 @@ import AddClient from "../../Components/Clients/AddClientButton"
 import "./Clients.scss";
 import {  Paper, Typography } from "@mui/material";
 import ErrorBoundary from '../../customComponent/ErrorBoundary'
+import SearchBar from '../../customComponent/SearchBar/SearchBar'; 
 
 const Clients = () => {
   return (
@@ -11,6 +12,7 @@ const Clients = () => {
     <Typography variant='h4'>All Clients</Typography>
     <AddClient />
     </div>
+    <span><SearchBar/></span>
     <div  className="clientContainer">
       <Paper classes={{root:'clientPaper'}} elevation={3}>
         <div className="clientCard">

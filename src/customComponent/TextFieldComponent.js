@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 const TextFieldComponent = (props) => {
     const {type,placeholder,value, name ,InputProp, error,onChange,onBlur,helperText} = props
   return (
-    <div>
+    <>
         <TextField
             type={type}
             name={name}
@@ -18,7 +18,7 @@ const TextFieldComponent = (props) => {
             helperText={helperText}
             {...props}
         />
-    </div>
+    </>
   )
 }
 
