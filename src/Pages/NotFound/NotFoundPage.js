@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const NotFoundPage = ({ handleNotFound }) => {
-  useEffect(() => {
-    handleNotFound();
-  }, [handleNotFound]);
+const NotFoundPage = () => {
+
 
   return <h1>Page Not Found</h1>;
 };
