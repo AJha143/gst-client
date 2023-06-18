@@ -77,8 +77,13 @@ export const drawerItems = [
 
 export const formInputFieldErrMsg = {
   name: "Please Enter Valid Name.",
+  firstName: "Please Enter Valid Name.",
+  lastName: "Please Enter Valid Name.",
   phoneNumber: "Please Enter Valid Phone Number.",
   email: "Please Enter Valid Email.",
+  gstn:"Please Enter Valid GSTN",
+  GSTNUsername :"Please Enter Valid GSTN UserName",
+  address: "Please Enter Your Address",
   password:
     "Password should be minimum 6 digits & contain one lower, upper, numeric & special Characters.",
 };
@@ -90,9 +95,9 @@ export const formValidationRegex = {
   phoneNumber: /^\d{10}$/,
   email: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
   password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
-  // address: "",
+  address: /^(\d{1,}) [a-zA-Z0-9\s]+(\,)? [a-zA-Z]+(\,)? [A-Z]{2} [0-9]{5,6}$/,
   gstn: /^[0-9]{2}[A-Z]{5}""[0-9]{4}[A-Z]{1}[""1-9A-Z]{1}Z[0-9A-Z]{1}$/,
-  gstnUsername : /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/,
+  GSTNUsername : /^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$/,
 };
 
 export const inputFieldDetails = [
@@ -143,9 +148,9 @@ export const inputFieldDetails = [
   },
   {
     type: "tel",
-    fieldName: "mobile",
+    fieldName: "phoneNumber",
     col: 12,
-    label: "Mobile",
+    label: "Phone Number",
     variant: "outlined",
     required: true,
     classes: { root: "customTextField" },

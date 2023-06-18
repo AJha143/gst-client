@@ -15,11 +15,23 @@ import axios from "../../service/Service"
 
 export default function SimpleDialog(props) {
   const { onClose, open } = props;
-  const [formIputValue, setFormInputValue] = React.useState({});
+  const [formInputValue, setFormInputValue] = React.useState(
+    {
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      email: "",
+      gstn:"",
+     GSTNUsername:"",
+      address:""
+    }
+  );
   const [formErr, setFormErr] = React.useState({});
 
   const handleClose = () => {
     onClose(!open);
+    setFormInputValue({});
+    setFormErr({})
   };
 
   const handleInputChange = (value, fieldName) => {
@@ -49,24 +61,50 @@ export default function SimpleDialog(props) {
       },
     }));
   };
+
+
   const submitHandler = (event) => {
     event.preventDefault();
+   
+    const submitFormValidation = {};
+
+    for (let key in formInputValue) {
+      const errMsg = formInputValue[key]     
+        ? formInputFieldErrMsg[key]
+        : `${key.toUpperCase()} is Mandatory!!!`;
+      const isError =
+        formValidationRegex[key] &&
+        !formValidationRegex[key].test(formInputValue[key]);
+      submitFormValidation[key] = { errMsg, isError };
+    }
+    setFormErr(submitFormValidation);
+
+    // if (!Object.keys(formInputValue).length) return;
+
+    // for (let key in formInputValue) {
+    //   if (!formInputValue || submitFormValidation[key]?.isError) {
+    //     return;
+    //   }
+    // }
 
     axios({
-        url: "/user/createClient?userId=1",
-        method:"post",
-        data:{
-            "address":"Aashiana ranchi",
-            "businessName":"kreeda ranchi",
-            "gstIn":"33EJPPS8875D1AK",
-            "gstUserName":"TN_NT1.6456"
-        }
-    }).then((res)=>{
-      console.log(res);
-    }).catch((error)=>{
-      console.log(error)
-    })
-  }
+      url: "/user/getClients?userId=26",
+      method:"get",
+      // data:
+      //   {
+      //     "address":"Aashia jsr",
+      //     "businessName":"gjhjj ranchi",
+      //     "gstIn":"33EJPPS9875D1AK",
+      //     "gstUserName":"TN_NT1.9999"
+      //   }
+    
+  }).then((res)=>{
+    console.log(res);
+  }).catch((error)=>{
+    console.log(error)
+  })
+  };
+
   return (
     <ErrorBoundary>
     <Dialog
@@ -95,7 +133,7 @@ export default function SimpleDialog(props) {
               <TextField
                 error={formErr[fieldName]?.isError}
                 type={type}
-                value={formIputValue[fieldName] || ""}
+                value={formInputValue[fieldName] || ""}
                 classes={classes}
                 variant={variant}
                 onBlur={(event) => handleOnBlur(event.target.value, fieldName)}

@@ -3,22 +3,25 @@ import {store} from '../store/store'
 
 const {login} = store.getState();
 
-const AUTH_TOKEN = login?.loginDetails?.accessToken || "";
+const AUTH_TOKEN = login?.loginDetails?.accessToken || sessionStorage.getItem("accessToken") || "";
+console.log(AUTH_TOKEN);
+console.log(login);
 const axios = Axios.create({
   baseURL: process.env.REACT_APP_BASE_URL ,
   headers:{
     "Content-Type" : "application/json",
     "Authorization" : `Bearer ${AUTH_TOKEN}`,
     // "Access-Control-Allow-Origin": "http://localhost:3000/"
+    "Accept" : "application/json"
   }
 })
 
-// axios.interceptors.response.use((response)=>response,(error)=>{
-//    if(error.response.status === 401){
-//     console.log("unauthUser login again");
-//    }
-//    return Promise.reject(error.response)
-// })
+axios.interceptors.response.use((response)=>response,(error)=>{
+   if(error.response.status === 401){
+    console.log("unauthUser login again");
+   }
+   return Promise.reject(error.response)
+})
 
 
 const apiRequest = (options) => {
