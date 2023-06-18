@@ -44,7 +44,7 @@ const routes = [
   { path: "/register", element: <Register />, isProtectedRoute: false },
 ];
 
-const Routing = ({ handleNotFound }) => {
+const Routing = () => {
   return (
     <Grid>
       <Routes>
@@ -59,7 +59,7 @@ const Routing = ({ handleNotFound }) => {
             }
           />
         ))}
-        <Route path="*" element={<NotFoundPage handleNotFound={handleNotFound} />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Grid>
   );

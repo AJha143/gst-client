@@ -18,18 +18,18 @@ import ForgetPassword from "../ForgetPassword/ForgetPassword";
 import FormLabel from "../../customComponent/FormLabelComponent";
 import { formInputFieldErrMsg, formValidationRegex } from "../ConstantData";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
-import axios from "../../service/Service"
-import Spinner from '../../customComponent/spinner/Spinner'
-import {toggleSpinner} from '../../reducers/spinnerReducer'
-import {handleLogin} from '../../reducers/loginSliceReducer'
-import { useSelector,useDispatch } from "react-redux";
+import axios from "../../service/Service";
+import Spinner from "../../customComponent/spinner/Spinner";
+import { toggleSpinner } from "../../reducers/spinnerReducer";
+import { handleLogin } from "../../reducers/loginSliceReducer";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const {isLoading} = useSelector((state)=> {
-    console.log(state)
-   return state.spinner
+  const { isLoading } = useSelector((state) => {
+    console.log(state);
+    return state.spinner;
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -112,34 +112,39 @@ const LoginPage = () => {
     //   }
     // }
 
-    dispatch(toggleSpinner(true))
+    dispatch(toggleSpinner(true));
     axios({
-      url:"/auth/authenticate",
-      method : 'post',
+      url: "/auth/authenticate",
+      method: "post",
       data: {
-        "username": formInputValues.email,
-        "password": formInputValues.password
+        username: formInputValues.email,
+        password: formInputValues.password,
       },
-    }).then((res)=>{
-        console.log(res);
-    dispatch(toggleSpinner(false));
-    dispatch(handleLogin(res.data));
-    }).catch((err)=>{
-        console.log(err);
-    dispatch(toggleSpinner(false));
-
     })
+      .then((res) => {
+        console.log(res);
+
+        dispatch(toggleSpinner(false));
+        sessionStorage.setItem("accessToken", res.data.accessToken);
+        dispatch(handleLogin(res.data));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(toggleSpinner(false));
+      });
   };
 
   return (
-
     <ErrorBoundary>
-    <Spinner  open={isLoading} spinnerText="Please wait while we log you in !!"  />
-    <Grid container className="login-page">
-      <Grid item xs={6} direction="column" className="login-img-container">
-        <Grid>
-          <img src={SignUpImg} alt="" className="login-img" />
-        </Grid>
+      <Spinner
+        open={isLoading}
+        spinnerText="Please wait while we log you in !!"
+      />
+      <Grid container className="login-page">
+        <Grid item xs={6} direction="column" className="login-img-container">
+          <Grid>
+            <img src={SignUpImg} alt="" className="login-img" />
+          </Grid>
 
           <Grid direction="column" className="discription-container">
             <div className="discription">
