@@ -59,7 +59,7 @@ function DrawerComp() {
   };
 
   const handleLogut = () => {
-    sessionStorage.removeItem("accessToken");
+    sessionStorage.removeItem("user");
     dispatch(handleLogout({}));
     navigate("/");
   };

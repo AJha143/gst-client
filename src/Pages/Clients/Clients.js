@@ -1,61 +1,80 @@
-import React from 'react'
-import AddClient from "../../Components/Clients/AddClientButton"
+import React, { useEffect, useState } from "react";
+import AddClient from "../../Components/Clients/AddClientButton";
 import "./Clients.scss";
-import {  Paper, Typography } from "@mui/material";
-import ErrorBoundary from '../../customComponent/ErrorBoundary'
-import SearchBar from '../../customComponent/SearchBar/SearchBar'; 
-
+import { Typography } from "@mui/material";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import SearchBar from "../../customComponent/SearchBar/SearchBar";
+import axios from "../../service/Service";
+import ClientsCard from "../../Components/Clients/ClientsCard";
+import { useSelector } from "react-redux";
 const Clients = () => {
+  const [searchText, setSearchText] = useState("");
+  const [clientData, setClientData] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  const userId = useSelector((state) => state?.login?.loginDetails?.user?.id);
+  useEffect(() => {
+    getClients();
+  }, []);
+
+  const getClients = () => {
+    axios({
+      url: "/user/getClients",
+      method: "get",
+      params: { userId },
+    })
+      .then((res) => {
+        setClientData(res?.data);
+        console.log(res.data,"json");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const searchHandler = (e) => {
+    setSearchText(e.target.value);
+
+    if (searchText !== " ") {
+      const filterDataFun = clientData.filter((item) => {
+        console.log(item,"bata bhai item")
+        return Object.values(item)
+          .join("")
+          .toLowerCase()
+          .includes(searchText.toLowerCase());
+      });
+      console.log(filterDataFun, "filterdatafunction");
+      setFilteredResults(filterDataFun);
+    } else setFilteredResults(clientData);
+  };
+
   return (
     <ErrorBoundary>
-    <div className='clientBtnContainer'>
-    <Typography variant='h4'>All Clients</Typography>
-    <AddClient />
-    </div>
-    <span><SearchBar/></span>
-    <div  className="clientContainer">
-      <Paper classes={{root:'clientPaper'}} elevation={3}>
-        <div className="clientCard">
-          <div className="clientDetailsContainer">
-            <div className="clientSeqContainer">1</div>
-            <div className="clientProfile">
-              <b>AYUSH KUMAR JHA</b>
-              <p>HARYANA</p>
-              <p> GSTN: 078976655AS</p>
-            </div>
-          </div>
-
-          <div className="addClientActionContainer">
-            <div className="actionBtn-regular">REGULAR</div>
-            <div className="actionBtn">GET FILING STATUS</div>
-            <div className="actionBtn">MONTHLY</div>
-            <div className="actionBtn">RETURNS</div>
-          </div>
+    <div>
+      <Typography variant="h4">All Clients</Typography>
+      <div className="clientBtnContainer">
+        <div>
+          <SearchBar onChange={searchHandler} />
         </div>
-      </Paper>
-      <div className="filingStatusContainer">
-        <p>
-          <h4>Filing Status: </h4>
-          <span> GSTR-1 / IFF</span>
-          <span>FEB</span> {"|"}
-          <span>MAR</span> {"|"}
-          <span>APR</span>
-        </p>
-        <p>
-          <span> GSTR-3B</span>
-          <span>FEB</span> {"|"}
-          <span>MAR</span> {"|"}
-          <span>APR</span>
-        </p>
-        <p>
-          <span>GSTR-9</span>
-          <span>2019-20</span> {"|"}
-          <span>2020-21</span>
-        </p>
+        <div>
+        <AddClient />
+        </div>
+       
       </div>
-    </div>
+      <div>
+     {searchText.length >= 1  ?   filteredResults.map((cardData, key) => {
+          return <ClientsCard cardData={cardData} index={key} />;
+        }):
+        clientData.map((cardData, key) => {
+          console.log(key)
+          return <ClientsCard cardData={cardData} index={key} />;
+          
+        })
+      }
+      </div>
+      </div>
     </ErrorBoundary>
-  )
-}
+  );
+};
 
-export default Clients
+export default Clients;

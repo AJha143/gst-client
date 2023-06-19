@@ -12,15 +12,14 @@ import {
 import "./ClientForm.scss";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import axios from "../../service/Service"
+import { useSelector } from "react-redux";
 
 export default function SimpleDialog(props) {
   const { onClose, open } = props;
   const [formInputValue, setFormInputValue] = React.useState(
     {
-      firstName: "",
-      lastName: "",
-      phoneNumber: "",
-      email: "",
+      name: "",
+      businessName: "",
       gstn:"",
      GSTNUsername:"",
       address:""
@@ -62,7 +61,7 @@ export default function SimpleDialog(props) {
     }));
   };
 
-
+  const userId =   useSelector((state)=>state?.loginDetails?.user?.id) 
   const submitHandler = (event) => {
     event.preventDefault();
    
@@ -79,24 +78,25 @@ export default function SimpleDialog(props) {
     }
     setFormErr(submitFormValidation);
 
-    // if (!Object.keys(formInputValue).length) return;
+    if (!Object.keys(formInputValue).length) return;
 
-    // for (let key in formInputValue) {
-    //   if (!formInputValue || submitFormValidation[key]?.isError) {
-    //     return;
-    //   }
-    // }
+    for (let key in formInputValue) {
+      if (!formInputValue || submitFormValidation[key]?.isError) {
+        return;
+      }
+    }
 
     axios({
-      url: "/user/getClients?userId=26",
-      method:"get",
-      // data:
-      //   {
-      //     "address":"Aashia jsr",
-      //     "businessName":"gjhjj ranchi",
-      //     "gstIn":"33EJPPS9875D1AK",
-      //     "gstUserName":"TN_NT1.9999"
-      //   }
+      url: "/user/createClient",
+      method:"post",
+      params:{userId},
+      data:
+        {
+          "address":formInputValue.address,
+          "businessName":formInputValue.businessName,
+          "gstIn":formInputValue.gstn,
+          "gstUserName":formInputValue.GSTNUsername
+        }
     
   }).then((res)=>{
     console.log(res);

@@ -10,13 +10,13 @@ import { useLocation } from "react-router-dom";
 function App() {
   const { loginDetails } = useSelector((state) => state.login);
   const [access_token, setAccessToken] = useState(
-    sessionStorage.getItem("accessToken") || loginDetails.accessToken
+    loginDetails.accessToken
   );
   const location = useLocation();
 
   useEffect(() => {
-    setAccessToken(sessionStorage.getItem("accessToken"));
-  }, [access_token, sessionStorage.getItem("accessToken")]);
+    setAccessToken( loginDetails.accessToken);
+  }, [loginDetails]);
 
   const Navigation = () => {
     if (access_token && location.key !== "default") {

@@ -107,7 +107,7 @@ const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
 }));
 
 function ColorlibStepIcon(props) {
-  const { active, completed, className,activeStep } = props;
+  const { active, completed, className} = props;
   console.log('props',props)
 
 
@@ -119,7 +119,7 @@ function ColorlibStepIcon(props) {
   };
 
   const handleStepper=()=>{  
-    console.log('icon',props.icon)
+    // console.log('icon',props.icon)
 
   }
 

@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children, isProtectedRoute }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const checkUserToken = () => {
     const accessToken =
-      sessionStorage.getItem("accessToken") || loginDetails?.accessToken;
+     loginDetails?.accessToken;
 
     if (protectionStatus) {
       if (!accessToken || accessToken === undefined) {

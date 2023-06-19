@@ -45,7 +45,6 @@ const SignUp = () => {
 
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => {
-    console.log(state);
     return state.spinner;
   });
 

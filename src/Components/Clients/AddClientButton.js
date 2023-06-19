@@ -5,6 +5,7 @@ import ErrorBoundary from "../../customComponent/ErrorBoundary";
 
 
 export default function AddClientButton() {
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -18,7 +19,7 @@ export default function AddClientButton() {
   return (
     <ErrorBoundary>
       <Button variant="contained" color="primary" onClick={handleClickOpen} buttontext=" Add Clients" className="addClientBtn"/>
-      <SimpleDialog open={open} onClose={handleClose} />
+      <SimpleDialog open={open} onClose={handleClose}  />
       </ErrorBoundary>
   );
 }

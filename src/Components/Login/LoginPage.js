@@ -104,13 +104,13 @@ const LoginPage = () => {
     setFormInputErr(submitFormValidation);
 
 
-    // if (!Object.keys(formInputValues).length) return;
+    if (!Object.keys(formInputValues).length) return;
 
-    // for (let key in formInputValues) {
-    //   if (!formInputValues || submitFormValidation[key]?.isError) {
-    //     return;
-    //   }
-    // }
+    for (let key in formInputValues) {
+      if (!formInputValues || submitFormValidation[key]?.isError) {
+        return;
+      }
+    }
 
     dispatch(toggleSpinner(true));
     axios({
@@ -125,7 +125,7 @@ const LoginPage = () => {
         console.log(res);
 
         dispatch(toggleSpinner(false));
-        sessionStorage.setItem("accessToken", res.data.accessToken);
+        sessionStorage.setItem("user", JSON.stringify(res.data));
         dispatch(handleLogin(res.data));
       })
       .catch((err) => {
