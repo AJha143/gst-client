@@ -3,7 +3,7 @@ import {store} from '../store/store'
 
 const {login} = store.getState();
 
-const AUTH_TOKEN = login?.loginDetails?.accessToken || sessionStorage.getItem("accessToken") || "";
+const AUTH_TOKEN = login?.loginDetails?.accessToken  || "";
 console.log(AUTH_TOKEN);
 console.log(login);
 const axios = Axios.create({
