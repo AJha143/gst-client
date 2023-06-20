@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Button from "../../customComponent/ButtonComponent";
-import SimpleDialog from "./ClientForm";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import ClientForm from "./ClientForm";
 
 
 export default function AddClientButton() {
@@ -19,7 +19,7 @@ export default function AddClientButton() {
   return (
     <ErrorBoundary>
       <Button variant="contained" color="primary" onClick={handleClickOpen} buttontext=" Add Clients" className="addClientBtn"/>
-      <SimpleDialog open={open} onClose={handleClose}  />
+      <ClientForm open={open} onClose={handleClose}  />
       </ErrorBoundary>
   );
 }
