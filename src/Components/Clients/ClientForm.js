@@ -14,7 +14,7 @@ import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import axios from "../../service/Service"
 import { useSelector } from "react-redux";
 
-export default function SimpleDialog(props) {
+export default function ClientForm(props) {
   const { onClose, open } = props;
   const [formInputValue, setFormInputValue] = React.useState(
     {

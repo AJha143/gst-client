@@ -7,6 +7,7 @@ import SearchBar from "../../customComponent/SearchBar/SearchBar";
 import axios from "../../service/Service";
 import ClientsCard from "../../Components/Clients/ClientsCard";
 import { useSelector } from "react-redux";
+import Shimmer from "../../Components/Shimmer/Shimmer";
 const Clients = () => {
   const [searchText, setSearchText] = useState("");
   const [clientData, setClientData] = useState([]);
@@ -25,6 +26,7 @@ const Clients = () => {
     })
       .then((res) => {
         setClientData(res?.data);
+        setFilteredResults(res?.data);
         console.log(res.data,"json");
       })
       .catch((error) => {
@@ -48,7 +50,7 @@ const Clients = () => {
     } else setFilteredResults(clientData);
   };
 
-  return (
+  return (clientData.length === 0)? <Shimmer/>:(
     <ErrorBoundary>
     <div>
       <Typography variant="h4">All Clients</Typography>
@@ -62,15 +64,12 @@ const Clients = () => {
        
       </div>
       <div>
-     {searchText.length >= 1  ?   filteredResults.map((cardData, key) => {
+     { (filteredResults.length === 0) ? <div><h1>No data found</h1></div> : filteredResults.map((cardData, key) => {
           return <ClientsCard cardData={cardData} index={key} />;
-        }):
-        clientData.map((cardData, key) => {
-          console.log(key)
-          return <ClientsCard cardData={cardData} index={key} />;
-          
         })
+     
       }
+ 
       </div>
       </div>
     </ErrorBoundary>
