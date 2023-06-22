@@ -77,8 +77,7 @@ export const drawerItems = [
 
 export const formInputFieldErrMsg = {
   name: "Please Enter Valid Name.",
-  firstName: "Please Enter Valid Name.",
-  lastName: "Please Enter Valid Name.",
+  businessName:"Please Enter Valid Name.",
   phoneNumber: "Please Enter Valid Phone Number.",
   email: "Please Enter Valid Email.",
   gstn:"Please Enter Valid GSTN",
@@ -100,19 +99,11 @@ export const formValidationRegex = {
 };
 
 export const inputFieldDetails = [
-  {
-    type: "text",
-    fieldName: "name",
-    col: 6,
-    label: "Full Name",
-    variant: "outlined",
-    required: true,
-    classes: { root: "customTextField" },
-  },
+
   {
     type: "text",
     fieldName: "businessName",
-    col: 6,
+    col: 12,
     label: "Business Name",
     variant: "outlined",
     required: true,

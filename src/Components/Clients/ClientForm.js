@@ -18,7 +18,6 @@ export default function ClientForm(props) {
   const { onClose, open } = props;
   const [formInputValue, setFormInputValue] = React.useState(
     {
-      name: "",
       businessName: "",
       gstn:"",
      GSTNUsername:"",
@@ -48,20 +47,22 @@ export default function ClientForm(props) {
   };
 
   const handleOnBlur = (value, fieldName) => {
+    
     const errMsg = value
       ? formInputFieldErrMsg[fieldName]
       : `${fieldName?.toUpperCase()} is Mandatory!!!`;
-    const isError = !formValidationRegex[fieldName]?.test(value);
+    const isError = value ? !formValidationRegex[fieldName]?.test(value) : true;
     setFormErr((prev) => ({
       ...prev,
       [fieldName]: {
         isError,
         errMsg,
       },
+
     }));
   };
 
-  const userId =   useSelector((state)=>state?.loginDetails?.user?.id) 
+  const userId =   useSelector((state)=>state?.login?.loginDetails?.user?.id) 
   const submitHandler = (event) => {
     event.preventDefault();
    

@@ -1,19 +1,13 @@
-import { FormControl, Grid, InputAdornment } from "@mui/material";
+import { FormControl, InputAdornment } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import TextFieldComponent from "../TextFieldComponent";
-import "./SearchBar.scss";
+
 
 const SearchBar = (props) => {
-  const {onChange,value,className} = props
-
-
-
-
-
+  const {onChange,value,classes} = props
   return (
     <FormControl>
-      <Grid container className="searchBar-container">
         <TextFieldComponent
           InputProps={{
             startAdornment: (
@@ -22,11 +16,11 @@ const SearchBar = (props) => {
               </InputAdornment>
             ),
           }}
-          className={className}
+        classes={classes}
           onChange={onChange}
           value={value}
+          {...props}
         />
-      </Grid>
     </FormControl>
   );
 };

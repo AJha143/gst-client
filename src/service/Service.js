@@ -26,7 +26,7 @@ axios.interceptors.response.use((response)=>response,(error)=>{
 
 const apiRequest = (options) => {
    const {url,method,headers={},data,params={}} = options
-
+console.log(params,"check params")
     switch (method.toLowerCase()) {
         case 'get':
         return axios({
