@@ -3,7 +3,7 @@ import {TextField} from "@mui/material";
 import { PropTypes } from 'prop-types';
 
 const TextFieldComponent = (props) => {
-    const {type,placeholder,value, name ,InputProp, error,onChange,onBlur,helperText} = props
+    const {type,placeholder,value, name ,InputProp, error,onChange,onBlur,helperText,classes} = props
   return (
     <>
         <TextField
@@ -16,6 +16,7 @@ const TextFieldComponent = (props) => {
             onChange={onChange}
             onBlur={onBlur}
             helperText={helperText}
+            classes={classes}
             {...props}
         />
     </>
@@ -32,6 +33,7 @@ TextFieldComponent.propTypes={
   onChange:PropTypes.func,
   onBlur:PropTypes.func,
   helperText:PropTypes.any,
+  classes:PropTypes.object
 }
 
 export default TextFieldComponent

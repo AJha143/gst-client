@@ -9,7 +9,6 @@ import ClientsCard from "../../Components/Clients/ClientsCard";
 import { useSelector } from "react-redux";
 import Shimmer from "../../Components/Shimmer/Shimmer";
 const Clients = () => {
-  const [searchText, setSearchText] = useState("");
   const [clientData, setClientData] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
 
@@ -35,28 +34,25 @@ const Clients = () => {
   };
 
   const searchHandler = (e) => {
-    setSearchText(e.target.value);
 
-    if (searchText !== " ") {
-      const filterDataFun = clientData.filter((item) => {
-        console.log(item,"bata bhai item")
-        return Object.values(item)
-          .join("")
-          .toLowerCase()
-          .includes(searchText.toLowerCase());
-      });
+    let typedText = e.target.value || " ";
+    if (typedText !== " ") {
+   
+      const filterDataFun = clientData.filter(({address ,businessName, gstIn }) => 
+     address?.toLowerCase().includes(typedText.toLowerCase())   || businessName?.toLowerCase()?.includes(typedText?.toLowerCase()) || gstIn?.toLowerCase()?.includes(typedText?.toLowerCase())
+      );
       console.log(filterDataFun, "filterdatafunction");
       setFilteredResults(filterDataFun);
     } else setFilteredResults(clientData);
   };
 
-  return (clientData.length === 0)? <Shimmer/>:(
+  return (clientData?.length === 0)? <Shimmer/>:(
     <ErrorBoundary>
-    <div>
+     
       <Typography variant="h4">All Clients</Typography>
       <div className="clientBtnContainer">
         <div>
-          <SearchBar onChange={searchHandler} />
+          <SearchBar onChange={searchHandler}  classes={{root:"search-bar"}}/>
         </div>
         <div>
         <AddClient />
@@ -64,14 +60,12 @@ const Clients = () => {
        
       </div>
       <div>
-     { (filteredResults.length === 0) ? <div><h1>No data found</h1></div> : filteredResults.map((cardData, key) => {
-          return <ClientsCard cardData={cardData} index={key} />;
-        })
+     { (filteredResults?.length === 0) ? <div><h1>No data found</h1></div> : filteredResults.map((cardData, key) => <ClientsCard cardData={cardData} index={key} />  )
      
       }
  
       </div>
-      </div>
+    
     </ErrorBoundary>
   );
 };

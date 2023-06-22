@@ -5,7 +5,7 @@ import {  Paper} from "@mui/material";
 
 
 const ClientsCard = ({cardData,index}) => {
-const {name,address,gstIn} = cardData
+const {businessName,address,gstIn} = cardData
 // console.log(akshay);
 
   return (
@@ -15,7 +15,7 @@ const {name,address,gstIn} = cardData
           <div className="clientDetailsContainer">
             <div className="clientSeqContainer">{index + 1}</div>
             <div className="clientProfile">
-              <b>{name}</b>
+              <b>{businessName}</b>
               <p>{address}</p>
               <p>{gstIn}</p>
             </div>
