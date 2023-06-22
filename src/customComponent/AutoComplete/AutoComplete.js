@@ -1,32 +1,49 @@
-import  React,{useState} from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import PropTypes from 'prop-types';
 
-const options = ['Option 1', 'Option 2'];
+const AutoCompleteComponent = (props) => {
+  const { value, id, width, label, options, inputValue, onChange, onInputChange } = props;
 
-export default function ControllableStates() {
-  const [value, setValue] = useState(options[0]);
-  const [inputValue, setInputValue] = useState('');
+  const handleChange = ( newValue) => {
+    if (onChange) {
+      onChange(newValue);
+    }
+  };
+
+  const handleInputChange = (newInputValue) => {
+    if (onInputChange) {
+      onInputChange(newInputValue);
+    }
+  };
 
   return (
     <div>
-      <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
-      <div>{`inputValue: '${inputValue}'`}</div>
       <br />
       <Autocomplete
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange={handleChange}
         inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
-          setInputValue(newInputValue);
-        }}
-        id="controllable-states-demo"
+        onInputChange={handleInputChange}
+        id={id}
         options={options}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Controllable" />}
+        sx={width}
+        renderInput={(params) => <TextField {...params} label={label} />}
       />
     </div>
   );
-}
+};
+
+AutoCompleteComponent.propTypes = {
+  value: PropTypes.any,
+  id: PropTypes.string,
+  width: PropTypes.object,
+  label: PropTypes.string,
+  options: PropTypes.array,
+  inputValue: PropTypes.string,
+  onChange: PropTypes.func,
+  onInputChange: PropTypes.func,
+};
+
+export default AutoCompleteComponent;
