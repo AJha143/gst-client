@@ -9,24 +9,26 @@ import { useLocation } from "react-router-dom";
 
 function App() {
   const { loginDetails } = useSelector((state) => state.login);
-  const [access_token, setAccessToken] = useState(
-    loginDetails.accessToken
-  );
+  const [access_token, setAccessToken] = useState(loginDetails.accessToken);
+  const [drawerPaper, setDrawerPaper] = useState("drawer");
   const location = useLocation();
 
   useEffect(() => {
-    setAccessToken( loginDetails.accessToken);
+    setAccessToken(loginDetails.accessToken);
   }, [loginDetails]);
+
+  function styleDrawer(data) {
+    setDrawerPaper(data);
+  }
 
   const Navigation = () => {
     if (access_token && location.key !== "default") {
       return (
         <Grid item xs={12}>
           <TopMenuBar />
-          <DrawerComp />
+          <DrawerComp styleDrawer={styleDrawer} />
         </Grid>
       );
-      
     } else {
       return;
     }
@@ -36,11 +38,13 @@ function App() {
     <Grid
       item
       container
-      classes={{ container: "appGridContainer" }}
+      // classes={{ container: "appGridContainer" }}
       direction="row"
     >
       {Navigation()}
-      <Routing />
+      <Grid className={drawerPaper}>
+        <Routing />
+      </Grid>
     </Grid>
   );
 }
