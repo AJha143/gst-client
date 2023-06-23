@@ -1,0 +1,19 @@
+* {
+  background-color: #d4d4e0;
+  .alert-opps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .image {
+      width: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .error-text {
+      font-size: 30px;
+    }
+  }
+}
