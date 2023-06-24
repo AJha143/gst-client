@@ -11,6 +11,7 @@ function App() {
   const { loginDetails } = useSelector((state) => state.login);
   const [access_token, setAccessToken] = useState(loginDetails.accessToken);
   const [drawerPaper, setDrawerPaper] = useState("drawer");
+  const [pageStyle, setPageStyle] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,6 +20,9 @@ function App() {
 
   function styleDrawer(data) {
     setDrawerPaper(data);
+  }
+  function isProtected(info) {
+    info ? setPageStyle(true) : setPageStyle(false);
   }
 
   const Navigation = () => {
@@ -38,12 +42,12 @@ function App() {
     <Grid
       item
       container
-      // classes={{ container: "appGridContainer" }}
+      classes={{ container: pageStyle === false ? "appGridContainer" : "" }}
       direction="row"
     >
       {Navigation()}
-      <Grid className={drawerPaper}>
-        <Routing />
+      <Grid className={pageStyle === false?'':drawerPaper}>
+        <Routing isProtected={isProtected} />
       </Grid>
     </Grid>
   );

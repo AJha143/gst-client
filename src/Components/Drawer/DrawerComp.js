@@ -39,8 +39,6 @@ function DrawerComp(props) {
   };
 
   const handleDwawerFunction = () => {
-    
-    
     setShow(!show);
     setHandleDrawer(!handleDrawer);
 
@@ -48,12 +46,12 @@ function DrawerComp(props) {
       setDrawerStyle("drawerPaper");
       setContentStyle("drawer");
       setBtnStyle("btnExp");
-      props.styleDrawer('drawer')
+      props.styleDrawer("drawer1");
     } else {
       setDrawerStyle("drawerPaper2");
       setContentStyle("drawer2");
       setBtnStyle("btnCol");
-      props.styleDrawer('drawer2')
+      props.styleDrawer("drawer2");
     }
 
     handleDrawer
@@ -168,7 +166,7 @@ function DrawerComp(props) {
                             to={subItem.location}
                             className="headerContainer2"
                           >
-                            <ListItemIcon className="subIcon">
+                            <ListItemIcon className="subIcon" >
                               {item.subIcon}
                             </ListItemIcon>
                             <Typography className="subtext">

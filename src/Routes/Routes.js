@@ -20,7 +20,6 @@ import Register from "../../src/Components/Signup/SignUp";
 import ProtectedRoute from "./ProtectedRoutes";
 import NotFoundPage from "../Pages/NotFound/NotFoundPage";
 
-
 const routes = [
   { path: "/home", element: <Home />, isProtectedRoute: true },
   { path: "/clients", element: <Clients />, isProtectedRoute: true },
@@ -44,7 +43,7 @@ const routes = [
   { path: "/register", element: <Register />, isProtectedRoute: false },
 ];
 
-const Routing = () => {
+const Routing = (props) => {
   return (
     <Grid>
       <Routes>
@@ -53,7 +52,7 @@ const Routing = () => {
             key={path}
             path={path}
             element={
-              <ProtectedRoute isProtectedRoute={isProtectedRoute}>
+              <ProtectedRoute isProtectedRoute={isProtectedRoute} checkRestriction={props}>
                 {element}
               </ProtectedRoute>
             }

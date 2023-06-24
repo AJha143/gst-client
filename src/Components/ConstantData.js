@@ -1,13 +1,15 @@
 import GroupIcon from "@mui/icons-material/Group";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Clients from "../Pages/Clients/Clients";
 import Home from "../Pages/Home/Home";
-import HelpIcon from '@mui/icons-material/Help';
-import NoteAltIcon from '@mui/icons-material/NoteAlt';
-import Crop169Icon from '@mui/icons-material/Crop169';
+import HelpIcon from "@mui/icons-material/Help";
+import NoteAltIcon from "@mui/icons-material/NoteAlt";
+import LensIcon from '@mui/icons-material/Lens';
+import Crop169Icon from "@mui/icons-material/Crop169";
+import RectangleSharpIcon from "@mui/icons-material/RectangleSharp";
 
 export const drawerItems = [
   {
@@ -35,7 +37,7 @@ export const drawerItems = [
     label: "GSTR",
     icon: <InsertDriveFileIcon />,
     path: "/gstr",
-    subIcon: <Crop169Icon fontSize="small"/>,
+    subIcon: <LensIcon fontSize="small" />,
     subGSTR: [
       { name: "GSTR-1", location: "/gstr/gstr1" },
       { name: "GSTR-3B", location: "/gstr/gstr3b" },
@@ -49,7 +51,7 @@ export const drawerItems = [
   {
     hasMultiple: false,
     label: "Challan",
-    icon: <NoteAltIcon/>,
+    icon: <NoteAltIcon />,
     path: "/challan",
   },
   {
@@ -64,24 +66,15 @@ export const drawerItems = [
     icon: <HelpIcon />,
     path: "/helpandsupport",
   },
-
 ];
-
-
-
-
-
-
-
-
 
 export const formInputFieldErrMsg = {
   name: "Please Enter Valid Name.",
-  businessName:"Please Enter Valid Name.",
+  businessName: "Please Enter Valid Name.",
   phoneNumber: "Please Enter Valid Phone Number.",
   email: "Please Enter Valid Email.",
-  gstn:"Please Enter Valid GSTN",
-  GSTNUsername :"Please Enter Valid GSTN UserName",
+  gstn: "Please Enter Valid GSTN",
+  GSTNUsername: "Please Enter Valid GSTN UserName",
   address: "Please Enter Your Address",
   password:
     "Password should be minimum 6 digits & contain one lower, upper, numeric & special Characters.",
@@ -95,11 +88,10 @@ export const formValidationRegex = {
   password: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
   address: /^[a-zA-Z\s]+$/,
   gstn: /^[A-Z0-9]*$/,
-  GSTNUsername : /^[A-Z0-9!@#$%^&*()_+=\-{}[\]:;<>|./?,`~]*$/,
+  GSTNUsername: /^[A-Z0-9!@#$%^&*()_+=\-{}[\]:;<>|./?,`~]*$/,
 };
 
 export const inputFieldDetails = [
-
   {
     type: "text",
     fieldName: "businessName",

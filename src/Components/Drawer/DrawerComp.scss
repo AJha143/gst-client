@@ -1,5 +1,7 @@
 $text_primary_color: black;
 $text_secondary_color: white;
+$icon_more_less:#a1a1a1;
+
 $icon-colors: (
   rgb(13, 13, 248),
   rgb(158, 158, 243),
@@ -76,13 +78,13 @@ $icon-colors: (
     }
 
     .subIcon {
-      color: rgb(41, 247, 144);
+      color: $icon_more_less;
       margin-left: 25px;
     }
 
     .icon {
       margin-top: -5px;
-      color: $text_secondary_color;
+      color: $icon_more_less;
 
       @each $color in $icon-colors {
         &#{index($icon-colors, $color)} {
@@ -107,7 +109,8 @@ $icon-colors: (
       line-height: 24px;
     }
     .subtext {
-      color: $text_secondary_color;
+      // color: $text_secondary_color;
+      color: #a1a1a1;;
       margin-left: -10px;
       font-size: 15px;
       white-space: nowrap;
