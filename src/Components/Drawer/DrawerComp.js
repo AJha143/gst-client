@@ -23,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { handleLogout } from "../../reducers/loginSliceReducer";
 import { useDispatch } from "react-redux";
 
-function DrawerComp() {
+function DrawerComp(props) {
   const [show, setShow] = useState(false);
   const [drawerStyle, setDrawerStyle] = useState("drawerPaper");
   const [contentStyle, setContentStyle] = useState("drawer");
@@ -41,17 +41,25 @@ function DrawerComp() {
   const handleDwawerFunction = () => {
     setShow(!show);
     setHandleDrawer(!handleDrawer);
-    handleDrawer
-      ? setDrawerStyle("drawerPaper")
-      : setDrawerStyle("drawerPaper2");
 
-    handleDrawer ? setContentStyle("drawer") : setContentStyle("drawer2");
+    if (handleDrawer) {
+      setDrawerStyle("drawerPaper");
+      setContentStyle("drawer");
+      setBtnStyle("btnExp");
+      props.styleDrawer("drawer1");
+    } else {
+      setDrawerStyle("drawerPaper2");
+      setContentStyle("drawer2");
+      setBtnStyle("btnCol");
+      props.styleDrawer("drawer2");
+    }
+
     handleDrawer
       ? show === false
         ? setLogoutStyle("logoutCol")
         : setLogoutStyle("logoutExp")
       : setLogoutStyle("logoutExp");
-    handleDrawer ? setBtnStyle("btnExp") : setBtnStyle("btnCol");
+
     if (handleDrawer && !show) {
       setShow(false);
       setLogoutStyle("logoutExp");
@@ -158,7 +166,7 @@ function DrawerComp() {
                             to={subItem.location}
                             className="headerContainer2"
                           >
-                            <ListItemIcon className="subIcon">
+                            <ListItemIcon className="subIcon" >
                               {item.subIcon}
                             </ListItemIcon>
                             <Typography className="subtext">
@@ -174,13 +182,15 @@ function DrawerComp() {
           </List>
           <Grid className={logoutStyle}>
             <Divider className="dividerComponent" variant="middle" />
-            <Button variant="contained" color="primary" className={btnStyle}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={btnStyle}
+              onClick={handleLogut}
+            >
               <LogoutIcon />
               {!handleDrawer ? (
-                <Typography className="logoutText" onClick={handleLogut}>
-                  {" "}
-                  Logout
-                </Typography>
+                <Typography className="logoutText"> Logout</Typography>
               ) : (
                 ""
               )}
