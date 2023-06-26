@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import "./TopMenuBar.scss";
 import { styled, Box } from "@mui/material";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import { store } from "../../store/store";
 
 const Icons = styled(Box)(({ theme }) => ({
   display: "none",
@@ -17,6 +18,13 @@ const Icons = styled(Box)(({ theme }) => ({
 }));
 
 const TopMenuBar = () => {
+  const storeData = store.getState();
+  const { login } = storeData;
+  const { loginDetails } = login;
+  const { user } = loginDetails;
+
+  const name = user?.name || "";
+
   return (
     <ErrorBoundary>
       <Grid
@@ -30,7 +38,7 @@ const TopMenuBar = () => {
         <Grid item xs={1}>
           <Icons>
             <NotificationsIcon />
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+            <Avatar alt={name} src="/static/images/avatar/1.jpg" />
             <KeyboardArrowDownIcon />
           </Icons>
         </Grid>
