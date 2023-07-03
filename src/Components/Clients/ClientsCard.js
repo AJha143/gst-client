@@ -6,7 +6,7 @@ import {  Paper} from "@mui/material";
 
 const ClientsCard = ({cardData,index}) => {
 const {businessName,address,gstIn} = cardData
-// console.log(akshay);
+
 
   return (
     <div  className="clientContainer">

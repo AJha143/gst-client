@@ -1,21 +1,35 @@
-import React from "react";
-import { Dialog, TextField, Grid } from "@mui/material";
-import ButtonComponent from "../../customComponent/ButtonComponent";
+import React, {useState} from "react";
+import Button from "../../customComponent/ButtonComponent";
 import FormLabelComponent from "../../customComponent/FormLabelComponent";
+import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import CloseIcon from "@mui/icons-material/Close";
+import { Dialog, TextField, Grid } from "@mui/material";
+import "./ClientForm.scss";
 import {
   formValidationRegex,
   formInputFieldErrMsg,
   inputFieldDetails,
 } from "../ConstantData";
-
-import "./ClientForm.scss";
-import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import axios from "../../service/Service"
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
-export default function ClientForm(props) {
-  const { onClose, open } = props;
+export default function ClientForm({setUpdateClientList}) {
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    // onClose(!open);
+    setFormInputValue({});
+    setFormErr({})
+  };
+
+  
   const [formInputValue, setFormInputValue] = React.useState(
     {
       businessName: "",
@@ -25,12 +39,7 @@ export default function ClientForm(props) {
     }
   );
   const [formErr, setFormErr] = React.useState({});
-
-  const handleClose = () => {
-    onClose(!open);
-    setFormInputValue({});
-    setFormErr({})
-  };
+   
 
   const handleInputChange = (value, fieldName) => {
     setFormErr((prev) => ({
@@ -101,14 +110,23 @@ export default function ClientForm(props) {
     
   }).then((res)=>{
     console.log(res);
+    setOpen(false);
+    Swal.fire({
+      title: "Client info saved!",
+    }).then((result)=>{
+      setUpdateClientList(true);
+    })
+
   }).catch((error)=>{
     console.log(error)
   })
+
   };
 
   return (
     <ErrorBoundary>
-    <Dialog
+      <Button variant="contained" color="primary" onClick={handleClickOpen} buttontext=" Add Clients" className="addClientBtn"/>
+      <Dialog
       onClose={handleClose}
       aria-labelledby="Add Clients Form"
       open={open}
@@ -150,7 +168,7 @@ export default function ClientForm(props) {
         )}
         <Grid className="actionBtngrid" item xs={12}>
           <div className="actionBtn">
-            <ButtonComponent
+            <Button
               className="customBtn"
               variant="contained"
               color="secondary"
@@ -158,7 +176,7 @@ export default function ClientForm(props) {
               buttontext="CANCEL"
             />
 
-            <ButtonComponent
+            <Button
               className="customBtn"
               variant="contained"
               buttontext="SUBMIT"
@@ -169,6 +187,6 @@ export default function ClientForm(props) {
         </Grid>
       </Grid>
     </Dialog>
-    </ErrorBoundary>
+      </ErrorBoundary>
   );
 }
