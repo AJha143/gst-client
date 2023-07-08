@@ -35,7 +35,16 @@ function DrawerComp(props) {
 
   const handleShow = () => {
     setShow(!show);
-    show ? setLogoutStyle("logoutExp") : setLogoutStyle("logoutCol");
+    if (show && handleDrawer) {
+      setLogoutStyle("logoutExp");
+    } else if (!show && handleDrawer) {
+    }
+    else if (!show && !handleDrawer) {
+      setLogoutStyle("logoutCol");
+    }
+    else if (show && !handleDrawer) {
+      setLogoutStyle("logoutExp");
+    }
   };
 
   const handleDwawerFunction = () => {
@@ -110,6 +119,7 @@ function DrawerComp(props) {
                     className="headerContainer2"
                     component={Link}
                     to={item.path}
+                    onClick={item.subGSTR ? handleShow : ""}
                   >
                     {handleDrawer ? (
                       <ListItemIcon className={`icon${index + 1}`}>
@@ -166,7 +176,7 @@ function DrawerComp(props) {
                             to={subItem.location}
                             className="headerContainer2"
                           >
-                            <ListItemIcon className="subIcon" >
+                            <ListItemIcon className="subIcon">
                               {item.subIcon}
                             </ListItemIcon>
                             <Typography className="subtext">
