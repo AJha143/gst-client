@@ -28,7 +28,6 @@ import { Link } from "react-router-dom";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => {
-    console.log(state);
     return state.spinner;
   });
 
@@ -85,7 +84,7 @@ const LoginPage = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = (event) => {
+  const   handleSubmit = (event) => {
     event.preventDefault();
 
 
@@ -122,14 +121,11 @@ const LoginPage = () => {
       },
     })
       .then((res) => {
-        console.log(res);
-
         dispatch(toggleSpinner(false));
         sessionStorage.setItem("user", JSON.stringify(res.data));
         dispatch(handleLogin(res.data));
       })
       .catch((err) => {
-        console.log(err);
         dispatch(toggleSpinner(false));
       });
   };

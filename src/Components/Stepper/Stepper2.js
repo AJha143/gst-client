@@ -1,210 +1,139 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Check from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
-import { Button } from "@mui/material";
-import StepConnector, {
-  stepConnectorClasses,
-} from "@mui/material/StepConnector";
-// import { Person } from "@material-ui/icons";
-import { Box } from "@mui/material";
-// import { Grid} from "@material-ui/core";
-import { useState } from "react";
+import StepContent from "@mui/material/StepContent";
+import Button from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import { red } from "@mui/material/colors";
 
-
-const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
-  color: theme.palette.mode === "dark" ? theme.palette.grey[700] : "#eaeaf0",
-  display: "flex",
-  height: 22,
-  alignItems: "center",
-  ...(ownerState.active && {
-    color: "#784af4",
-  }),
-  "& .QontoStepIcon-completedIcon": {
-    color: "#784af4",
-    zIndex: 1,
-    fontSize: 18,
+const steps = [
+  {
+    label: "Step 1",
+    description: `Next button will enable first you successfully generate the summary.`,
   },
-  "& .QontoStepIcon-circle": {
-    width: 8,
-    height: 8,
-    borderRadius: "50%",
-    backgroundColor: "currentColor",
+  {
+    label: "Step 2",
+    description:
+      "An ad group contains one or more ads which target a shared set of keywords.",
   },
-}));
-
-function QontoStepIcon(props) {
-  const { active, completed, className } = props;
-
-  return (
-    <QontoStepIconRoot ownerState={{ active }} className={className}>
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        <div className="QontoStepIcon-circle" />
-      )}
-    </QontoStepIconRoot>
-  );
-}
-
-QontoStepIcon.propTypes = {
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  completed: PropTypes.bool,
-};
-
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
+  {
+    label: "Step 3",
+    description: ``,
   },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
-    border: 0,
-    backgroundColor:
-      theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
-    borderRadius: 1,
-  },
-}));
+];
 
-const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
-  backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
-  zIndex: 1,
-  color: "#fff",
-  width: 50,
-  height: 50,
-  display: "flex",
-  borderRadius: "50%",
-  justifyContent: "center",
-  alignItems: "center",
-  ...(ownerState.active && {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-  }),
-  ...(ownerState.completed && {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
-  }),
-}));
-
-function ColorlibStepIcon(props) {
-  const { active, completed, className} = props;
-  console.log('props',props)
-
-
-  const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
-    // 4: <Person />,
-  };
-
-  const handleStepper=()=>{  
-    // console.log('icon',props.icon)
-
-  }
-
-  return (
-    <ColorlibStepIconRoot
-      ownerState={{ completed, active }}
-      className={className}
-      onClick={handleStepper}
-    >
-      {icons[String(props.icon)]}
-    </ColorlibStepIconRoot>
-  );
-}
-
-ColorlibStepIcon.propTypes = {
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  completed: PropTypes.bool,
-  icon: PropTypes.node,
-  activeStep: PropTypes.number.isRequired,
-};
-
-function CustomizedSteppers2({ steps, activeStep, orientation }) {
-  const [currentStep, setCurrentStep] = useState(activeStep);
+export default function VerticalLinearStepper() {
+  const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
-    setCurrentStep((prevStep) => prevStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setCurrentStep((prevStep) => prevStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleFinish = () => {
-    setCurrentStep(steps.length);
+    setActiveStep(steps.length);
   };
 
+  const topLabel = [
+    "Verify if your government generated summary looks accurate.",
+    "Submit GSTR1 (It is non reversible so please verify GSTR1 summary before submitting.)",
+    "File GSTR 1",
+  ];
+  const bottomLabel = [
+    "Next button will enable first you successfully generate the summary.",
+    "Next button will enable once you successfully submit the GSTR1.",
+    "bottom 3",
+  ];
+
   return (
-    <Box sx={{ width: "100%" }} spacing={4}>
-      <Stepper
-        alternativeLabel={orientation === "vertical" ? false : true}
-        activeStep={currentStep}
-        orientation={orientation}
-        connector={
-          orientation === "vertical" ? <StepConnector /> : <ColorlibConnector />
-        }
-      >
-        {steps.map((label, index) => (
-          <Step key={label}>
+    <Box sx={{ maxWidth: 800 }}>
+      <Stepper activeStep={activeStep} orientation="vertical">
+        {steps.map((step, index) => (
+          <Step key={step.label}>
             <StepLabel
-              StepIconComponent={
-                orientation !== "vertical" ? ColorlibStepIcon : ""
-              }
+            // optional={
+            //   index === steps.length - 1 ? (
+            //     <Typography variant="caption">Last step</Typography>
+            //   ) : null
+            // }
             >
-              <div>{label}</div>
-              <div>
-                {orientation === "vertical" && index === currentStep && (
-                  <Box>
-                    {currentStep < steps.length - 1 ? (
-                      <Button onClick={handleNext}>Next</Button>
-                    ) : (
-                      <Button onClick={handleFinish}>Finish</Button>
-                    )}
-                    {currentStep > 0 && (
-                      <Button onClick={handleBack}>Back</Button>
-                    )}
-                  </Box>
-                )}
-              </div>
+              {step.label}
             </StepLabel>
+            <StepContent>
+              {index === activeStep && (
+                <Box>
+                  <Typography>{topLabel[index]}</Typography>
+                  {index === 0 ? (
+                    <Button variant="outlined">Generate Summary</Button>
+                  ) : index === 1 ? (
+                    <Button variant="outlined">Submit GSTR 1</Button>
+                  ) : (
+                    <>
+                      <Button variant="outlined">File with EVC</Button>
+                      <Button variant="outlined">File with DSC</Button>
+                    </>
+                  )}
+                  {/* <div>
+                    <Typography>{bottomLabel[index]}</Typography>
+                  </div> */}
+                </Box>
+              )}
+              <Typography>{step.description}</Typography>
+              <Box sx={{ mb: 2 }}>
+                <div>
+                  {index === steps.length - 1 ? (
+                    <> 
+                      <Button
+                        variant="contained"
+                        onClick={handleFinish}
+                        sx={{ mt: 1, mr: 1 }}
+                      >
+                        Finish
+                      </Button> 
+                      {index === 2 ? (
+                        <Button
+                          variant="contained"
+                          onClick={handleBack}
+                          sx={{ mt: 1, mr: 1 }}
+                        >
+                          Back
+                        </Button>
+                      ) : (
+                        ""
+                      )}
+                    </>
+                  ) : (
+                    <React.Fragment>
+                      <Button
+                        variant="contained"
+                        onClick={handleNext}
+                        sx={{ mt: 1, mr: 1 }}
+                      >
+                        {"Next"}
+                      </Button>
+                      {index !== 0 && (
+                        <Button
+                          variant="contained"
+                          onClick={handleBack}
+                          sx={{ mt: 1, mr: 1 }}
+                        >
+                          Back
+                        </Button>
+                      )}
+                    </React.Fragment>
+                  )}
+                </div>
+              </Box>
+            </StepContent>
           </Step>
         ))}
       </Stepper>
     </Box>
   );
 }
-
-CustomizedSteppers2.propTypes = {
-  steps: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeStep: PropTypes.number.isRequired,
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
-};
-
-CustomizedSteppers2.defaultProps = {
-  orientation: "horizontal",
-};
-
-export default CustomizedSteppers2;
