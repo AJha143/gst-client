@@ -10,6 +10,7 @@ import {
 } from "../../Components/ConstantData";
 import TextFieldComponent from "../../customComponent/TextFieldComponent";
 import CustomizedSteppers from "../../Components/Stepper/Stepper1/CustomizedSteppers";
+import ButtonComponent from "../../customComponent/ButtonComponent";
 
 const GSTR = () => {
   const step = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
@@ -102,7 +103,7 @@ const GSTR = () => {
       />
       <TextFieldComponent label="Name" />
  
- <CustomizedSteppers/>
+ {/* <CustomizedSteppers/> */}
     </div>
   );
 };
