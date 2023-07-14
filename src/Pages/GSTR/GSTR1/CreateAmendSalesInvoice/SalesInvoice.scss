@@ -1,0 +1,39 @@
+.cardHeader {
+    background-color: #5d69a7;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 'auto';
+  }
+  .textHeading {
+      color: #4D4D4D;
+      font-family: Poppins;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      margin-bottom: 2vh;
+  }
+  .textHeading2{
+  color: #528FF0;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
+  .textDetails{
+      color: #4D4D4D;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  }
+  .downloadHighlight{
+      color: #528FF0;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  }
