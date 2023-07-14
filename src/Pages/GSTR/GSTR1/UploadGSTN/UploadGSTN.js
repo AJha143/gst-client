@@ -1,18 +1,12 @@
 import {
   CardContent,
   Card,
-  Button,
-  CardMedia,
-  CardActionArea,
   Grid,
   Typography,
 } from "@mui/material";
 import React from "react";
 import "./UploadGSTN.scss";
-// import ButtonComponent from "../../../../customComponent/ButtonComponent";
-import AutoCompleteComponent from "../../../../customComponent/AutoComplete/AutoComplete";
 import ButtonComponent from "../../../../customComponent/ButtonComponent";
-import Excel from "../../../../Images/new/excel-png.png";
 import { upload } from "./UploadConstant";
 const UploadGSTN = () => {
   return (
@@ -89,8 +83,8 @@ const UploadGSTN = () => {
                   />
                 </Grid>
                 <div>
-                <Typography>{element.title}</Typography>
-                <CardContent>{element.description}</CardContent>
+                <Typography style={{display:'flex',justifyContent:'center',marginTop:'2vh'}}>{element.title}</Typography>
+                <CardContent style={{display:'flex',justifyContent:'center'}}>{element.description}</CardContent>
                 </div>
               </div>
             </Card>

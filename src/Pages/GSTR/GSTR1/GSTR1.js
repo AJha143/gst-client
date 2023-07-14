@@ -4,9 +4,11 @@ import CustomizedSteppers from "../../../Components/Stepper/Stepper1/CustomizedS
 import PrepareData from "./PrepareData/PrepareData";
 import ViewInvoices from "./ViewInvoices/ViewInvoices";
 import UploadGSTN from "./UploadGSTN/UploadGSTN";
+import ImportExcel from "./ImportExcel/ImportExcel";
+import SalesInvoice from "./CreateAmendSalesInvoice/SalesInvoice";
 
 const GSTR1 = () => {
-  const [val, setVal] = useState(0);
+  const [val, setVal] = useState(0); // For future use
   function stepStatus(data) {
     setVal(data);
   }
@@ -18,6 +20,8 @@ const GSTR1 = () => {
       <PrepareData />
       <ViewInvoices />
       <UploadGSTN />
+      <ImportExcel />
+      <SalesInvoice />
     </Card>
   );
 };
