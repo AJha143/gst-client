@@ -102,6 +102,16 @@ const GSTR = () => {
         outlined={false}
       />
       <TextFieldComponent label="Name" />
+
+      <div style={{margin:'50px'}}>
+      <DropDownComponent
+        options={options}
+        value={selectedOption}
+        onChange={handleChangeDropDown}
+        label="Select"
+        outlined={false}
+      />
+      </div>
  
  {/* <CustomizedSteppers/> */}
     </div>

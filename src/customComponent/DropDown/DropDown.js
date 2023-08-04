@@ -12,7 +12,7 @@ const DropDownComponent = (props) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 0, minWidth: 120 }}>
+      <FormControl sx={{ m: 0, minWidth: 120 }}> 
         {outlined ? (
           ""
         ) : (
