@@ -7,6 +7,7 @@ import UploadGSTN from "./UploadGSTN/UploadGSTN";
 import ImportExcel from "./ImportExcel/ImportExcel";
 import SalesInvoice from "./CreateAmendSalesInvoice/SalesInvoice";
 import SalesInvoiceForm from "./SalesInvoice/SalesInvoice";
+import './GSTR1.scss'
 
 const GSTR1 = () => {
   const [val, setVal] = useState(0); // For future use
@@ -14,7 +15,7 @@ const GSTR1 = () => {
     setVal(data);
   }
   return (
-    <Card>
+    <Card className="gstr1-card">
       <CardContent>
         <CustomizedSteppers status={stepStatus} />
         {val === 0 ? <PrepareData /> : ""}

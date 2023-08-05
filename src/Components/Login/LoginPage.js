@@ -246,7 +246,7 @@ const LoginPage = () => {
                 </div>
 
                 <Button
-                  className="loginform-button"
+                  classes={{ root :"loginform-button"}}
                   variant="contained"
                   type="submit"
                   buttontext="Log in"

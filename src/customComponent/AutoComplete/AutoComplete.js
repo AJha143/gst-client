@@ -4,7 +4,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import PropTypes from 'prop-types';
 
 const AutoCompleteComponent = (props) => {
-  const { value, id, width, label, options, inputValue, onChange, onInputChange } = props;
+  const { value, id, width, label, options, inputValue, onChange, onInputChange ,className } = props;
 
   const handleChange = ( newValue) => {
     if (onChange) {
@@ -29,6 +29,7 @@ const AutoCompleteComponent = (props) => {
         id={id}
         options={options}
         sx={width}
+        className={className}
         renderInput={(params) => <TextField {...params} label={label} />}
       />
     </div>
@@ -44,6 +45,7 @@ AutoCompleteComponent.propTypes = {
   inputValue: PropTypes.string,
   onChange: PropTypes.func,
   onInputChange: PropTypes.func,
+  classNAme: PropTypes.string
 };
 
 export default AutoCompleteComponent;

@@ -47,7 +47,7 @@ export default function CustomizedSteppers(props) {
 
   const handleStepChange = (step) => {
     setActiveStep(step);
-    props.status(step)
+    props.status(step);
   };
 
   return (
@@ -58,12 +58,15 @@ export default function CustomizedSteppers(props) {
         connector={<ColorlibConnector />}
       >
         {steps.map((label, index) => (
-          <Step key={label}>
+          <Step
+            key={label}
+        
+          >
             <StepLabel
               StepIconComponent={ColorlibStepIcon}
               onClick={() => handleStepChange(index)}
             >
-              {label}
+              <h2 className="stepper-label">{label}</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
             </StepLabel>
           </Step>

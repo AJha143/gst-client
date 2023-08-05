@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 $text_primary_color: black;
 $text_secondary_color: white;
 $icon_more_less:#a1a1a1;
@@ -52,8 +53,8 @@ $icon-colors: (
         justify-content: center;
         color: $text_secondary_color;
         font-size: 25px;
-        font-family: cursive;
-        font-weight: bold;
+        font-family: Poppins;
+        font-weight: 500;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -71,6 +72,8 @@ $icon-colors: (
 
     .headerContainer2 {
       height: 38px;
+      font-size: 56px;
+      font-weight: 400;
     }
 
     .listItemContainer {
@@ -93,29 +96,32 @@ $icon-colors: (
       }
     }
 
-    .text {
+    .text >span{
       color: #a1a1a1;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      // font-family: ;
-      // font-style: normal;
-      // font-weight: 1000;
-
-      font-family: "Poppins";
+      font-family: Poppins;
       font-style: normal;
-      font-weight: 800;
+      font-weight: 400;
       font-size: 16px;
       line-height: 24px;
     }
+    .text>span:hover{
+      color:$text_secondary_color ;
+    }
     .subtext {
-      // color: $text_secondary_color;
       color: #a1a1a1;;
       margin-left: -10px;
-      font-size: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      font-family:"Poppins";
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .subtext:hover{
+      color:#528EEF;
     }
   }
 
@@ -143,7 +149,7 @@ $icon-colors: (
         justify-content: center;
         color: $text_secondary_color;
         font-size: 25px;
-        font-family: cursive;
+        font-family: "Poppins";
         font-weight: bold;
       }
     }

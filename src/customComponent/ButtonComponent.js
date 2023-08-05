@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 
 const ButtonComponent = (props) => {
-  const { variant, onClick, buttontext, type, className, color } = props ;
+  const { variant, onClick, buttontext, type, className, color ,classes} = props ;
   return (
     <>
       <Button 
@@ -12,6 +12,7 @@ const ButtonComponent = (props) => {
       variant={variant}
       onClick={onClick}
       className={className}
+      classes={classes}
       color={color}
       {...props}
        >{buttontext}</Button>
@@ -24,6 +25,7 @@ ButtonComponent.propTypes = {
   variant:PropTypes.string,
   onClick:PropTypes.func,
   className:PropTypes.string,
+  classes:PropTypes.object,
   color:PropTypes.string
 };
 

@@ -1,7 +1,14 @@
-.cardHeader{
-    background-color: #5D69A7;
-    color: white;
-display: flex;
-justify-content: space-between;
+.cardHeader {
+  background-color: #5d69a7;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
 
+.autoCompBtn {
+  border-radius: 3px;
+  background: #528ff0;
+  color: #fff ;
+  box-shadow: 4px 4px 4px 0px rgba(156, 174, 216, 0.2),
+    -2px -2px 4px 0px rgba(156, 174, 216, 0.2);
 }

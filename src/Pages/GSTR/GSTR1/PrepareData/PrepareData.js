@@ -8,9 +8,10 @@ const PrepareData = () => {
     <Card
         sx={{
           width: "90%",
-          borderColor: "#ACD2FD",
+          borderColor: "#E4EAFC",
           borderWidth: "5px",
           backgroundColor: "#F9FBFE",
+          margin: "20px"
         }}
         style={{ display: "flex", justifyContent: "space-around" }}
     >
@@ -26,7 +27,7 @@ const PrepareData = () => {
             width: "125vh",
             marginTop:'-5px'
           }}>
-      <AutoCompleteComponent label="Select a client" width={{ width: '35vh'}} />
+      <AutoCompleteComponent label="Select a client" width={{ width: '35vh'}} className="autoCompBtn"/>
 
       </div>
     </Card>

@@ -29,6 +29,7 @@ function DrawerComp(props) {
   const [contentStyle, setContentStyle] = useState("drawer");
   const [logoutStyle, setLogoutStyle] = useState("logoutExp");
   const [btnStyle, setBtnStyle] = useState("btnExp");
+  const [selected, setselected] = useState("");
   const [handleDrawer, setHandleDrawer] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ function DrawerComp(props) {
       setLogoutStyle("logoutExp");
     }
   };
-
+ 
   const handleDwawerFunction = () => {
     setShow(!show);
     setHandleDrawer(!handleDrawer);
@@ -99,7 +100,8 @@ function DrawerComp(props) {
                   <Typography className="headerText"> Robo GST</Typography>
                   <MenuIcon
                     defaultChecked
-                    color="tertiary"
+                    className="menuIcon"
+                    // color="tertiary"
                     onClick={handleDwawerFunction}
                   />
                 </>
@@ -116,11 +118,12 @@ function DrawerComp(props) {
               return (
                 <div key={index}>
                   <ListItem
-                    className="headerContainer2"
+                    className={{root:"headerContainer2"}}
                     component={Link}
                     to={item.path}
                     onClick={item.subGSTR ? handleShow : ""}
                   >
+                  { console.log("item render", item.label)}
                     {handleDrawer ? (
                       <ListItemIcon className={`icon${index + 1}`}>
                         <Tooltip
@@ -129,6 +132,7 @@ function DrawerComp(props) {
                           arrow
                         >
                           {item.icon}
+                          
                         </Tooltip>
                       </ListItemIcon>
                     ) : (
@@ -138,7 +142,7 @@ function DrawerComp(props) {
                     )}
 
                     {!handleDrawer ? (
-                      <ListItemText className="text" primary={item.label} />
+                      <ListItemText classes={{ root : "text"}} primary={item.label} className={selected === item.lable ? "active" : " "} />
                     ) : (
                       ""
                     )}
@@ -176,10 +180,10 @@ function DrawerComp(props) {
                             to={subItem.location}
                             className="headerContainer2"
                           >
-                            <ListItemIcon className="subIcon">
+                            <ListItemIcon classes={{ root :"subIcon"}}>
                               {item.subIcon}
                             </ListItemIcon>
-                            <Typography className="subtext">
+                            <Typography classes={{ root :"subtext"}}>
                               {subItem.name}
                             </Typography>
                           </ListItem>
