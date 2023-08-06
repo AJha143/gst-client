@@ -22,6 +22,7 @@ import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import { useNavigate } from "react-router-dom";
 import { handleLogout } from "../../reducers/loginSliceReducer";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 function DrawerComp(props) {
   const [show, setShow] = useState(false);
@@ -33,21 +34,21 @@ function DrawerComp(props) {
   const [handleDrawer, setHandleDrawer] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
+  console.log("location", location);
 
   const handleShow = () => {
     setShow(!show);
     if (show && handleDrawer) {
       setLogoutStyle("logoutExp");
     } else if (!show && handleDrawer) {
-    }
-    else if (!show && !handleDrawer) {
+    } else if (!show && !handleDrawer) {
       setLogoutStyle("logoutCol");
-    }
-    else if (show && !handleDrawer) {
+    } else if (show && !handleDrawer) {
       setLogoutStyle("logoutExp");
     }
   };
- 
+
   const handleDwawerFunction = () => {
     setShow(!show);
     setHandleDrawer(!handleDrawer);
@@ -118,12 +119,11 @@ function DrawerComp(props) {
               return (
                 <div key={index}>
                   <ListItem
-                    className={{root:"headerContainer2"}}
+                    className={{ root: "headerContainer2" }}
                     component={Link}
                     to={item.path}
                     onClick={item.subGSTR ? handleShow : ""}
                   >
-                  { console.log("item render", item.label)}
                     {handleDrawer ? (
                       <ListItemIcon className={`icon${index + 1}`}>
                         <Tooltip
@@ -132,7 +132,6 @@ function DrawerComp(props) {
                           arrow
                         >
                           {item.icon}
-                          
                         </Tooltip>
                       </ListItemIcon>
                     ) : (
@@ -142,7 +141,15 @@ function DrawerComp(props) {
                     )}
 
                     {!handleDrawer ? (
-                      <ListItemText classes={{ root : "text"}} primary={item.label} className={selected === item.lable ? "active" : " "} />
+                      <ListItemText
+                        // classes={{ root: "text" }}
+                        primary={item.label}
+                        className={
+                          location.pathname === item.path
+                            ? "activeClass"
+                            : "text"
+                        }
+                      />
                     ) : (
                       ""
                     )}
@@ -173,6 +180,7 @@ function DrawerComp(props) {
                   </ListItem>
                   {item.subGSTR && show && !handleDrawer
                     ? item.subGSTR.map((subItem, subIndex) => {
+                        console.log("subItem", subItem);
                         return (
                           <ListItem
                             key={subIndex}
@@ -180,10 +188,28 @@ function DrawerComp(props) {
                             to={subItem.location}
                             className="headerContainer2"
                           >
-                            <ListItemIcon classes={{ root :"subIcon"}}>
+                            <ListItemIcon
+                              className={
+                                subItem.location === location.pathname
+                                  ? "subIconDotActive "
+                                  : "subIconDot"
+                              }
+                            >
                               {item.subIcon}
                             </ListItemIcon>
-                            <Typography classes={{ root :"subtext"}}>
+                            <Typography
+                              // classes={{
+                              //   root:
+                              //     subItem.location === location
+                              //       ? "activeSubClass"
+                              //       : "subtext",
+                              // }}
+                              className={
+                                subItem.location === location.pathname
+                                  ? "activeSubClass"
+                                  : "subtext"
+                              }
+                            >
                               {subItem.name}
                             </Typography>
                           </ListItem>

@@ -80,8 +80,12 @@ $icon-colors: (
       height: 40px;
     }
 
-    .subIcon {
+    .subIconDot {
       color: $icon_more_less;
+      margin-left: 25px;
+    }
+    .subIconDotActive {
+      color: #528EEF;
       margin-left: 25px;
     }
 
@@ -94,6 +98,10 @@ $icon-colors: (
           color: $color;
         }
       }
+    }
+
+    .activeClass{
+      color: $text_secondary_color;
     }
 
     .text >span{
@@ -112,6 +120,16 @@ $icon-colors: (
     }
     .subtext {
       color: #a1a1a1;;
+      margin-left: -10px;
+      font-size: 16px;
+      font-weight: 500;
+      font-family:"Poppins";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .activeSubClass{
+      color:#528EEF;
       margin-left: -10px;
       font-size: 16px;
       font-weight: 500;
@@ -187,10 +205,23 @@ $icon-colors: (
     .text {
       color: $text_secondary_color;
     }
+    .activeClass{
+      color:$text_secondary_color;
+    }
     .subtext {
       color: $text_secondary_color;
       margin-left: -10px;
       font-size: 15px;
+    }
+    .activeSubClass{
+      color:#528EEF;
+      margin-left: -10px;
+      font-size: 16px;
+      font-weight: 500;
+      font-family:"Poppins";
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

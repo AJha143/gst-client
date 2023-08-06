@@ -20,7 +20,6 @@ const AutoCompleteComponent = (props) => {
 
   return (
     <div>
-      <br />
       <Autocomplete
         value={value}
         onChange={handleChange}
