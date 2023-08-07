@@ -5,9 +5,8 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+
 
 const steps = [
   {
@@ -45,11 +44,7 @@ export default function VerticalLinearStepper() {
     "Submit GSTR1 (It is non reversible so please verify GSTR1 summary before submitting.)",
     "File GSTR 1",
   ];
-  const bottomLabel = [
-    "Next button will enable first you successfully generate the summary.",
-    "Next button will enable once you successfully submit the GSTR1.",
-    "bottom 3",
-  ];
+
 
   return (
     <Box sx={{ maxWidth: 800 }}>
@@ -79,9 +74,7 @@ export default function VerticalLinearStepper() {
                       <Button variant="outlined">File with DSC</Button>
                     </>
                   )}
-                  {/* <div>
-                    <Typography>{bottomLabel[index]}</Typography>
-                  </div> */}
+                
                 </Box>
               )}
               <Typography>{step.description}</Typography>
