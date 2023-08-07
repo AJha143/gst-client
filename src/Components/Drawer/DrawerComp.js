@@ -30,7 +30,6 @@ function DrawerComp(props) {
   const [contentStyle, setContentStyle] = useState("drawer");
   const [logoutStyle, setLogoutStyle] = useState("logoutExp");
   const [btnStyle, setBtnStyle] = useState("btnExp");
-  const [selected, setselected] = useState("");
   const [handleDrawer, setHandleDrawer] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -102,7 +101,6 @@ function DrawerComp(props) {
                   <MenuIcon
                     defaultChecked
                     className="menuIcon"
-                    // color="tertiary"
                     onClick={handleDwawerFunction}
                   />
                 </>
@@ -142,7 +140,6 @@ function DrawerComp(props) {
 
                     {!handleDrawer ? (
                       <ListItemText
-                        // classes={{ root: "text" }}
                         primary={item.label}
                         className={
                           location.pathname === item.path
@@ -198,12 +195,6 @@ function DrawerComp(props) {
                               {item.subIcon}
                             </ListItemIcon>
                             <Typography
-                              // classes={{
-                              //   root:
-                              //     subItem.location === location
-                              //       ? "activeSubClass"
-                              //       : "subtext",
-                              // }}
                               className={
                                 subItem.location === location.pathname
                                   ? "activeSubClass"

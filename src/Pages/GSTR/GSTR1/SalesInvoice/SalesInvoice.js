@@ -94,7 +94,7 @@ const SalesInvoiceForm = () => {
               options={options}
               value={selectedOption}
               onChange={handleChangeDropDown}
-              label="Place Of Supply"
+              label={placeOfsupply}
               outlined={false}
             />
           </div>
@@ -169,7 +169,7 @@ const SalesInvoiceForm = () => {
         <TableHeader />
         <TableBody />
       </FormControl>
-      <div style={{display:'flex',justifyContent:'flex-end'}}> 
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <FormControl component="fieldset">
           <FormGroup aria-label="position" row>
             <div style={{ marginRight: "5vh" }}>
@@ -186,18 +186,26 @@ const SalesInvoiceForm = () => {
           </FormGroup>
         </FormControl>
       </div>
-      <div style={{ display: "flex" ,justifyContent:'space-around'}}>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est varius
           diam sollicitudin posuere nec laoreet. Nibh dictum feugiat lectus eget
           maecenas laoreet imperdiet orci.
         </div>
-        <div style={{display:'flex'}}>
-          <div style={{marginLeft:'5vh'}}>
-            <ButtonComponent buttontext="Save Invoice" variant="contained" sx={{width:'175px'}}/>
+        <div style={{ display: "flex" }}>
+          <div style={{ marginLeft: "5vh" }}>
+            <ButtonComponent
+              buttontext="Save Invoice"
+              variant="contained"
+              sx={{ width: "175px" }}
+            />
           </div>
-          <div style={{marginLeft:'10vh'}}>
-            <ButtonComponent buttontext="Cancel" variant="outlined" sx={{width:'175px'}}/>
+          <div style={{ marginLeft: "10vh" }}>
+            <ButtonComponent
+              buttontext="Cancel"
+              variant="outlined"
+              sx={{ width: "175px" }}
+            />
           </div>
         </div>
       </div>
