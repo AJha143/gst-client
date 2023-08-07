@@ -17,7 +17,7 @@ const TextFieldComponent = (props) => {
     label,
   } = props;
   return (
-    <>
+    <div>
       <TextField
         type={type}
         name={name}
@@ -32,7 +32,7 @@ const TextFieldComponent = (props) => {
         label={label}
         {...props}
       />
-    </>
+    </div>
   );
 };
 
