@@ -199,16 +199,9 @@ $icon-colors: (
       }
     }
 
-    .text {
-      color: $text_secondary_color;
-    }
+    
     .activeClass{
       color:$text_secondary_color;
-    }
-    .subtext {
-      color: $text_secondary_color;
-      margin-left: -10px;
-      font-size: 15px;
     }
     .activeSubClass{
       color:#528EEF;
