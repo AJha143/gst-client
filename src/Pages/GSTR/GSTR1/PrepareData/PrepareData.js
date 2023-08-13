@@ -1,34 +1,54 @@
 import { CardContent, Card } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import "./PrepareData.scss";
-import AutoCompleteComponent from "../../../../customComponent/AutoComplete/AutoComplete";
+import DropDownComponent from "../../../../customComponent/DropDown/DropDown";
 
-const PrepareData = () => {
+const PrepareData = (props) => {
+  const [selectedOption, setSelectedOption] = useState("");
+  const handleChangeDropDown = (event) => {
+    props.status(1)
+  };
+
+  const options = [
+    { value: 10, label: "Ten" },
+    { value: 20, label: "Twenty" },
+    { value: 30, label: "Thirty" },
+    { value: 40, label: "Forty" },
+
+  ];
   return (
     <Card
-        sx={{
-          width: "90%",
-          borderColor: "#E4EAFC",
-          borderWidth: "5px",
-          backgroundColor: "#F9FBFE",
-          margin: "20px"
-        }}
-        style={{ display: "flex", justifyContent: "space-around" }}
+      sx={{
+        width: "90%",
+        borderColor: "#E4EAFC",
+        borderWidth: "5px",
+        backgroundColor: "#F9FBFE",
+        margin: "20px",
+      }}
+      style={{ display: "flex", justifyContent: "space-around" }}
     >
       <CardContent>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi.
       </CardContent>
-      <div style={{
-            display: "flex",
-            justifyContent: "space-around",
-            margin: "auto",
-            width: "125vh",
-            marginTop:'-5px'
-          }}>
-      <AutoCompleteComponent label="Select a client" width={{ width: '35vh'}} className="autoCompBtn"/>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "auto",
+          width: "125vh",
+        }}
+      >
 
+        <DropDownComponent
+          options={options}
+          value={selectedOption}
+          onChange={handleChangeDropDown}
+          label="Select"
+          outlined={1}
+          sx={{ marginTop: "2vh" }}
+        />
       </div>
     </Card>
   );

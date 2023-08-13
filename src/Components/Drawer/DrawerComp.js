@@ -34,7 +34,6 @@ function DrawerComp(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log("location", location);
 
   const handleShow = () => {
     setShow(!show);
@@ -177,7 +176,6 @@ function DrawerComp(props) {
                   </ListItem>
                   {item.subGSTR && show && !handleDrawer
                     ? item.subGSTR.map((subItem, subIndex) => {
-                        console.log("subItem", subItem);
                         return (
                           <ListItem
                             key={subIndex}

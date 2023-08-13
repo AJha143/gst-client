@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "@mui/system";
 import Stack from "@mui/material/Stack";
 import Stepper from "@mui/material/Stepper";
@@ -43,28 +43,18 @@ const steps = [
 ];
 
 export default function CustomizedSteppers(props) {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const handleStepChange = (step) => {
-    setActiveStep(step);
-    props.status(step);
-  };
 
   return (
     <Stack sx={{ width: "150vh" }} spacing={4}>
       <Stepper
         alternativeLabel
-        activeStep={activeStep}
+        activeStep={props.status}
         connector={<ColorlibConnector />}
       >
-        {steps.map((label, index) => (
-          <Step
-            key={label}
-        
-          >
+        {steps.map((label) => (
+          <Step key={label}>
             <StepLabel
               StepIconComponent={ColorlibStepIcon}
-              onClick={() => handleStepChange(index)}
             >
               <h2 className="stepper-label">{label}</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>

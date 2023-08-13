@@ -5,7 +5,11 @@ import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import "./ViewInvoices.scss";
 import DropDownComponent from "../../../../customComponent/DropDown/DropDown";
 
-const ViewInvoices = () => {
+const ViewInvoices = (props) => {
+  // const [selectedOption, setSelectedOption] = useState("");
+  const handleButton = (event) => {
+    props.status(2);
+  };
   const [selectedOption, setSelectedOption] = useState("");
   const options = [
     { value: 10, label: "Ten" },
@@ -25,15 +29,15 @@ const ViewInvoices = () => {
           <CloseIcon />
         </div>
       </CardContent>
-      <CardContent style={{marginLeft:'5vh'}}>
-        <div style={{ display: "flex",marginTop:'2vh' }}>
+      <CardContent style={{ marginLeft: "5vh" }}>
+        <div style={{ display: "flex", marginTop: "2vh" }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div style={{ marginRight: "1vh" }}>
               <InsertDriveFileIcon />
             </div>
             <Typography>012ERRT56OUYT45 </Typography>
           </div>
-          <div style={{ marginLeft: "6vh",marginTop:"-7px" }}>
+          <div style={{ marginLeft: "6vh", marginTop: "-7px" }}>
             <Button>CHANGE</Button>
           </div>
         </div>
@@ -55,9 +59,17 @@ const ViewInvoices = () => {
             outlined={false}
           />
         </div>
-        <div style={{ display: "flex", marginTop: "45px",marginBottom:"15px" }}>
-          <div><Button variant="contained">Proceed</Button></div>
-          <div style={{marginLeft:'3vh'}}><Button variant='outlined'>Cancel</Button></div> 
+        <div
+          style={{ display: "flex", marginTop: "45px", marginBottom: "15px" }}
+        >
+          <div>
+            <Button variant="contained" onClick={handleButton}>
+              Proceed
+            </Button>
+          </div>
+          <div style={{ marginLeft: "3vh" }}>
+            <Button variant="outlined">Cancel</Button>
+          </div>
         </div>
       </CardContent>
     </Card>

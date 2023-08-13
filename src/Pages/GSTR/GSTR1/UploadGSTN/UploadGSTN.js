@@ -1,14 +1,27 @@
-import {
-  CardContent,
-  Card,
-  Grid,
-  Typography,
-} from "@mui/material";
-import React from "react";
+import { CardContent, Card, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
 import "./UploadGSTN.scss";
 import ButtonComponent from "../../../../customComponent/ButtonComponent";
 import { upload } from "./UploadConstant";
-const UploadGSTN = () => {
+import SalesInvoice from "../CreateAmendSalesInvoice/SalesInvoice";
+const UploadGSTN = (props) => {
+  const [importData, setImportData] = useState(false);
+  const [createInvoice,setCreateInvoice]=useState(false);
+
+  const handleImport = () => {
+    setImportData(true);
+    setCreateInvoice(false)
+  };
+
+  const handleCreateInvoice=()=>{
+    setCreateInvoice(true);
+    setImportData(false);
+    props.status(4);
+  }
+
+  const handleButton = () => {
+    props.status(3);
+  };
   return (
     <div>
       <Card
@@ -41,6 +54,7 @@ const UploadGSTN = () => {
               // onClick={handleClose}
               buttontext="Import Your Data"
               // width={{width:'200px'}}
+              onClick={handleImport}
             />
           </div>
           <div>
@@ -50,47 +64,66 @@ const UploadGSTN = () => {
               color="primary"
               // onClick={handleClose}
               buttontext="Create Invoice"
+              onClick={handleCreateInvoice}
             />
           </div>
         </div>
       </Card>
-      <div style={{display:'flex',margin:'auto'}}>
-        {upload.map((element) => {
-          return (
-            <Card
-              sx={{
-                width: "20%",
-                height: "30%",
-                borderColor: "#ACD2FD",
-                borderWidth: "5px",
-                // backgroundColor: "#F9FBFE",
-                margin:'auto',
-                marginTop:'2vh'
-              }}
-            >
-              <div>
-                <Grid
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img
-                    src={element.img}
-                    alt="excel"
-                    style={{ height: "15vh", width: "15vh" }}
-                  />
-                </Grid>
+      {importData ? (
+        <div style={{ display: "flex", margin: "auto" }}>
+          {upload.map((element) => {
+            return (
+              <Card
+                sx={{
+                  width: "20%",
+                  height: "30%",
+                  borderColor: "#ACD2FD",
+                  borderWidth: "5px",
+                  // backgroundColor: "#F9FBFE",
+                  margin: "auto",
+                  marginTop: "2vh",
+                }}
+              >
                 <div>
-                <Typography style={{display:'flex',justifyContent:'center',marginTop:'2vh'}}>{element.title}</Typography>
-                <CardContent style={{display:'flex',justifyContent:'center'}}>{element.description}</CardContent>
+                  <Grid
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    onClick={handleButton}
+                  >
+                    <img
+                      src={element.img}
+                      alt="excel"
+                      style={{ height: "15vh", width: "15vh" }}
+                    />
+                  </Grid>
+                  <div>
+                    <Typography
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "2vh",
+                      }}
+                    >
+                      {element.title}
+                    </Typography>
+                    <CardContent
+                      style={{ display: "flex", justifyContent: "center" }}
+                    >
+                      {element.description}
+                    </CardContent>
+                  </div>
                 </div>
-              </div>
-            </Card>
-          );
-        })}
-      </div>
+              </Card>
+            );
+          })}
+        </div>
+      ) : (
+        ""
+      )}
+      {createInvoice?<SalesInvoice props/>:''}
     </div>
   );
 };

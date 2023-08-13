@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DropDownComponent from "../../../../customComponent/DropDown/DropDown";
 import ButtonComponent from "../../../../customComponent/ButtonComponent";
 
-const SalesInvoice = () => {
+const SalesInvoice = (props) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
@@ -13,6 +13,10 @@ const SalesInvoice = () => {
     { value: 20, label: "Twenty" },
     { value: 30, label: "Thirty" },
   ];
+
+  const handleAddInvoice = () => {
+    props.status(true)
+  };
   const handleChangeDropDown = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -41,10 +45,20 @@ const SalesInvoice = () => {
               sx={{ width: "220px" }}
             />
           </div>
-          <div style={{ display: "flex", justifyContent: "space-around",width:'55%'}}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              width: "55%",
+            }}
+          >
             <ButtonComponent buttontext="Amend Invoice" variant="contained" />
             <Typography style={{ marginTop: "2.5vh" }}>OR</Typography>
-            <ButtonComponent buttontext="Add Invoice" variant="outlined" />
+            <ButtonComponent
+              buttontext="Add Invoice"
+              variant="outlined"
+              onClick={handleAddInvoice}
+            />
           </div>
         </div>
       </CardContent>
