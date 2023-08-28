@@ -1,10 +1,7 @@
-import "./CustomAccordian.scss";
+import "./CustomAccordion.scss";
 import React from "react";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Accordion,AccordionSummary,AccordionDetails ,Typography } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CustomAccordian = (props) => {
   const { renderContent, title, expanded, onClick, key } = props;
