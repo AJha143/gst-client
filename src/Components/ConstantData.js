@@ -7,9 +7,7 @@ import Clients from "../Pages/Clients/Clients";
 import Home from "../Pages/Home/Home";
 import HelpIcon from "@mui/icons-material/Help";
 import NoteAltIcon from "@mui/icons-material/NoteAlt";
-import LensIcon from '@mui/icons-material/Lens';
-import Crop169Icon from "@mui/icons-material/Crop169";
-import RectangleSharpIcon from "@mui/icons-material/RectangleSharp";
+import LensIcon from "@mui/icons-material/Lens";
 
 export const drawerItems = [
   {
@@ -128,4 +126,20 @@ export const inputFieldDetails = [
     required: true,
     classes: { root: "customTextField" },
   },
+];
+export const summaryText = [
+  { id: 1, title: "B2B and Credit Debit Note (Registered) Section Summary" },
+  {
+    id: 2,
+    title: "B2C Large and Credit Debit Note (Unregistered) Section Summary",
+  },
+  {
+    id: 3,
+    title:
+      "Advances Received (Tax Liability), Adjustment of Advances and HSN Section Summary",
+  },
+  { id: 4, title: "B2C Others - Section Summary" },
+  { id: 5, title: "Export Invoices Section Summary" },
+  { id: 6, title: "NIL Section Summary" },
+  { id: 7, title: "Documents Issued Section Summary" },
 ];
