@@ -12,7 +12,7 @@ const DropDownComponent = (props) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 0, minWidth: 120 }}> 
+      <FormControl sx={{ m: 0, minWidth: 120 }}>
         {outlined ? (
           ""
         ) : (
@@ -26,12 +26,16 @@ const DropDownComponent = (props) => {
           input={border}
           placeholder="lol"
           inputProps={{ "aria-label": "Without label" }}
-          sx={{ width: "275px" }}
+          sx={{ width: "275px",}}
           {...props}
         >
-          {outlined ?<MenuItem disable value="">
-            <em>{label}</em>
-          </MenuItem>:''}
+          {outlined ? (
+            <MenuItem disable value="">
+              <em>{label}</em>
+            </MenuItem>
+          ) : (
+            ""
+          )}
           {options.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}

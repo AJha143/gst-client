@@ -3,7 +3,7 @@ import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const headers = [
-  { title: "#", width: "6vh", divider: false, multiLine: false },
+  { title: "#", width: "10vh", divider: false, multiLine: false },
   {
     title: "Item Description",
     width: "25vh",
@@ -31,7 +31,7 @@ const headers = [
   { title: "Taxable Rate", width: "18vh", divider: false, multiLine: false },
   {
     title: "Tax Values (Rs.)",
-    width: "20vh",
+    width: "21vh",
     divider: true,
     multiLine: false,
     subHeader: ["CGST", "SGST", "IGST"],
@@ -48,98 +48,113 @@ const TableHeader = () => {
           key={index}
           style={{
             backgroundColor: "#5D69A7",
-            // height: "12vh",
             width: header.width,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginRight: "1px",
-            height:'10vh'
+            height: "10vh",
+            // marginRight: "0.2vh",
+            border: "1px solid white",
           }}
         >
-          <span
+          <div
             style={{
               fontFamily: "Poppins",
               fontSize: "16px",
               fontWeight: "600",
-              lineHeight: "21px",
               letterSpacing: "0em",
               textAlign: "left",
               color: "white",
-              
             }}
           >
-            <div style={{ marginTop: "10px" }}>{header.title}</div>
-            <div>
-              {header.divider ? (
-                <div>
-                  <Divider style={{ backgroundColor: "white" ,marginTop:'5px'}} />
-
-                  {header.options ? (
-                    <div style={{ display: "flex" }}>
-                      <div style={{ display: "flex" }}>
-                        <FiberManualRecordIcon
-                          fontSize="small"
-                          style={{ color: "#528EEF" }}
-                        />
-                        <div style={{ fontSize: "12px" }}>%</div>
-                      </div>
-                      <div style={{ display: "flex" }}>
-                        <FiberManualRecordIcon fontSize="small" />
-                        <div style={{ fontSize: "12px" }}>Rs</div>
-                      </div>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-
-                  {header.subHeader ? (
-                    <div
-                      style={{
-                        display: "flex",
-                        fontSize: "12px",
-                        backgroundColor: "white",
-                      }}
-                    >
-                      <div
-                        style={{
-                          backgroundColor: "#5D69A7",
-                          marginRight: "1px",
-                          paddingRight: "5px",
-                        }}
-                      >
-                        {header.subHeader[0]}
-                      </div>
-                      <div
-                        style={{
-                          backgroundColor: "#5D69A7",
-                          marginRight: "1px",
-                          paddingLeft: "7px",
-                          paddingRight: "7px",
-                        }}
-                      >
-                        {header.subHeader[1]}
-                      </div>
-                      <div
-                        style={{
-                          backgroundColor: "#5D69A7",
-                          marginRight: "-5px",
-                          paddingRight: "5px",
-                          paddingLeft: "5px",
-                        }}
-                      >
-                        {header.subHeader[2]}
-                      </div>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              ) : (
-                ""
-              )}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center", // Optional, if you want to center vertically as well
+                paddingTop: header.divider ? "1vh" : "3vh",
+              }}
+            >
+              {header.title}
             </div>
-          </span>
+
+            {header.divider ? (
+              <Divider style={{ backgroundColor: "white", marginTop: "5px" }} />
+            ) : (
+              ""
+            )}
+
+            {header.options ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  paddingTop: "1vh",
+                }}
+              >
+                <div style={{ display: "flex" }}>
+                  <FiberManualRecordIcon
+                    fontSize="small"
+                    style={{ color: "#528EEF" }}
+                  />
+                  <div style={{ fontSize: "12px" }}>%</div>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <FiberManualRecordIcon fontSize="small" />
+                  <div style={{ fontSize: "12px" }}>Rs</div>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          {header.subHeader ? (
+            <div
+              style={{
+                display: "flex",
+                height: "100%",
+              }}
+            >
+              <div
+                style={{
+                  color: "white",
+                  width:'7vh',
+                  paddingTop: "0.5vh",
+                  borderRight: "1px solid white",
+                  display:'flex',
+                  justifyContent:'center'
+                }}
+              >
+                CGST
+              </div>
+
+              <div
+                style={{
+                  color: "white",
+                  paddingTop: "0.5vh",
+                  borderRight: "1px solid white",
+                  width:'7vh',
+                  display:'flex',
+                  justifyContent:'center'
+
+                }}
+              >
+                SGST
+              </div>
+
+              <div
+                style={{
+                  color: "white",
+                  paddingTop: "0.5vh",
+                  width:'7vh',
+                  display:'flex',
+                  justifyContent:'center'
+                }}
+              >
+                IGST
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       ))}
     </div>

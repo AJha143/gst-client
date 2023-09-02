@@ -10,9 +10,25 @@ import SalesInvoice from "../CreateAmendSalesInvoice/SalesInvoice";
 
 const ImportExcel = (props) => {
   const [invoice] = useState(false);
+  // const handleCASInvoice = () => {
+  //   // props.status(4);
+  // };
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const handleCASInvoice = () => {
-    // props.status(4);
+    if (selectedFile) {
+      // Handle the selected file (e.g., upload or process it)
+      console.log("Selected file:", selectedFile);
+    } else {
+      console.log("No file selected.");
+    }
   };
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  
   return (
     <div>
       <Summary />
@@ -48,25 +64,54 @@ const ImportExcel = (props) => {
                 please click below to import the file.
               </span>
             </Typography>
-            <Typography
+
+            <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                width: "70%",
+                width: "100%",
                 backgroundColor: "#528FF0",
                 color: "white",
                 height: "6vh",
                 borderRadius: "10px",
                 marginBottom: "8vh",
+                cursor: "pointer", // Add cursor style
+              }}
+            >
+              <label
+                htmlFor="fileInput" // Connect the label to the input element
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flex: 1,
+                }}
+              >
+                <BackupIcon style={{ margin: "auto" }} color="white" />
+                <Typography style={{ margin: "auto" }}>
+                  Select File From Your Computer
+                </Typography>
+                <ArrowForward style={{ margin: "auto" }} color="white" />
+                <input
+                  type="file"
+                  id="fileInput"
+                  style={{ display: "none" }} // Hide the actual input element
+                  onChange={handleFileChange}
+                />
+              </label>
+              <Typography
+              style={{
+                margin: "auto",
+                padding: "0.5rem",
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                borderRadius: "10px",
               }}
               onClick={handleCASInvoice}
             >
-              <BackupIcon style={{ margin: "auto" }} color="white" />
-              <Typography style={{ margin: "auto" }}>
-                Select File From Your Computer
-              </Typography>
-              <ArrowForward style={{ margin: "auto" }} color="white" />
+              Upload
             </Typography>
+            </div>
+           
             <div style={{ display: "flex" }}>
               <Typography className="textHeading2">
                 ADVANCED OPTIONS FOR SELECTING SHEETS
