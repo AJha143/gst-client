@@ -4,7 +4,7 @@ import "./UploadGSTN.scss";
 import ButtonComponent from "../../../../customComponent/ButtonComponent";
 import { upload } from "./UploadConstant";
 import SalesInvoice from "../CreateAmendSalesInvoice/SalesInvoice";
-const UploadGSTN = (props) => {
+const UploadGSTN = ({renderStatus}) => {
   const [importData, setImportData] = useState(false);
   const [createInvoice,setCreateInvoice]=useState(false);
 
@@ -16,11 +16,11 @@ const UploadGSTN = (props) => {
   const handleCreateInvoice=()=>{
     setCreateInvoice(true);
     setImportData(false);
-    props.status(4);
+    renderStatus(3);
   }
 
   const handleButton = () => {
-    props.status(3);
+    renderStatus(3);
   };
   return (
     <div>
