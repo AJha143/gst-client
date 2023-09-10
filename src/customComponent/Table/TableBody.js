@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CustomSelect from "./CustomizedSelect/CustomSelect";
-import CustomInput from "./CustomizedSelect/CustomInput";
 import ButtonComponent from "../ButtonComponent";
 import AddIcon from "@mui/icons-material/Add";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import TableBodyAdd from "./TableBodyAdd";
 
 const TableBody = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [age, setAge] = useState("");
   const [showNewRow, setShowNewRow] = useState(false);
+
   const handleNewRow = () => {
     setShowNewRow(true);
   };
-  const [seialNo, setSerialNo] = useState('');
+
+  const [seialNo, setSerialNo] = useState("");
   const [itemDescription, setItenDescription] = useState("");
   const [itemType, setItemType] = useState("");
   const [hs, setHs] = useState("");
@@ -31,27 +30,22 @@ const TableBody = () => {
   const [totalRow, setTotalRow] = useState("");
   const [del, setDel] = useState("");
 
-  const options = [
-    { value: 10, label: "Ten" },
-    { value: 20, label: "Twenty" },
-    { value: 30, label: "Thirty" },
-  ];
 
   const dataItem = [
     {
-      seialNo: { val: "1", width: "10vh" },
-      itemDescription: { val: "GST of Ramlal Ration", width: "25vh" },
-      itemType: { val: "Goods", width: "15vh" },
-      hs: { val: 1, width: "15vh" },
-      qty: { val: 2, width: "10vh" },
-      unityOfMeasurement: { val: "-", width: "25vh" },
+      seialNo: { val: "1" },
+      itemDescription: { val: "GST of Ramlal Ration" },
+      itemType: { val: "Goods" },
+      hs: { val: 1 },
+      qty: { val: 2 },
+      unityOfMeasurement: { val: "-" },
       rate: { val: 35, width: "12vh" },
-      discount: { per: "12", num: 1, width: "15vh" },
-      taxableValue: { val: "1234", width: "18vh" },
-      taxableRate: { val: "5.05", width: "18vh" },
-      tax: { CGST: 2.5, SGST: 2.5, IGST: 5, width: "21vh" },
-      cess: { val: 1200, width: "20vh" },
-      totalRow: { val: 1500, width: "20vh" },
+      discount: { per: "12", num: 1 },
+      taxableValue: { val: "1234" },
+      taxableRate: { val: "5.05" },
+      tax: { CGST: 2.5, SGST: 2.5, IGST: 5 },
+      cess: { val: 1200 },
+      totalRow: { val: 1500 },
     },
     {
       seialNo: { val: "1", width: "10vh" },
@@ -70,63 +64,8 @@ const TableBody = () => {
     },
   ];
 
-  const handleSerialNo = () => {
-    // console.log("e", e.target.value);
-    // setSerialNo(e.target.value);
-  };
-
-  const handleItemDescription = (e) => {
-    // console.log("item description", e.target.value);
-  };
-
-  const handleItemType = (e) => {
-    // console.log("e", e);
-    // console.log("dropdown", e.target.value);
-    setItemType(e.target.value);
-  };
-
-  const handleHs = (e) => {
-    setHs(e.target.value);
-  };
-
-  const handleQty = (e) => {
-    setQty(e.target.value);
-  };
-
-  const handleUnityOfMeasurement = (e) => {
-    setUom(e.target.value);
-  };
-
-  const handleRate = (e) => {
-    setRate(e.target.value);
-  };
-
-  const handleDiscount = (e) => {
-    setDiscount(e.target.value);
-  };
-
-  const handleTaxableValue = (e) => {
-    setTaxableValue(e.target.value);
-  };
-
-  const handleTaxableRate = (e) => {
-    setTaxableRate(e.target.value);
-  };
-
-  const handleTax = (e) => {
-    setTax(e.target.value);
-  };
-
-  const handleCess = (e) => {
-    setCess(e.target.value);
-  };
-
-  const handleTotalRow = (e) => {
-    setTotalRow(e.target.value);
-  };
-
   const TableBox = (props) => {
-    const { data, isEditable, index } = props;
+    const { data } = props;
 
     return (
       <div>
@@ -147,17 +86,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {" "}
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "9.5vh" }}
-                value={seialNo}
-                onChange={handleSerialNo}
-              />
-            ) : (
-              data.seialNo.val
-            )}
+            {data.seialNo.val}
           </div>
           <div
             style={{
@@ -171,17 +100,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomSelect
-                value={itemType}
-                options={options}
-                style={{ width: "24.5vh" }}
-                onChange={e=>handleItemDescription(e)}
-
-              />
-            ) : (
-              data.itemDescription.val
-            )}
+            {data.itemDescription.val}
           </div>
           <div
             style={{
@@ -195,16 +114,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomSelect
-                value={hs}
-                onChange={handleHs}
-                options={options}
-                style={{ width: "14.5vh" }}
-              />
-            ) : (
-              data.itemType.val
-            )}
+            {data.itemType.val}
           </div>
           <div
             style={{
@@ -218,15 +128,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "14.5vh" }}
-                onChange={handleHs}
-              />
-            ) : (
-              data.hs.val
-            )}
+            {data.hs.val}
           </div>
           <div
             style={{
@@ -240,16 +142,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "9.5vh" }}
-                value={uom}
-                onChange={(e) => handleUnityOfMeasurement(e)}
-              />
-            ) : (
-              data.qty.val
-            )}
+            {data.qty.val}
           </div>
           <div
             style={{
@@ -263,16 +156,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomSelect
-                value={age}
-                onChange={handleRate}
-                options={options}
-                style={{ width: "24.5vh" }}
-              />
-            ) : (
-              data.unityOfMeasurement.val
-            )}
+            {data.unityOfMeasurement.val}
           </div>
           <div
             style={{
@@ -286,15 +170,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "11.5vh" }}
-                onChange={handleDiscount}
-              />
-            ) : (
-              data.rate.val
-            )}
+            {data.rate.val}
           </div>
           <div
             style={{
@@ -308,14 +184,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "14.5vh" }}
-              />
-            ) : (
-              data.discount.per
-            )}
+            {data.discount.per}
           </div>
           <div
             style={{
@@ -329,14 +198,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "17.5vh" }}
-              />
-            ) : (
-              data.taxableValue.val
-            )}
+            {data.taxableValue.val}
           </div>
           <div
             style={{
@@ -350,16 +212,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomSelect
-                value={age}
-                // onChange={handleSelectChange}
-                options={options}
-                style={{ width: "17.5vh" }}
-              />
-            ) : (
-              data.taxableRate.val
-            )}
+            {data.taxableRate.val}
           </div>
           <div
             style={{
@@ -383,14 +236,7 @@ const TableBody = () => {
                   alignItems: "center",
                 }}
               >
-                {isEditable ? (
-                  <CustomInput
-                    id="demo-customized-textbox"
-                    style={{ width: "6.5vh" }}
-                  />
-                ) : (
-                  data.tax.CGST
-                )}
+                {data.tax.CGST}
               </div>
               <div
                 style={{
@@ -403,14 +249,7 @@ const TableBody = () => {
                   alignItems: "center",
                 }}
               >
-                {isEditable ? (
-                  <CustomInput
-                    id="demo-customized-textbox"
-                    style={{ width: "6.5vh" }}
-                  />
-                ) : (
-                  data.tax.SGST
-                )}
+                {data.tax.SGST}
               </div>
               <div
                 style={{
@@ -422,14 +261,7 @@ const TableBody = () => {
                   alignItems: "center",
                 }}
               >
-                {isEditable ? (
-                  <CustomInput
-                    id="demo-customized-textbox"
-                    style={{ width: "6.5vh" }}
-                  />
-                ) : (
-                  data.tax.IGST
-                )}
+                {data.tax.IGST}
               </div>
             </div>
           </div>
@@ -445,14 +277,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "6.5vh" }}
-              />
-            ) : (
-              data.cess.val
-            )}
+            {data.cess.val}
           </div>
           <div
             style={{
@@ -467,14 +292,7 @@ const TableBody = () => {
               alignItems: "center",
             }}
           >
-            {isEditable ? (
-              <CustomInput
-                id="demo-customized-textbox"
-                style={{ width: "6.5vh" }}
-              />
-            ) : (
-              data.totalRow.val
-            )}
+            {data.totalRow.val}
           </div>
           <div style={{ backgroundColor: "white" }}>
             <div
@@ -723,14 +541,14 @@ const TableBody = () => {
       {dataItem.length > 0 ? (
         <div>
           {dataItem.map((data, index) => (
-            <TableBox isEditable={false} data={data} index={index} />
+            <TableBox data={data} index={index} />
           ))}
         </div>
       ) : (
         ""
       )}
 
-      {showNewRow ? <TableBox isEditable={true} /> : ""}
+      {showNewRow ? <TableBodyAdd /> : ""}
       <TableLastBox />
       <CheckboxComp />
       <SaveComp />
