@@ -4,9 +4,16 @@ import "./SalesInvoice.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import DropDownComponent from "../../../../customComponent/DropDown/DropDown";
 import ButtonComponent from "../../../../customComponent/ButtonComponent";
+import DialogComponent from "../../../../customComponent/DialogComponent";
 
 const SalesInvoice = (props) => {
+  const {renderStatus,status} = props
   const [selectedOption, setSelectedOption] = useState("");
+  const [open,setOpen] = useState(true) 
+  const handleClose = ()=>{
+    setOpen(false)
+    renderStatus(3)
+  }
 
   const options = [
     { value: 10, label: "Ten" },
@@ -15,16 +22,19 @@ const SalesInvoice = (props) => {
   ];
 
   const handleAddInvoice = () => {
-    props.status(true)
+    status(true)
   };
   const handleChangeDropDown = (event) => {
     setSelectedOption(event.target.value);
   };
   return (
-    <Card style={{ width: "60%", height: "50vh" }}>
+    <DialogComponent  open={open}
+    onClose={handleClose}
+    maxWidth="md">
+    <Card style={{ width: "100%", height: "50vh" }}>
       <CardContent className="cardHeader">
         <Typography>Create / Amend Sales Invoices</Typography>
-        <CloseIcon />
+        <CloseIcon onClick={handleClose} />
       </CardContent>
 
       <CardContent>
@@ -42,18 +52,18 @@ const SalesInvoice = (props) => {
               onChange={handleChangeDropDown}
               label="Select"
               outlined={false}
-              sx={{ width: "220px" }}
+              sx={{ width: "20vw" }}
             />
           </div>
           <div
             style={{
               display: "flex",
               justifyContent: "space-around",
-              width: "55%",
+              width: "50%",
             }}
           >
             <ButtonComponent buttontext="Amend Invoice" variant="contained" />
-            <Typography style={{ marginTop: "2.5vh" }}>OR</Typography>
+            <Typography style={{ margin:"2.5vh"}}variant="h6">OR</Typography>
             <ButtonComponent
               buttontext="Add Invoice"
               variant="outlined"
@@ -63,6 +73,7 @@ const SalesInvoice = (props) => {
         </div>
       </CardContent>
     </Card>
+    </DialogComponent>
   );
 };
 

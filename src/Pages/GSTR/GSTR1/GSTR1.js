@@ -8,6 +8,7 @@ import ImportExcel from "./ImportExcel/ImportExcel";
 import SalesInvoice from "./CreateAmendSalesInvoice/SalesInvoice";
 import SalesInvoiceForm from "./SalesInvoice/SalesInvoice";
 import "./GSTR1.scss";
+import ErrorBoundary from "../../../customComponent/ErrorBoundary";
 
 const GSTR1 = () => {
   const [val, setVal] = useState(0); 
@@ -22,6 +23,7 @@ const GSTR1 = () => {
   }
 
   return (
+    <ErrorBoundary>
     <Card className="gstr1-card">
       <CardContent>
         <CustomizedSteppers status={val} />
@@ -42,6 +44,7 @@ const GSTR1 = () => {
         ""
       )}
     </Card>
+    </ErrorBoundary>
   );
 };
 

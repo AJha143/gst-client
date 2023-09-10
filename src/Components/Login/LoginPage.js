@@ -45,7 +45,7 @@ const LoginPage = () => {
     setOpen(true);
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
   };
 

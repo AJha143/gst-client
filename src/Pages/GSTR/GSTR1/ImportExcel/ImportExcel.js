@@ -5,20 +5,29 @@ import BackupIcon from "@mui/icons-material/Backup";
 import { ArrowForward } from "@mui/icons-material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CloseIcon from "@mui/icons-material/Close";
-import Summary from "../../../Summary/Summary";
+// import Summary from "../../../Summary/Summary";
 import SalesInvoice from "../CreateAmendSalesInvoice/SalesInvoice";
+import DialogComponent from "../../../../customComponent/DialogComponent";
 
-const ImportExcel = (props) => {
+const ImportExcel = ({renderStatus}) => {
   const [invoice] = useState(false);
   // const handleCASInvoice = () => {
   //   // props.status(4);
   // };
   const [selectedFile, setSelectedFile] = useState(null);
+  const [open,setOpen] = useState(true) 
+  const handleClose = ()=>{
+    setOpen(false)
+    renderStatus(2)
+
+  }
 
   const handleCASInvoice = () => {
     if (selectedFile) {
       // Handle the selected file (e.g., upload or process it)
       console.log("Selected file:", selectedFile);
+      renderStatus(4);
+
     } else {
       console.log("No file selected.");
     }
@@ -31,13 +40,16 @@ const ImportExcel = (props) => {
   
   return (
     <div>
-      <Summary />
+      {/* <Summary /> */}
 
+<DialogComponent open={open}
+    onClose={handleClose}
+    maxWidth="xs" >
       {!invoice ? (
-        <Card style={{ width: "50%", height: "100vh" }}>
+        <Card style={{ width: "100%", height: "100vh" }}>
           <CardContent className="cardHeader">
             <Typography>Import Government Excel</Typography>
-            <CloseIcon />
+            <CloseIcon onClick={handleClose}/>
           </CardContent>
 
           <CardContent>
@@ -127,6 +139,7 @@ const ImportExcel = (props) => {
       ) : (
         <SalesInvoice />
       )}
+      </DialogComponent>
     </div>
   );
 };
