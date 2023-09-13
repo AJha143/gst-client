@@ -3,6 +3,7 @@ import CustomizedSteppers2 from "../../Components/Stepper/Stepper2";
 import FileUpload from "../../customComponent/uploadFile/UploadFile";
 import CustomInput from "../../customComponent/Table/CustomizedSelect/CustomInput";
 import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
+import EnhancedTable from "../../customComponent/CommonTable/demo";
 
 const options = [
   { label: "Ten", value: 10 },
@@ -15,7 +16,6 @@ const GSTR = () => {
   const steps = ["Step 1", "Step 2", "Step 3"];
 
   const handleUploadSuccess = (data) => {
-    console.log("File uploaded successfully:", data);
     // You can perform additional actions here after a successful upload.
   };
 
@@ -53,6 +53,7 @@ const GSTR = () => {
             style={{ width: "500px" }}
           />
         </div>
+        <EnhancedTable />
       </div>
     </div>
   );

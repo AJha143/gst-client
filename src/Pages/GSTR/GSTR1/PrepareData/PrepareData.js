@@ -8,7 +8,7 @@ import SelectClient from "../SelectClient/SelectClient";
 import SalesInvoiceForm from "../SalesInvoice/SalesInvoice";
 
 const PrepareData = () => {
-  const [renderValue, setRenderValue] = useState(0); 
+  const [renderValue, setRenderValue] = useState(0);
   const [showForm, setShowForm] = useState(false);
 
   function valueStatus(data) {
@@ -19,27 +19,27 @@ const PrepareData = () => {
     setShowForm(data);
   }
 
- 
   return (
-<>
-{renderValue === 0 ? <SelectClient  renderStatus={valueStatus}/>:""}
-{renderValue === 1 ? <ReturnPeriod  renderStatus={valueStatus}/>:""}
-{renderValue === 2 ? <UploadGSTN renderStatus={valueStatus}/>: ""}
-{renderValue === 3 ? <ImportExcel renderStatus={valueStatus}/>:"" }
+    <>
+      {renderValue === 0 ? <SelectClient renderStatus={valueStatus} /> : ""}
+      {renderValue === 1 ? <ReturnPeriod renderStatus={valueStatus} /> : ""}
+      {renderValue === 2 ? <UploadGSTN renderStatus={valueStatus} /> : ""}
+      {renderValue === 3 ? <ImportExcel renderStatus={valueStatus} /> : ""}
 
-{renderValue === 4 ? (
+      {renderValue === 4 ? (
         <div>
           {!showForm ? (
-            <SalesInvoice status={showFormHandle} renderStatus={valueStatus}/>
+            <SalesInvoice status={showFormHandle} renderStatus={valueStatus} />
           ) : (
             <SalesInvoiceForm />
           )}
+          
         </div>
       ) : (
         ""
       )}
 
-</>
+    </>
   );
 };
 
