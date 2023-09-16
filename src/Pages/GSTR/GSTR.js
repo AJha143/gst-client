@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import CustomizedSteppers2 from "../../Components/Stepper/Stepper2";
-import FileUpload from "../../customComponent/uploadFile/UploadFile";
-import CustomInput from "../../customComponent/Table/CustomizedSelect/CustomInput";
-import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
-import EnhancedTable from "../../customComponent/CommonTable/demo";
+// import CustomizedSteppers2 from "../../Components/Stepper/Stepper2";
+// import FileUpload from "../../customComponent/uploadFile/UploadFile";
+// import CustomInput from "../../customComponent/Table/CustomizedSelect/CustomInput";
+// import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
+// import EnhancedTable from "../../customComponent/CommonTable/demo";
 import Accordian from "../../Components/Accordion/Accordion";
 
 const options = [
