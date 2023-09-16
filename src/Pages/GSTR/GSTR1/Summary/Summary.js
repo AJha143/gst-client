@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import  Accordion  from "../../Components/Accordion/Accordion";
+import  Accordion  from "../../../../Components/Accordion/Accordion";
 import './Summary.scss'
 
 const Summary = () => {
