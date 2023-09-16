@@ -60,7 +60,7 @@ const CustomTableBody = ({
               {checkbox(isItemSelected, labelId)}
               {columns.map &&
                 columns.map(({ id }) => (
-                  <TableCell scope="row" align="left">
+                  <TableCell scope="row" align="center">
                     {row[id]}
                   </TableCell>
                 ))}

@@ -3,37 +3,90 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 'auto';
+  margin-bottom: "auto";
 }
 .textHeading {
-    color: #4D4D4D;
-    font-family: Poppins;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    margin-bottom: 2vh;
+  color: #4d4d4d;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 7vh;
 }
-.textHeading2{
-color: #528FF0;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+.textHeading2 {
+  color: #528ff0;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-.textDetails{
-    color: #4D4D4D;
-font-family: Poppins;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.textDetails {
+  color: #4d4d4d;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-.downloadHighlight{
-    color: #528FF0;
-font-family: Poppins;
-font-size: 12px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+.downloadHighlight {
+  color: #528ff0;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.cardContainer {
+  width: "100%";
+  height: 100vh;
+}
+
+.cardClientName {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+}
+
+.buttonComponent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #528ff0;
+  color: white;
+  height: 6vh;
+  border-radius: 10px;
+  margin-bottom: 8vh;
+  cursor: pointer;
+}
+
+.buttonLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.marginClass {
+  margin: auto;
+}
+
+.uploadBtn {
+  margin: auto;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.flexClass {
+  display: flex;
+}
+
+.cardTypography {
+  margin-bottom: 20vh;
+}
+
+.noneClass{
+    display: none;
 }
