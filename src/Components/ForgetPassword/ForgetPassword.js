@@ -7,42 +7,58 @@ import ButtonComponent from "../../customComponent/ButtonComponent";
 import Lock from "../../Images/lock.png";
 import CloseIcon from '@mui/icons-material/Close';
 import "./ForgetPassword.scss";
-import { formValidationRegex } from "../ConstantData";
+// import { formValidationRegex } from "../ConstantData";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
+import { useFormik, } from "formik";
+import * as Yup from 'yup';
 
 
 const ForgetPassword = (props) => {
   const { onClose, open } = props;
-  const [formIputValue, setFormInputValue] = useState("");
-  const [formErr, setFormErr] = useState("");
+  // const [formIputValue, setFormInputValue] = useState("");
+  // const [formErr, setFormErr] = useState("");
 
   const handleClose = () => {
     onClose(!open);
-    setFormInputValue("");
-    setFormErr("")
-  };
+    formik.resetForm();
+    };
 
-  const handleInputChange = (value) => {
-    setFormErr("")
-    setFormInputValue(value)
-  };
+//   const handleInputChange = (value) => {
+//     setFormErr("")
+//     setFormInputValue(value)
+//   };
 
-const formValidationHandler = (value) =>{
-  if(!value){
-    setFormErr("Please enter registered email address !!")
-  }else if(!formValidationRegex.email.test(value))
-    {
-      setFormErr("Please enter valid email address !!")
-    }else{
-      setFormErr("")
-    }
-}
+// const formValidationHandler = (value) =>{
+//   if(!value){
+//     setFormErr("Please enter registered email address !!")
+//   }else if(!formValidationRegex.email.test(value))
+//     {
+//       setFormErr("Please enter valid email address !!")
+//     }else{
+//       setFormErr("")
+//     }
+// }
 
-  const handleOnBlur = (value) => {
-    formValidationHandler(value)
-  }
+//   const handleOnBlur = (value) => {
+//     formValidationHandler(value)
+//   }
+
+  const formik = useFormik({
+    initialValues: {
+    
+      email: '',
+ 
+    },
+    validationSchema: Yup.object({
+   
+      email: Yup.string().email('Invalid email address !!').required('EMAIL is Mandatory!!!*'),
 
 
+    }),
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <ErrorBoundary>
     <DialogComponent
@@ -71,15 +87,19 @@ const formValidationHandler = (value) =>{
             <Grid item xs={12}>
               <FormLabelComponent labeltext="Email Address" required />
               <TextFieldComponent
-                error={formErr}
+                // error={formErr}
                 type="email"
-                value={formIputValue}
-              className="forgotPwdTextField"
+                // value={formIputValue}
+              className={"forgotPwdTextField"}
                 variant="outlined"
-                onBlur={(event)=>handleOnBlur(event?.target?.value)}
-                onChange={ (event) => handleInputChange(event?.target?.value)}   
-                helperText={formErr ? formErr : ""}
+                // onBlur={(event)=>handleOnBlur(event?.target?.value)}
+                // onChange={ (event) => handleInputChange(event?.target?.value)}   
+                // helperText={formErr ? formErr : ""}
+                {...formik.getFieldProps('email')}
               />
+              {formik.touched.email && formik.errors.email ? (
+        <div className="errorTextStyle">{formik.errors.email}</div>
+      ) : null}
             </Grid>
     
 
