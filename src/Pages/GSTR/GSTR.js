@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import CustomizedSteppers2 from "../../Components/Stepper/Stepper2";
-import FileUpload from "../../customComponent/uploadFile/UploadFile";
-import CustomInput from "../../customComponent/Table/CustomizedSelect/CustomInput";
-import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
-import EnhancedTable from "../../customComponent/CommonTable/demo";
+// import CustomizedSteppers2 from "../../Components/Stepper/Stepper2";
+// import FileUpload from "../../customComponent/uploadFile/UploadFile";
+// import CustomInput from "../../customComponent/Table/CustomizedSelect/CustomInput";
+// import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
+// import EnhancedTable from "../../customComponent/CommonTable/demo";
+import Accordian from "../../Components/Accordion/Accordion";
 
 const options = [
   { label: "Ten", value: 10 },
@@ -28,16 +29,16 @@ const GSTR = () => {
   return (
     <div>
       GSTR
-      <CustomizedSteppers2
+      {/* <CustomizedSteppers2
         steps={steps}
         activeStep={activeStep}
         orientation="vertical"
-      />
-      <FileUpload
+      /> */}
+      {/* <FileUpload
         uploadUrl="YOUR_UPLOAD_API_URL"
         onUpload={handleUploadSuccess}
-      />
-      <div>
+      /> */}
+      {/* <div>
         <div>
           <CustomInput
             id="demo-customized-textbox"
@@ -54,7 +55,9 @@ const GSTR = () => {
           />
         </div>
         <EnhancedTable />
-      </div>
+      </div> */}
+      <Accordian />
+
     </div>
   );
 };

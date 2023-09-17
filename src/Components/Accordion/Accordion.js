@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Accordion from "../../customComponent/CustomAccordion/CustomAccordion";
-import { summaryText } from "../ConstantData";
+import { summaryData } from "../AccordianData";
 const Accordian = () => {
   const [selectedId, setSelectedId] = useState("");
   const handleClick = (id) => {
-    setSelectedId((prev, current) => {
-      console.log(prev);
+    setSelectedId((prev, _current) => {
       if (prev !== id) return id;
       return "";
     });
   };
-  return summaryText.map(({title,id}) => (
+  return summaryData.map(({ title, id, content }) => (
     <Accordion
       key={id}
       expanded={selectedId === id}
@@ -18,10 +17,9 @@ const Accordian = () => {
       onClick={(e) => {
         handleClick(id);
       }}
-      renderContent={() => <p>{"vgvjggvjhv"}</p>}
+      renderContent={() => <p>{content}</p>}
     />
   ));
 };
 
-
-export default Accordian
+export default Accordian;
