@@ -39,11 +39,11 @@ const SalesForm = () => {
   const [pos, setPoc] = useState("");
   const [gst, setGST] = useState(null);
   const [billAdd, setBillAdd] = useState(null);
+  const [adv, setAdv] = useState("");
   const [shipAdd, setShipAdd] = useState(null);
   const [selectedOption, setSelectedOption] = useState("");
   const [checkedMRP, setCheckedMRP] = useState(false);
   const [checkedMCM, setCheckedMCM] = useState(false);
-  const [adv, setAdv] = useState("");
 
   const handleChangeDropDown = (event) => {
     setSelectedOption(event.target.value);
@@ -118,10 +118,11 @@ const SalesForm = () => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
+            alignItems: "left",
             marginTop: "10vh",
             marginBottom: "10vh",
-            width: "100%",
+            width: "80%",
           }}
         >
           <div>
@@ -136,19 +137,20 @@ const SalesForm = () => {
               options={options}
               initialValue={"Select"}
               onInputChange={handleInvoiceDate}
-              width={{ width: 223 }}
+              width={{ width: 150 }}
             />
           </div>
           <div>
             <TextFieldComponent
               label={reference}
               onChange={(e) => handleReferences(e)}
+              style={{ width: 150 }}
             />
           </div>
           <div>
             <AutoCompleteComponent
               label={dueDate}
-              width={{ width: 223 }}
+              width={{ width: 150 }}
               onInputChange={handleDueDate}
             />
           </div>
@@ -159,25 +161,29 @@ const SalesForm = () => {
               value={dateReturn}
               onChange={handleReturnMonth}
               outlined={false}
+              style={{ width: 150 }}
             />
           </div>
         </div>
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
-            marginTop: "5vh",
+            justifyContent: "space-evenly",
+            alignItems: "left",
+            marginTop: "10vh",
+            marginBottom: "10vh",
+            width: "80%",
           }}
         >
           <AutoCompleteComponent
             label={returnQuater}
-            width={{ width: 275 }}
+            width={{ width: 150 }}
             onInputChange={handleReturnQuarter}
           />
           <TextFieldComponent
             label={customerName}
             onChange={(e) => handleCustomerName(e)}
-            style={{ width: 275 }}
+            style={{ width: 150 }}
           />
           <TextFieldComponent
             label={gstin}
@@ -197,11 +203,11 @@ const SalesForm = () => {
             display: "flex",
             justifyContent: "flex-start",
             marginTop: "5vh",
-            marginLeft: "12vh",
-            width: "100%",
+            marginLeft: "10.5vh",
+            width: "80%",
           }}
         >
-          <div style={{ marginRight: "8vh" }}>
+          <div style={{ marginRight: "6vh" }}>
             <TextFieldComponent
               label={billingAddress}
               onChange={(e) => handleBillingAddress(e)}
@@ -220,7 +226,7 @@ const SalesForm = () => {
             />
           </div>
         </div>
-        <div style={{ marginLeft: "12vh", marginTop: "5vh" }}>
+        <div style={{ marginLeft: "10.5vh", marginTop: "5vh" }}>
           <FormControl component="fieldset">
             <FormGroup aria-label="position" row>
               <div style={{ marginRight: "5vh" }}>
@@ -254,7 +260,7 @@ const SalesForm = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-evenly",
               marginBottom: "5vh",
               // width: "100%",
             }}
