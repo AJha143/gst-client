@@ -147,7 +147,7 @@ function DrawerComp(props) {
                         }
                       />
                     ) : (
-                      ""
+                      <ListItemText primary={"."} className={""} />
                     )}
 
                     {!handleDrawer ? (
