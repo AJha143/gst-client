@@ -7,7 +7,6 @@ import ButtonComponent from "../../customComponent/ButtonComponent";
 import Lock from "../../Images/lock.png";
 import CloseIcon from '@mui/icons-material/Close';
 import "./ForgetPassword.scss";
-// import { formValidationRegex } from "../ConstantData";
 import ErrorBoundary from "../../customComponent/ErrorBoundary";
 import { useFormik, } from "formik";
 import * as Yup from 'yup';
@@ -15,33 +14,14 @@ import * as Yup from 'yup';
 
 const ForgetPassword = (props) => {
   const { onClose, open } = props;
-  // const [formIputValue, setFormInputValue] = useState("");
-  // const [formErr, setFormErr] = useState("");
+
 
   const handleClose = () => {
     onClose(!open);
     formik.resetForm();
     };
 
-//   const handleInputChange = (value) => {
-//     setFormErr("")
-//     setFormInputValue(value)
-//   };
 
-// const formValidationHandler = (value) =>{
-//   if(!value){
-//     setFormErr("Please enter registered email address !!")
-//   }else if(!formValidationRegex.email.test(value))
-//     {
-//       setFormErr("Please enter valid email address !!")
-//     }else{
-//       setFormErr("")
-//     }
-// }
-
-//   const handleOnBlur = (value) => {
-//     formValidationHandler(value)
-//   }
 
   const formik = useFormik({
     initialValues: {
@@ -87,14 +67,13 @@ const ForgetPassword = (props) => {
             <Grid item xs={12}>
               <FormLabelComponent labeltext="Email Address" required />
               <TextFieldComponent
-                // error={formErr}
+    
                 type="email"
-                // value={formIputValue}
+         
               className={"forgotPwdTextField"}
                 variant="outlined"
-                // onBlur={(event)=>handleOnBlur(event?.target?.value)}
-                // onChange={ (event) => handleInputChange(event?.target?.value)}   
-                // helperText={formErr ? formErr : ""}
+              
+            
                 {...formik.getFieldProps('email')}
               />
               {formik.touched.email && formik.errors.email ? (
@@ -114,7 +93,6 @@ const ForgetPassword = (props) => {
             />
 
             <ButtonComponent
-              // className="customBtn2"
               classes={{root : "submitBtn"}}
               variant="contained"
               buttontext="SUBMIT"
