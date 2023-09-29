@@ -11,7 +11,7 @@ const CustomTableBody = ({
   selected,
   columns,
   data,
-  checkboxRequired
+  checkboxRequired,
 }) => {
   const isSelected = (id) => selected.indexOf(id) !== -1;
   const checkbox = (isItemSelected, labelId) =>
@@ -60,7 +60,19 @@ const CustomTableBody = ({
               {checkbox(isItemSelected, labelId)}
               {columns.map &&
                 columns.map(({ id }) => (
-                  <TableCell scope="row" align="center">
+                  <TableCell
+                    scope="row"
+                    align="center"
+                    style={{
+                      //Implementing inline styling
+                      color: "#616161",
+                      fontFamily: "Poppins",
+                      fontSize: "14px",
+                      fontStyle: "normal",
+                      fontWeight: 400,
+                      lineHeight: "normal",
+                    }}
+                  >
                     {row[id]}
                   </TableCell>
                 ))}

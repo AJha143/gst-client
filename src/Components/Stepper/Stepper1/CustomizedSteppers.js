@@ -8,6 +8,7 @@ import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
 import ColorlibStepIcon from "./ColorlibStepIcon";
+import "./CSstyle.scss";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -43,9 +44,8 @@ const steps = [
 ];
 
 export default function CustomizedSteppers(props) {
-
   return (
-    <Stack sx={{ width: "150vh" }} spacing={4}>
+    <Stack spacing={4}>
       <Stepper
         alternativeLabel
         activeStep={props.status}
@@ -53,11 +53,11 @@ export default function CustomizedSteppers(props) {
       >
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel
-              StepIconComponent={ColorlibStepIcon}
-            >
+            <StepLabel StepIconComponent={ColorlibStepIcon}>
               <h2 className="stepper-label">{label}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p className="subLabel">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
             </StepLabel>
           </Step>
         ))}

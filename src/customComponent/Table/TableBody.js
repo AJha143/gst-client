@@ -76,7 +76,7 @@ const TableBody = () => {
         >
           <div
             style={{
-              width: "10vh",
+              width: "5vh",
               backgroundColor: "white",
               color: "black",
               display: "flex",
@@ -104,7 +104,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "15vh",
+              width: "12vh",
               backgroundColor: "white",
               color: "black",
               display: "flex",
@@ -118,7 +118,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "15vh",
+              width: "7vh",
               backgroundColor: "white",
               color: "black",
               display: "flex",
@@ -132,7 +132,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "10vh",
+              width: "5vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -146,7 +146,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "25vh",
+              width: "16vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -160,7 +160,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "12vh",
+              width: "7vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -174,7 +174,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "15vh",
+              width: "12vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -188,7 +188,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "18vh",
+              width: "16vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -202,7 +202,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "18vh",
+              width: "15vh",
               backgroundColor: "white",
               color: "black",
               borderBottom: "1px solid #D4D4E0",
@@ -267,7 +267,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "20vh",
+              width: "10vh",
               backgroundColor: "white",
               color: "black",
               display: "flex",
@@ -281,7 +281,7 @@ const TableBody = () => {
           </div>
           <div
             style={{
-              width: "20vh",
+              width: "10vh",
               backgroundColor: "white",
               color: "black",
               display: "flex",
@@ -324,7 +324,7 @@ const TableBody = () => {
       >
         <div
           style={{
-            width: "112vh",
+            width: "77vh",
             height: "7vh",
             backgroundColor: "white",
             color: "black",
@@ -372,35 +372,35 @@ const TableBody = () => {
         </div>
         <div
           style={{
+            width: "12vh",
+            backgroundColor: "#9CAED82B",
+            color: "black",
+            display: "flex",
+            justifyContent: "center",
+            borderBottom: "1px solid #D4D4E0",
+            borderRight: "1px solid #D4D4E0",
+            alignItems: "center",
+          }}
+        >
+          1
+        </div>
+        <div
+          style={{
+            width: "16vh",
+            backgroundColor: "#9CAED82B",
+            color: "black",
+            display: "flex",
+            justifyContent: "center",
+            borderBottom: "1px solid #D4D4E0",
+            borderRight: "1px solid #D4D4E0",
+            alignItems: "center",
+          }}
+        >
+          1
+        </div>
+        <div
+          style={{
             width: "15vh",
-            backgroundColor: "#9CAED82B",
-            color: "black",
-            display: "flex",
-            justifyContent: "center",
-            borderBottom: "1px solid #D4D4E0",
-            borderRight: "1px solid #D4D4E0",
-            alignItems: "center",
-          }}
-        >
-          1
-        </div>
-        <div
-          style={{
-            width: "18vh",
-            backgroundColor: "#9CAED82B",
-            color: "black",
-            display: "flex",
-            justifyContent: "center",
-            borderBottom: "1px solid #D4D4E0",
-            borderRight: "1px solid #D4D4E0",
-            alignItems: "center",
-          }}
-        >
-          1
-        </div>
-        <div
-          style={{
-            width: "18vh",
             backgroundColor: "white",
             color: "black",
             borderBottom: "1px solid #D4D4E0",
@@ -463,7 +463,7 @@ const TableBody = () => {
         </div>
         <div
           style={{
-            width: "20vh",
+            width: "15vh",
             backgroundColor: "white",
             borderBottom: "1px solid #D4D4E0",
             borderRight: "1px solid #D4D4E0",
@@ -476,7 +476,7 @@ const TableBody = () => {
         </div>
         <div
           style={{
-            width: "20vh",
+            width: "15vh",
             backgroundColor: "#9CAED82B",
             borderBottom: "1px solid #D4D4E0",
             borderRight: "1px solid #D4D4E0",

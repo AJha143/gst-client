@@ -31,6 +31,15 @@ const CustomTableHeader = ({
             align="center"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{
+              // importing css is not working hence Inline styling
+              color: "#4D4D4D",
+              fontFamily: "Poppins",
+              fontSize: "14px",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "normal",
+            }}
           >
             {headCell.label}
           </TableCell>

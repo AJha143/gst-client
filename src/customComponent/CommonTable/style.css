@@ -8,3 +8,19 @@
 .Mui-checked.checkboxColor {
   color: blue;
 }
+.headerText {
+  color: #4d4d4d;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.text {
+  color: #616161;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

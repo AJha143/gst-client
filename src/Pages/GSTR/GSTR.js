@@ -5,6 +5,9 @@ import React, { useState } from "react";
 // import CustomSelect from "../../customComponent/Table/CustomizedSelect/CustomSelect";
 // import EnhancedTable from "../../customComponent/CommonTable/demo";
 import Accordian from "../../Components/Accordion/Accordion";
+import EnhancedTable from "../../customComponent/CommonTable/demo";
+import GSTRtable from "./GSTR1/TableGSTR/GSTRtable";
+import UploadDocTable from "./GSTR1/TableGSTR/UploadDocTable";
 
 const options = [
   { label: "Ten", value: 10 },
@@ -57,7 +60,9 @@ const GSTR = () => {
         <EnhancedTable />
       </div> */}
       <Accordian />
-
+      <p>2nd table</p>
+      <GSTRtable />
+      <UploadDocTable />
     </div>
   );
 };
