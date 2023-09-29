@@ -1,0 +1,10 @@
+.MuiTableRow-root.Mui-selected.selectedRow,
+.MuiTableRow-root.Mui-selected.selectedRow:hover {
+  background-color: aliceblue;
+}
+/* .toolBarWrapper {
+  background-color: #b5dafa;
+} */
+.Mui-checked.checkboxColor {
+  color: blue;
+}

@@ -26,7 +26,7 @@ const DropDownComponent = (props) => {
           input={border}
           placeholder="lol"
           inputProps={{ "aria-label": "Without label" }}
-          sx={{ width: "275px",}}
+          sx={{ width: "275px"}}
           {...props}
         >
           {outlined ? (

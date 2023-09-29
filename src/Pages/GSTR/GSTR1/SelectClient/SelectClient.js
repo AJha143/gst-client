@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { CardContent, Card } from "@mui/material";
-
 import DropDownComponent from "../../../../customComponent/DropDown/DropDown";
 import EnhancedTable1 from "../PrepareData/Table/AmendmentDetails";
 import EnhancedTable2 from "../PrepareData/Table/InvoiceDetails";
 import EnhancedTable3 from "../PrepareData/Table/SummaryLevelDetails";
 import ReusableTabs from "../../../../customComponent/Tabs/CustomTab";
+import "./SelectClient.scss";
 
 const SelectClient = ({ renderStatus }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -20,7 +19,7 @@ const SelectClient = ({ renderStatus }) => {
   };
 
   const tabs = [
-    { label: "Invoice Details", content: <EnhancedTable1 />},
+    { label: "Invoice Details", content: <EnhancedTable1 /> },
     {
       label: "Amendment Details",
       content: <EnhancedTable2 />,
@@ -33,39 +32,29 @@ const SelectClient = ({ renderStatus }) => {
 
   return (
     <>
-      <Card
-        sx={{
-          width: "90%",
-          borderColor: "#E4EAFC",
-          borderWidth: "5px",
-          backgroundColor: "#F9FBFE",
-          margin: "20px",
-        }}
-        style={{ display: "flex", justifyContent: "space-around" }}
-      >
-        <CardContent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi.
-        </CardContent>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            margin: "auto",
-            width: "125vh",
-          }}
-        >
+      <div className="mainContainer">
+        <div className="boxContainer">
+          <div className="header-text">
+            Please select Client for whom you want file GSTR1
+          </div>
+
           <DropDownComponent
             options={options}
             value={selectedOption}
             onChange={handleChangeDropDown}
-            label="Select"
+            label="Select a client"
             outlined={1}
-            sx={{ marginTop: "2vh" }}
+            className="dropDownStyle"
+            style={{
+              // Implementing inline styling as scss is not working
+              fontFamily: "Poppins",
+              fontSize: "14px",
+              fontStyle: "normal",
+              fontWeight: 600,
+            }}            
           />
         </div>
-      </Card>
+      </div>
       <ReusableTabs tabs={tabs} />
     </>
   );

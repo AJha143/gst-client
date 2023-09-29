@@ -1,0 +1,30 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+.boxContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 8px;
+  border: 1px solid #acd2fd;
+  background-color: #f9fbfe;
+  width: 90%;
+  height: 85px;
+}
+.header-text {
+  color: #616161;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.dropDownStyle {
+  background-color: #e3edf9;
+  // font-family: cursive;
+  // font-size: 25px;
+  // font-style: normal;
+}

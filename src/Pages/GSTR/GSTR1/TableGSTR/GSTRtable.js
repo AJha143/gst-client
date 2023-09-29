@@ -6,10 +6,10 @@ import { IconButton } from "@mui/material";
 import { Tooltip } from "@mui/material";
 import Delete from "@mui/icons-material/Delete";
 import { FilterList } from "@mui/icons-material";
-import TableBody from "./TableBody";
-import TableHeader from "./TableHeader";
-import TablePagination from "./TablePagination";
-import TableToolbar from "./TableToolbar";
+import TableToolbar from "../../../../customComponent/CommonTable/TableToolbar";
+import TableHeader from "../../../../customComponent/CommonTable/TableHeader";
+import TableBody from "../../../../customComponent/CommonTable/TableBody";
+import TablePagination from "../../../../customComponent/CommonTable/TablePagination";
 import "./style.css";
 
 function createData(name, calories, fat, carbs, protein) {
@@ -37,15 +37,40 @@ const headCells = [
     id: "name",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)",
+    label: "Date",
   },
-  { id: "calories", numeric: true, disablePadding: false, label: "Calories" },
-  { id: "fat", numeric: true, disablePadding: false, label: "Fat (g)" },
-  { id: "carbs", numeric: true, disablePadding: false, label: "Carbs (g)" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" },
+  { id: "calories", numeric: true, disablePadding: false, label: "ID" },
+  { id: "fat", numeric: true, disablePadding: false, label: "Customer" },
+  { id: "carbs", numeric: true, disablePadding: false, label: "GSTIN" },
+  {
+    id: "protein",
+    numeric: true,
+    disablePadding: false,
+    label: "Taxable AMT (₹)",
+  },
+  {
+    id: "protein",
+    numeric: true,
+    disablePadding: false,
+    label: "Total Tax (₹)",
+  },
+  {
+    id: "protein",
+    numeric: true,
+    disablePadding: false,
+    label: "Total AMT (₹)",
+  },
+  { id: "protein", numeric: true, disablePadding: false, label: "Type" },
+  { id: "protein", numeric: true, disablePadding: false, label: "Status" },
+  {
+    id: "protein",
+    numeric: true,
+    disablePadding: false,
+    label: "Ecommerce GSTIN",
+  },
 ];
 
-export default function EnhancedTable() {
+export default function GSTRtable() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);

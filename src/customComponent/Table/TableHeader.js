@@ -3,32 +3,32 @@ import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 const headers = [
-  { title: "#", width: "10vh", divider: false, multiLine: false },
+  { title: "#", width: "5vh", divider: false, multiLine: false },
   {
     title: "Item Description",
     width: "25vh",
     divider: false,
     multiLine: false,
   },
-  { title: "Item Type", width: "15vh", divider: false, multiLine: false },
-  { title: "HSN / SAC", width: "15vh", divider: false, multiLine: true },
-  { title: "Qty", width: "10vh", divider: false, multiLine: false },
+  { title: "Item Type", width: "12vh", divider: false, multiLine: false },
+  { title: "HSN / SAC", width: "7vh", divider: false, multiLine: true },
+  { title: "Qty", width: "5vh", divider: false, multiLine: false },
   {
     title: "Unity of Measurement",
-    width: "25vh",
+    width: "16vh",
     divider: false,
     multiLine: false,
   },
-  { title: "Rate (Rs.)", width: "12vh", divider: false, multiLine: false },
+  { title: "Rate (Rs.)", width: "7vh", divider: false, multiLine: false },
   {
     title: "Discount",
-    width: "15vh",
+    width: "12vh",
     divider: true,
     multiLine: false,
     options: true,
   },
-  { title: "Taxable Value", width: "18vh", divider: false, multiLine: false },
-  { title: "Taxable Rate", width: "18vh", divider: false, multiLine: false },
+  { title: "Taxable Value", width: "16vh", divider: false, multiLine: false },
+  { title: "Taxable Rate", width: "15vh", divider: false, multiLine: false },
   {
     title: "Tax Values (Rs.)",
     width: "21vh",
@@ -36,8 +36,8 @@ const headers = [
     multiLine: false,
     subHeader: ["CGST", "SGST", "IGST"],
   },
-  { title: "CESS", width: "20vh", divider: false, multiLine: false },
-  { title: "Total", width: "20vh", divider: false, multiLine: false },
+  { title: "CESS", width: "10vh", divider: false, multiLine: false },
+  { title: "Total", width: "10vh", divider: false, multiLine: false },
 ];
 
 const TableHeader = () => {
